@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="sk" data-lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parkovacie Reformy v Európe 2024–2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Mono:wght@300;400;500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#0e0e0e; --paper:#f5f0e8; --cream:#ede8dc; --muted:#6b6355;
+  --divider:#d8d1c4; --accent:#c8450f; --accent2:#1a5c3a;
+  --accent3:#1a4a80; --accent4:#7a3a9a; --warm-white:#faf8f3;
+  --col-abolish:#c8450f; --col-maximum:#1a5c3a;
+  --col-pricing:#1a4a80; --col-mgmt:#7a3a9a;
+  --fs-xl:clamp(2.8rem,7vw,6.5rem); --fs-lg:clamp(1.6rem,3.5vw,2.8rem);
+  --fs-md:clamp(1rem,2vw,1.25rem); --fs-sm:0.82rem; --fs-xs:0.72rem;
+  --radius:2px; --gap:1.5rem; --max-w:1140px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Figtree',sans-serif;font-weight:300;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+[data-lang="sk"] .en-only{display:none!important;}
+[data-lang="en"] .sk-only{display:none!important;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(245,240,232,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--divider);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:52px;}
+.site-header .logo{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.site-nav{display:flex;list-style:none;}
+.site-nav a{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 1rem;height:52px;display:flex;align-items:center;border-right:1px solid var(--divider);transition:color .2s,background .2s;}
+.site-nav li:first-child a{border-left:1px solid var(--divider);}
+.site-nav a:hover,.site-nav a.active{color:var(--ink);background:var(--cream);}
+.lang-toggle{display:flex;gap:2px;}
+.lang-btn{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:.3em .7em;border:1px solid var(--divider);background:transparent;cursor:pointer;color:var(--muted);transition:all .15s;}
+.lang-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+
+/* HERO */
+.hero{position:relative;min-height:92vh;display:grid;grid-template-rows:1fr auto;padding:5rem 2rem 3rem;overflow:hidden;background:var(--paper);}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--divider) 1px,transparent 1px),linear-gradient(90deg,var(--divider) 1px,transparent 1px);background-size:80px 80px;opacity:.35;pointer-events:none;}
+.hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);font-family:'Fraunces',serif;font-weight:900;font-size:clamp(8rem,22vw,22rem);line-height:.85;color:transparent;-webkit-text-stroke:1px rgba(14,14,14,.07);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em;}
+.hero-content{position:relative;max-width:var(--max-w);margin:0 auto;width:100%;}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem;}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--accent);}
+.hero-title{font-family:'Fraunces',serif;font-weight:900;font-size:var(--fs-xl);line-height:.93;letter-spacing:-.03em;color:var(--ink);margin-bottom:2rem;max-width:14ch;}
+.hero-title em{font-style:italic;font-weight:300;color:var(--accent);}
+.hero-subtitle{font-size:var(--fs-md);color:var(--muted);font-weight:300;max-width:55ch;line-height:1.55;margin-bottom:3rem;}
+.hero-stats{position:relative;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--divider);margin-top:2rem;background:var(--warm-white);max-width:var(--max-w);margin-left:auto;margin-right:auto;}
+.hero-stat{padding:1.6rem 1.4rem;border-right:1px solid var(--divider);position:relative;overflow:hidden;}
+.hero-stat:last-child{border-right:none;}
+.hero-stat::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;}
+.hero-stat:nth-child(1)::after{background:var(--col-abolish);}
+.hero-stat:nth-child(2)::after{background:var(--col-maximum);}
+.hero-stat:nth-child(3)::after{background:var(--col-pricing);}
+.hero-stat:nth-child(4)::after{background:var(--col-mgmt);}
+.stat-number{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);line-height:1;letter-spacing:-.03em;color:var(--ink);margin-bottom:.3rem;}
+.stat-label{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.4;}
+
+/* INTRO */
+.intro-strip{background:var(--ink);color:var(--paper);padding:4rem 2rem;}
+.intro-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;}
+.intro-label{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,.45);padding-top:.3rem;}
+.intro-body p{font-size:var(--fs-md);font-weight:300;line-height:1.65;color:rgba(245,240,232,.88);margin-bottom:1rem;}
+.intro-body p:last-child{margin-bottom:0;}
+.intro-body strong{color:var(--paper);font-weight:500;}
+
+/* LEGEND */
+.legend-bar{background:var(--cream);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);padding:1.2rem 2rem;}
+.legend-inner{max-width:var(--max-w);margin:0 auto;display:flex;gap:2rem;align-items:center;flex-wrap:wrap;}
+.legend-title{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);flex-shrink:0;}
+.legend-items{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:.5rem;font-size:.76rem;color:var(--muted);}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+
+/* SECTIONS */
+.section{max-width:var(--max-w);margin:0 auto;padding:5rem 2rem;}
+.section-header{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:1.5rem;margin-bottom:3rem;padding-bottom:1.2rem;border-bottom:1px solid var(--divider);}
+.section-subheader{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:1.5rem;margin-top:3.5rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--divider);}
+.section-number{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;color:var(--muted);}
+.section-title{font-family:'Fraunces',serif;font-weight:700;font-size:var(--fs-lg);line-height:1.1;letter-spacing:-.02em;color:var(--ink);}
+.section-title em{font-style:italic;font-weight:300;color:var(--muted);}
+.section-subtitle{font-size:.85rem;color:var(--muted);margin-top:.5rem;font-weight:300;max-width:70ch;}
+.placeholder{background:var(--cream);border:1px dashed var(--divider);min-height:200px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);letter-spacing:.1em;}
+
+/* MAP */
+.map-wrap{position:relative;margin-bottom:2rem;}
+#reform-map{height:auto;min-height:480px;border:1px solid var(--divider);background:#dde8f0;display:block;}
+.eu-land{fill:#c8d8b0;stroke:#a8b890;stroke-width:0.8;stroke-linejoin:round;}
+.map-controls{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap;}
+.map-btn{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;padding:.5em 1.2em;border:1px solid var(--divider);background:var(--warm-white);cursor:pointer;color:var(--muted);transition:all .15s;}
+.map-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+.map-legend{display:flex;gap:1.5rem;flex-wrap:wrap;padding:.8rem 1rem;background:var(--warm-white);border:1px solid var(--divider);border-top:none;font-size:.72rem;color:var(--muted);}
+.map-legend-item{display:flex;align-items:center;gap:.4rem;}
+.map-legend-swatch{width:12px;height:12px;border-radius:50%;}
+
+/* Leaflet popup override */
+/* Leaflet removed */
+.popup-title{font-family:'Fraunces',serif;font-weight:700;font-size:1rem;margin-bottom:.3rem;}
+.popup-type{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;}
+.popup-intensity{display:flex;gap:3px;margin:.4rem 0;}
+.pip{width:10px;height:10px;border-radius:1px;background:var(--divider);}
+.pip.on{background:var(--ink);}
+.popup-desc{font-size:.78rem;color:#555;line-height:1.4;margin-top:.4rem;}
+
+/* FOOTER */
+.site-footer{background:var(--ink);color:rgba(245,240,232,.5);padding:3rem 2rem;border-top:3px solid var(--accent);}
+.footer-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;}
+.footer-logo{font-family:'Fraunces',serif;font-weight:900;font-size:1.4rem;letter-spacing:-.02em;color:var(--paper);line-height:1;}
+.footer-meta{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-align:right;line-height:1.8;}
+.footer-meta a{color:rgba(245,240,232,.7);text-decoration:underline;text-underline-offset:3px;}
+
+@media(max-width:768px){
+  .site-nav{display:none;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .intro-inner{grid-template-columns:1fr;gap:1.5rem;}
+  .section-header{grid-template-columns:1fr;}
+  #reform-map{min-height:300px;}
+}
+@media(max-width:480px){.hero-stats{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">
+    <span class="sk-only">GOSPACE LABS · Parkovacie Reformy EU</span>
+    <span class="en-only">GOSPACE LABS · EU Parking Reform</span>
+  </div>
+  <nav><ul class="site-nav">
+    <li><a href="#sec-national"><span class="sk-only">Národné</span><span class="en-only">National</span></a></li>
+    <li><a href="#sec-nordic"><span class="sk-only">Nordické</span><span class="en-only">Nordic</span></a></li>
+    <li><a href="#sec-dach">DACH</a></li>
+    <li><a href="#sec-west-cee"><span class="sk-only">Západ/CEE</span><span class="en-only">West/CEE</span></a></li>
+    <li><a href="#sec-top10">Top 10</a></li>
+    <li><a href="#sec-typologies"><span class="sk-only">Typy</span><span class="en-only">Types</span></a></li>
+  </ul></nav>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-sk" onclick="setLang('sk')">SK</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg-text" aria-hidden="true">P</div>
+  <div class="hero-content reveal">
+    <div class="hero-eyebrow">
+      <span class="sk-only">Výskumná správa · Január 2024 – Jún 2025</span>
+      <span class="en-only">Research Report · January 2024 – June 2025</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="sk-only">Európa ruší <em>parkovacie minimá</em></span>
+      <span class="en-only">Europe abolishes <em>parking minimums</em></span>
+    </h1>
+    <p class="hero-subtitle sk-only">Bavorsko, Dolné Sasko a Poľsko zrušili povinné parkovacie normy. Helsinky zaviedli nulové minimá v centre. Za 14 mesiacov sa reformný front posunul z Nórska na Strednú Európu.</p>
+    <p class="hero-subtitle en-only">Bavaria, Lower Saxony, and Poland abolished mandatory parking minimums. Helsinki introduced zero minimums centrally. In 14 months the reform front moved from Norway to Central Europe.</p>
+  </div>
+  <div class="hero-stats reveal">
+    <div class="hero-stat">
+      <div class="stat-number">59M+</div>
+      <div class="stat-label sk-only">obyvateľov<br>zasiahnutých reformou</div>
+      <div class="stat-label en-only">residents affected<br>by recent reforms</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-number">14</div>
+      <div class="stat-label sk-only">mesiacov<br>intenzívnych zmien</div>
+      <div class="stat-label en-only">months of<br>intensive change</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-number">4</div>
+      <div class="stat-label sk-only">reformné typy<br>naprieč Európou</div>
+      <div class="stat-label en-only">reform typologies<br>across Europe</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-number">30+</div>
+      <div class="stat-label sk-only">miest a krajín<br>s aktívnou reformou</div>
+      <div class="stat-label en-only">cities &amp; countries<br>with active reform</div>
+    </div>
+  </div>
+</section>
+
+<div class="intro-strip">
+  <div class="intro-inner">
+    <div class="intro-label sk-only">Kontext reportu</div>
+    <div class="intro-label en-only">Report context</div>
+    <div class="intro-body sk-only">
+      <p>Parkovacie minimá — povinný počet parkovacích miest pre každú novú budovu — sú najhlbšie zakorenená autodeprivačná norma v európskom plánovaní. <strong>V rokoch 2024–2025 ich rušia historicky rýchlo.</strong></p>
+      <p>Tento report mapuje všetky overené reformy v EÚ + UK, Nórsko, Švajčiarsko za posledných 18 mesiacov. Pre GOSPACE LABS sú reformy priamym trhovým signálom: kde sa staví menej povinných parkovacích miest, každé jedno musí byť maximálne využité.</p>
+    </div>
+    <div class="intro-body en-only">
+      <p>Parking minimums — mandatory parking space counts for every new building — are the most deeply rooted car-dependency norm in European planning. <strong>In 2024–2025, they are being abolished at historically unprecedented speed.</strong></p>
+      <p>This report maps all verified reforms in EU + UK, Norway, Switzerland over the past 18 months. For GOSPACE LABS these reforms are a direct market signal: where fewer mandatory spaces are built, every single one must be maximally utilised.</p>
+    </div>
+  </div>
+</div>
+
+<div class="legend-bar">
+  <div class="legend-inner">
+    <div class="legend-title sk-only">Typy reforiem:</div>
+    <div class="legend-title en-only">Reform types:</div>
+    <div class="legend-items">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--col-abolish)"></div><span class="sk-only">Zrušenie minima</span><span class="en-only">Minimum abolition</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--col-maximum)"></div><span class="sk-only">Zavedenie maxima</span><span class="en-only">Maximum introduced</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--col-pricing)"></div><span class="sk-only">Cenová/priestorová reforma</span><span class="en-only">Pricing / space removal</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--col-mgmt)"></div><span class="sk-only">Správa ulíc</span><span class="en-only">On-street management</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FILTER BAR -->
+<div id="filter-bar">
+  <div class="filter-inner">
+    <span class="filter-label sk-only">Filtrovat:</span>
+    <span class="filter-label en-only">Filter:</span>
+    <button class="filt-btn active" data-type="all" onclick="applyFilter('all')">
+      <span class="sk-only">Vsetky</span><span class="en-only">All</span>
+    </button>
+    <button class="filt-btn filt-btn--abolish" data-type="abolish" onclick="applyFilter('abolish')">
+      <span class="sk-only">Zrusenie minima</span><span class="en-only">Abolition</span>
+    </button>
+    <button class="filt-btn filt-btn--maximum" data-type="maximum" onclick="applyFilter('maximum')">
+      <span class="sk-only">Zavedenie maxima</span><span class="en-only">Maximum cap</span>
+    </button>
+    <button class="filt-btn filt-btn--pricing" data-type="pricing" onclick="applyFilter('pricing')">
+      <span class="sk-only">Cenova reforma</span><span class="en-only">Pricing</span>
+    </button>
+    <button class="filt-btn filt-btn--mgmt" data-type="mgmt" onclick="applyFilter('mgmt')">
+      <span class="sk-only">Sprava ulic</span><span class="en-only">Management</span>
+    </button>
+    <span class="filter-count" id="filter-count"></span>
+  </div>
+</div>
+
+<!-- SEC NATIONAL placeholder -->
+<div id="sec-national">
+  <div class="section reveal">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <div>
+        <h2 class="section-title"><span class="sk-only">Národné reformy — <em>najväčší dosah</em></span><span class="en-only">National reforms — <em>greatest impact</em></span></h2>
+        <p class="section-subtitle sk-only">Zmeny na úrovni štátu alebo federálneho zákona ovplyvňujúce milióny ľudí naraz.</p>
+        <p class="section-subtitle en-only">State- or national-level changes affecting millions of people at once.</p>
+      </div>
+    </div>
+    <div class="reform-grid" id="national-cards">
+
+      <!-- BAVORSKO -->
+      <div class="rcard rcard--abolish">
+        <div class="rcard-header">
+          <div class="rcard-flag">🇩🇪</div>
+          <div>
+            <div class="rcard-tag rcard-tag--abolish">
+              <span class="sk-only">Zrušenie minima</span><span class="en-only">Abolition</span>
+            </div>
+            <h3 class="rcard-title">
+              <span class="sk-only">Bavorsko</span><span class="en-only">Bavaria</span>
+            </h3>
+            <div class="rcard-meta">
+              <span class="sk-only">Nemecko · Október 2025 · 13 miliónov obyvateľov</span>
+              <span class="en-only">Germany · October 2025 · 13 million residents</span>
+            </div>
+          </div>
+          <div class="rcard-intensity">
+            <span class="intensity-num">8</span>
+            <span class="intensity-label">/10</span>
+          </div>
+        </div>
+        <div class="rcard-body">
+          <p class="sk-only">Bavorská vláda zrušila povinné parkovacie minimá pre bytovú výstavbu v októbri 2025 novelou Bayerische Bauordnung (BayBO). Ide o najväčšiu reformu v histórii spolkovej krajiny s 13 miliónmi obyvateľov.</p>
+          <p class="en-only">The Bavarian government abolished mandatory residential parking minimums in October 2025 via an amendment to the Bayerische Bauordnung (BayBO). This is the largest reform in the history of this 13-million-resident federal state.</p>
+          <div class="rcard-facts">
+            <div class="fact-item">
+              <div class="fact-val">13M</div>
+              <div class="fact-lbl sk-only">obyvateľov</div>
+              <div class="fact-lbl en-only">residents</div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-val">okt. 2025</div>
+              <div class="fact-lbl sk-only">nadobudnutie účinnosti</div>
+              <div class="fact-lbl en-only">effective date</div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-val">max. 2</div>
+              <div class="fact-lbl sk-only">miesta/byt (strop)</div>
+              <div class="fact-lbl en-only">spaces/unit (cap)</div>
+            </div>
+          </div>
+          <div class="rcard-detail">
+            <div class="detail-toggle" onclick="toggleDetail(this)">
+              <span class="sk-only">+ Detaily reformy</span><span class="en-only">+ Reform details</span>
+            </div>
+            <div class="detail-content" style="display:none">
+              <p class="sk-only">Mestá a obce si teraz môžu nastaviť vlastné parkovacie normy od nuly po maximum 2 miesta/byt. Reforma odstraňuje predchádzajúce minimum 1 miesta/byt pre celú krajinu. Kľúčový politický kompromis: maximálny strop 2 miesta/byt bol zavedený na upokojenie konzervatívnych frakcií CSU. Developerom to dáva flexibilitu pri projektovaní, najmä v mestách s dobrou MHD ako Mníchov, Augsburg alebo Norimberg.</p>
+              <p class="en-only">Cities and municipalities can now set their own parking norms from zero up to a maximum of 2 spaces/unit. The reform removes the previous state-wide minimum of 1 space/unit. Key political compromise: the 2-space maximum cap was introduced to appease conservative CSU factions. This gives developers flexibility in design, especially in transit-rich cities like Munich, Augsburg, or Nuremberg.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOLNÉ SASKO -->
+      <div class="rcard rcard--abolish">
+        <div class="rcard-header">
+          <div class="rcard-flag">🇩🇪</div>
+          <div>
+            <div class="rcard-tag rcard-tag--abolish">
+              <span class="sk-only">Zrušenie minima</span><span class="en-only">Abolition</span>
+            </div>
+            <h3 class="rcard-title">
+              <span class="sk-only">Dolné Sasko</span><span class="en-only">Lower Saxony</span>
+            </h3>
+            <div class="rcard-meta">
+              <span class="sk-only">Nemecko · Júl 2024 · 8 miliónov obyvateľov</span>
+              <span class="en-only">Germany · July 2024 · 8 million residents</span>
+            </div>
+          </div>
+          <div class="rcard-intensity">
+            <span class="intensity-num">8</span>
+            <span class="intensity-label">/10</span>
+          </div>
+        </div>
+        <div class="rcard-body">
+          <p class="sk-only">Dolné Sasko zrušilo povinné rezidenčné parkovacie minimá v júli 2024 — prvá spolková krajina v Nemecku, ktorá tak urobila. Unikátny aspekt: mestá a obce <strong>nemôžu</strong> normu znovu zaviesť vlastnými predpismi.</p>
+          <p class="en-only">Lower Saxony abolished mandatory residential parking minimums in July 2024 — the first German federal state to do so. Unique aspect: cities and municipalities <strong>cannot</strong> reimpose the norm through their own bylaws.</p>
+          <div class="rcard-facts">
+            <div class="fact-item">
+              <div class="fact-val">8M</div>
+              <div class="fact-lbl sk-only">obyvateľov</div>
+              <div class="fact-lbl en-only">residents</div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-val">júl 2024</div>
+              <div class="fact-lbl sk-only">nadobudnutie účinnosti</div>
+              <div class="fact-lbl en-only">effective date</div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-val">1.</div>
+              <div class="fact-lbl sk-only">spolková krajina v DE</div>
+              <div class="fact-lbl en-only">federal state in DE</div>
+            </div>
+          </div>
+          <div class="rcard-detail">
+            <div class="detail-toggle" onclick="toggleDetail(this)">
+              <span class="sk-only">+ Detaily reformy</span><span class="en-only">+ Reform details</span>
+            </div>
+            <div class="detail-content" style="display:none">
+              <p class="sk-only">Novela Niedersächsische Bauordnung (NBauO) z júla 2024 úplne vypustila §49 o parkovacích miestach pre obytné budovy. Na rozdiel od Bavorska žiadny strop — trh rozhoduje. Reforma bola iniciovaná koalíciou SPD a Zelených s cieľom znížiť náklady na bývanie a uľahčiť hustejšiu zástavbu v mestách ako Hannover, Braunschweig a Göttingen.</p>
+              <p class="en-only">The July 2024 amendment to the Niedersächsische Bauordnung (NBauO) entirely removed §49 on parking spaces for residential buildings. Unlike Bavaria, there is no cap — the market decides. The reform was initiated by the SPD-Green coalition to reduce housing costs and enable denser development in cities like Hanover, Braunschweig, and Göttingen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="rcard rcard--abolish"><div class="rcard-header"><div class="rcard-flag">PL</div><div><div class="rcard-tag rcard-tag--abolish"><span class="sk-only">Zrusenie minima</span><span class="en-only">Abolition</span></div><h3 class="rcard-title"><span class="sk-only">Polsko</span><span class="en-only">Poland</span></h3><div class="rcard-meta"><span class="sk-only">Narodna uroven · August 2025</span><span class="en-only">National level · August 2025</span></div></div><div class="rcard-intensity"><span class="intensity-num">6</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Polsky parlament zrusil narodnu normu 1,5 miesta/byt v auguste 2025. Reforma odblokovala ~40 projektov a ~20 000 bytov vo Varsave.</p><p class="en-only">Poland abolished the 1.5 spaces/apt norm in August 2025. ~40 frozen projects and ~20,000 Warsaw apartments unblocked.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">1,5-0</div><div class="fact-lbl sk-only">miest/byt</div><div class="fact-lbl en-only">spaces/apt</div></div><div class="fact-item"><div class="fact-val">~20 000</div><div class="fact-lbl sk-only">bytov</div><div class="fact-lbl en-only">apartments</div></div><div class="fact-item"><div class="fact-val">~40</div><div class="fact-lbl sk-only">projektov</div><div class="fact-lbl en-only">projects</div></div></div><div class="rcard-detail"><div class="detail-toggle" onclick="toggleDetail(this)"><span class="sk-only">+ Detaily reformy</span><span class="en-only">+ Reform details</span></div><div class="detail-content" style="display:none"><p class="sk-only">Norma zo 90. rokov zdrazovala byty o 15-25 tis. EUR na kazde povinne miesto. Reforma je sucastou balika na znizenie nakladov na byvanie. Varsava, Krakow, Wroclaw a Gdansk su hlavne benefitujuce mesta.</p><p class="en-only">The 1990s norm added EUR 15k-25k per mandatory underground space. Part of a housing cost package. Warsaw, Krakow, Wroclaw, Gdansk are the main benefiting cities.</p></div></div></div></div>
+      <div class="rcard rcard--maximum"><div class="rcard-header"><div class="rcard-flag">GB</div><div><div class="rcard-tag rcard-tag--maximum"><span class="sk-only">Zavedenie maxima</span><span class="en-only">Maximum introduced</span></div><h3 class="rcard-title">UK - NPPF 2024</h3><div class="rcard-meta"><span class="sk-only">Narodna uroven · December 2024</span><span class="en-only">National level · December 2024</span></div></div><div class="rcard-intensity"><span class="intensity-num">4</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Revidovany NPPF z decembra 2024 rozsiral dovody pre zavedenie maximalnych parkovacich limitov v lokalitach s dobrou dopravou.</p><p class="en-only">The revised NPPF December 2024 broadened grounds for parking maximums in transit-served locations.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">dec. 2024</div><div class="fact-lbl sk-only">ucinnost</div><div class="fact-lbl en-only">effective</div></div><div class="fact-item"><div class="fact-val">par.113</div><div class="fact-lbl sk-only">paragraf</div><div class="fact-lbl en-only">paragraph</div></div><div class="fact-item"><div class="fact-val">67M</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div><div class="rcard-detail"><div class="detail-toggle" onclick="toggleDetail(this)"><span class="sk-only">+ Detaily reformy</span><span class="en-only">+ Reform details</span></div><div class="detail-content" style="display:none"><p class="sk-only">Paragraf 113 NPPF zahrnul optimalizaciu hustoty pri tranzite ako dovod pre maximalne limity. London Plan 2021 s maximami pre GLA zostava v platnosti.</p><p class="en-only">Paragraph 113 now includes optimising density at transit as valid grounds for maximums. London Plan 2021 remains in force across GLA.</p></div></div></div></div>
+      <div class="rcard rcard--abolish"><div class="rcard-header"><div class="rcard-flag">NL</div><div><div class="rcard-tag rcard-tag--abolish"><span class="sk-only">Decentralizacia</span><span class="en-only">Decentralisation</span></div><h3 class="rcard-title"><span class="sk-only">Holandsko</span><span class="en-only">Netherlands</span></h3><div class="rcard-meta"><span class="sk-only">Narodna uroven · Januar 2024</span><span class="en-only">National level · January 2024</span></div></div><div class="rcard-intensity"><span class="intensity-num">5</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Omgevingswet z januara 2024 konsolidoval 26 zakonov a plne decentralizoval parkovacie normy na 342+ obci. Ziadne narodne normy.</p><p class="en-only">Omgevingswet January 2024 consolidated 26 laws, fully decentralised parking norms to 342+ municipalities. No national ratios.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">26-1</div><div class="fact-lbl sk-only">zakonov</div><div class="fact-lbl en-only">laws</div></div><div class="fact-item"><div class="fact-val">342+</div><div class="fact-lbl sk-only">obci</div><div class="fact-lbl en-only">municipalities</div></div><div class="fact-item"><div class="fact-val">jan. 2024</div><div class="fact-lbl sk-only">ucinnost</div><div class="fact-lbl en-only">effective</div></div></div><div class="rcard-detail"><div class="detail-toggle" onclick="toggleDetail(this)"><span class="sk-only">+ Detaily reformy</span><span class="en-only">+ Reform details</span></div><div class="detail-content" style="display:none"><p class="sk-only">Amsterdam zaviedol nulove minima pre centrum od 2023. Dekret Bbl neobsahuje ziadne parkovacie pomery - kazda obec si nastavi vlastne pravidla.</p><p class="en-only">Amsterdam introduced zero minimums for its centre from 2023. The Bbl decree contains no parking ratios - each municipality sets its own rules.</p></div></div></div></div>
+
+    </div><!-- /reform-grid -->
+  </div>
+</div>
+<style>
+.reform-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;}
+.rcard{background:var(--warm-white);border:1px solid var(--divider);position:relative;overflow:hidden;}
+.rcard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.rcard--abolish::before{background:var(--col-abolish);}
+.rcard--maximum::before{background:var(--col-maximum);}
+.rcard--pricing::before{background:var(--col-pricing);}
+.rcard--mgmt::before{background:var(--col-mgmt);}
+.rcard-header{display:flex;align-items:flex-start;gap:1rem;padding:1.4rem 1.4rem .8rem;}
+.rcard-flag{font-size:1.8rem;line-height:1;flex-shrink:0;margin-top:.1rem;}
+.rcard-tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.2em .6em;display:inline-block;margin-bottom:.35rem;}
+.rcard-tag--abolish{background:rgba(200,69,15,.1);color:var(--col-abolish);}
+.rcard-tag--maximum{background:rgba(26,92,58,.1);color:var(--col-maximum);}
+.rcard-tag--pricing{background:rgba(26,74,128,.1);color:var(--col-pricing);}
+.rcard-tag--mgmt{background:rgba(122,58,154,.1);color:var(--col-mgmt);}
+.rcard-title{font-family:'Fraunces',serif;font-weight:700;font-size:1.35rem;line-height:1.1;letter-spacing:-.02em;}
+.rcard-meta{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:var(--muted);margin-top:.25rem;}
+.rcard-intensity{margin-left:auto;text-align:right;flex-shrink:0;}
+.intensity-num{font-family:'Fraunces',serif;font-weight:900;font-size:2rem;line-height:1;color:var(--ink);}
+.intensity-label{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);}
+.rcard-body{padding:.2rem 1.4rem 1.4rem;}
+.rcard-body>p{font-size:.85rem;color:var(--muted);line-height:1.55;margin-bottom:1rem;}
+.rcard-body strong{color:var(--ink);}
+.rcard-facts{display:flex;gap:0;border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);margin:.8rem 0 1rem;}
+.fact-item{flex:1;padding:.7rem .5rem;text-align:center;border-right:1px solid var(--divider);}
+.fact-item:last-child{border-right:none;}
+.fact-val{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;line-height:1;color:var(--ink);}
+.fact-lbl{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.2rem;line-height:1.3;}
+.detail-toggle{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);cursor:pointer;user-select:none;padding:.1rem 0;}
+.detail-toggle:hover{text-decoration:underline;}
+.detail-content{margin-top:.7rem;padding-top:.7rem;border-top:1px dashed var(--divider);}
+.detail-content p{font-size:.82rem;color:var(--muted);line-height:1.55;}
+</style>
+
+<!-- SEC NORDIC placeholder -->
+<div id="sec-nordic" style="background:var(--cream)">
+  <div class="section reveal">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <div>
+        <h2 class="section-title"><span class="sk-only">Nordické mestá — <em>nulové minimá</em></span><span class="en-only">Nordic cities — <em>zero minimums</em></span></h2>
+        <p class="section-subtitle sk-only">Škandinávske a fínske mestá vedú svetovú reformu.</p>
+        <p class="section-subtitle en-only">Scandinavian and Finnish cities lead global reform.</p>
+      </div>
+    </div>
+    <div class="timeline" id="nordic-timeline">
+
+      <div class="tl-item tl-item--abolish reveal">
+        <div class="tl-dot" style="background:var(--col-abolish)"></div>
+        <div class="tl-year">2022 / 2025</div>
+        <div class="tl-card">
+          <div class="rcard-header" style="padding:1.2rem 1.2rem .6rem">
+            <div class="rcard-flag">NO</div>
+            <div>
+              <div class="rcard-tag rcard-tag--abolish"><span class="sk-only">Nulove minima</span><span class="en-only">Zero minimums</span></div>
+              <h3 class="rcard-title">Oslo</h3>
+              <div class="rcard-meta"><span class="sk-only">Norsko · od decembra 2022 · 700 000 obyvatelov</span><span class="en-only">Norway · since December 2022 · 700,000 residents</span></div>
+            </div>
+            <div class="rcard-intensity"><span class="intensity-num">9</span><span class="intensity-label">/10</span></div>
+          </div>
+          <div class="rcard-body" style="padding:.2rem 1.2rem 1.2rem">
+            <p class="sk-only">Oslo zaviedlo nulove parkovacie minima celomestsky od decembra 2022 — prva velka europska metropola. Ministerske rozhodnutie z maja 2025 sprehladnilo aplikaciu reformy vo vztahu k dynamickym zonovacim planom.</p>
+            <p class="en-only">Oslo introduced zero parking minimums city-wide from December 2022 — the first major European metropolis to do so. A Ministry ruling from May 2025 clarified application of the reform regarding dynamic zoning plan references.</p>
+            <div class="rcard-facts">
+              <div class="fact-item"><div class="fact-val">0</div><div class="fact-lbl sk-only">parkovacich mint.</div><div class="fact-lbl en-only">parking minimums</div></div>
+              <div class="fact-item"><div class="fact-val">dec. 2022</div><div class="fact-lbl sk-only">ucinnost reformy</div><div class="fact-lbl en-only">reform effective</div></div>
+              <div class="fact-item"><div class="fact-val">1.</div><div class="fact-lbl sk-only">velka EU metropola</div><div class="fact-lbl en-only">major EU metro</div></div>
+            </div>
+            <div class="rcard-detail">
+              <div class="detail-toggle" onclick="toggleDetail(this)"><span class="sk-only">+ Detaily reformy</span><span class="en-only">+ Reform details</span></div>
+              <div class="detail-content" style="display:none">
+                <p class="sk-only">Oslo zrusilo parkovacie minima ako prvu velku europsku metropolu. Reforma bola motivovana potrebou znizit naklady na byvanie a znisku emisie. Ministerske rozhodnutie z maja 2025 ujasnilo, ze existujuce plany odkazujuce na stare dynamicke normy potrebuju formalne zmeny — ide o technicky detail, nie krok spat. Oslo v praxi ukazuje, ze nulove minima funguju: auta bez dedicovanej garaze parcujete hlavne v podzemi spolocnych garazovych domov.</p>
+                <p class="en-only">Oslo abolished parking minimums as the first major European city. The reform was motivated by the need to reduce housing costs and cut emissions. The May 2025 Ministry ruling clarified that existing plans referencing old dynamic norms need formal amendments — a technical detail, not a reversal. Oslo demonstrates in practice that zero minimums work: cars without dedicated garages park mainly in shared underground structures.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item tl-item--abolish reveal">
+        <div class="tl-dot" style="background:var(--col-abolish)"></div>
+        <div class="tl-year">2025</div>
+        <div class="tl-card">
+          <div class="rcard-header" style="padding:1.2rem 1.2rem .6rem">
+            <div class="rcard-flag">FI</div>
+            <div>
+              <div class="rcard-tag rcard-tag--abolish"><span class="sk-only">Nulove minima — centrum</span><span class="en-only">Zero minimums — centre</span></div>
+              <h3 class="rcard-title">Helsinki</h3>
+              <div class="rcard-meta"><span class="sk-only">Finsko · May 2025 · 670 000 obyvatelov</span><span class="en-only">Finland · May 2025 · 670,000 residents</span></div>
+            </div>
+            <div class="rcard-intensity"><span class="intensity-num">7</span><span class="intensity-label">/10</span></div>
+          </div>
+          <div class="rcard-body" style="padding:.2rem 1.2rem 1.2rem">
+            <p class="sk-only">Helsinki prijali nulove minima pre centralne zony (Pasila + juh od Hakamäentie) a -50% inde v meste. Reforma bola prijata v maji 2025 po rozsiahlej debete o nakladoch na byvanie a hodnote pody.</p>
+            <p class="en-only">Helsinki adopted zero minimums for central zones (Pasila + south of Hakamäentie) and -50% elsewhere in the city. The reform was adopted in May 2025 after extensive debate on housing costs and land value.</p>
+            <div class="rcard-facts">
+              <div class="fact-item"><div class="fact-val">0</div><div class="fact-lbl sk-only">minima v centre</div><div class="fact-lbl en-only">minimums in centre</div></div>
+              <div class="fact-item"><div class="fact-val">-50%</div><div class="fact-lbl sk-only">znizenie mimo centra</div><div class="fact-lbl en-only">reduction elsewhere</div></div>
+              <div class="fact-item"><div class="fact-val">11M EUR</div><div class="fact-lbl sk-only">uspora hodnoty pody/rok</div><div class="fact-lbl en-only">land value saved/yr</div></div>
+            </div>
+            <div class="rcard-detail">
+              <div class="detail-toggle" onclick="toggleDetail(this)"><span class="sk-only">+ Detaily reformy</span><span class="en-only">+ Reform details</span></div>
+              <div class="detail-content" style="display:none">
+                <p class="sk-only">Helsinska mestska rada vypocitala, ze povinnosti parkovania znizuju hodnotu mestskej pody o 11 milionov EUR rocne. Reformna zona zahrnuje Pasilu (hlavny obchodny hub) a celu oblast na juh od Hakamäentie. Pre zvysok mesta plati redukcia na 50% povodnych norm. Reforma ma priamy vplyv na ceny bytov — kazde parkovacie miesto v podzemnej garazi stoji developera 30 000-60 000 EUR v Helsinkach.</p>
+                <p class="en-only">Helsinki city council calculated that parking obligations reduce city land value by EUR 11 million annually. The reform zone covers Pasila (main commercial hub) and all areas south of Hakamäentie. For the rest of the city a 50% reduction of original norms applies. The reform directly affects apartment prices — each underground parking space costs a developer EUR 30,000-60,000 in Helsinki.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item tl-item--abolish reveal"><div class="tl-dot" style="background:var(--col-abolish)"></div><div class="tl-year">2020 / 2025</div><div class="tl-card"><div class="rcard-header" style="padding:1.2rem 1.2rem .6rem"><div class="rcard-flag">SE</div><div><div class="rcard-tag rcard-tag--abolish"><span class="sk-only">Nulove minima centrum</span><span class="en-only">Zero minimums centre</span></div><h3 class="rcard-title">Malmö</h3><div class="rcard-meta"><span class="sk-only">Svedsko · od 2020, revizia sept. 2025</span><span class="en-only">Sweden · since 2020, revision Sept 2025</span></div></div><div class="rcard-intensity"><span class="intensity-num">7</span><span class="intensity-label">/10</span></div></div><div class="rcard-body" style="padding:.2rem 1.2rem 1.2rem"><p class="sk-only">Malmö povoluje P-normu 0 v centralnych lokalitach uz od 2020. Revizia celej politiky prebehla v sept. 2025 s moznostou rozsirenia.</p><p class="en-only">Malmö has allowed P-norm 0 in central locations since 2020. Full policy revision underway Sept 2025 with possibility of expanding the zero zone.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">P-norm 0</div><div class="fact-lbl sk-only">od 2020</div><div class="fact-lbl en-only">since 2020</div></div><div class="fact-item"><div class="fact-val">sept. 2025</div><div class="fact-lbl sk-only">revizia</div><div class="fact-lbl en-only">revision</div></div><div class="fact-item"><div class="fact-val">360 000</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div></div></div></div>
+      <div class="tl-item tl-item--pricing reveal"><div class="tl-dot" style="background:var(--col-pricing)"></div><div class="tl-year">2025</div><div class="tl-card"><div class="rcard-header" style="padding:1.2rem 1.2rem .6rem"><div class="rcard-flag">SE</div><div><div class="rcard-tag rcard-tag--pricing"><span class="sk-only">Cenova reforma</span><span class="en-only">Pricing reform</span></div><h3 class="rcard-title">Stockholm</h3><div class="rcard-meta"><span class="sk-only">Svedsko · jul 2025 · 975 000 obyvatelov</span><span class="en-only">Sweden · July 2025 · 975,000 residents</span></div></div><div class="rcard-intensity"><span class="intensity-num">5</span><span class="intensity-label">/10</span></div></div><div class="rcard-body" style="padding:.2rem 1.2rem 1.2rem"><p class="sk-only">Od jula 2025 nove budovy v Stockholme neziskavaju rezidenčne povolenia na parkovanie v ulici. Zavedene 12 novych platenych zon (april 2025).</p><p class="en-only">From July 2025 new Stockholm buildings get no residential street parking permits. 12 new paid parking zones introduced April 2025.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">0</div><div class="fact-lbl sk-only">povoleni pre nove domy</div><div class="fact-lbl en-only">permits new builds</div></div><div class="fact-item"><div class="fact-val">12</div><div class="fact-lbl sk-only">novych platenych zon</div><div class="fact-lbl en-only">new paid zones</div></div><div class="fact-item"><div class="fact-val">jul. 2025</div><div class="fact-lbl sk-only">ucinnost</div><div class="fact-lbl en-only">effective</div></div></div></div></div></div>
+      <div class="tl-item tl-item--abolish reveal"><div class="tl-dot"></div><div class="tl-year">2024</div><div class="tl-card"><div class="rcard-header" style="padding:1.2rem 1.2rem .6rem"><div class="rcard-flag">SE</div><div><div class="rcard-tag rcard-tag--abolish"><span class="sk-only">Flexibilne normy</span><span class="en-only">Flexible norms</span></div><h3 class="rcard-title">Goteborg</h3><div class="rcard-meta"><span class="sk-only">Svedsko 2024</span><span class="en-only">Sweden 2024</span></div></div><div class="rcard-intensity"><span class="intensity-num">5</span><span class="intensity-label">/10</span></div></div><div class="rcard-body" style="padding:.2rem 1.2rem 1.2rem"><p class="sk-only">Goteborg prijal flexibilne parkovacie normy 2024 - od nuly pre vynikajucu MHD az po standardne normy pre okrajove casti mesta.</p><p class="en-only">Gothenburg adopted flexible parking norms 2024 - from zero for excellent transit to standard norms for peripheral areas.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">0 - std.</div><div class="fact-lbl sk-only">rozsah noriem</div><div class="fact-lbl en-only">norm range</div></div><div class="fact-item"><div class="fact-val">2024</div><div class="fact-lbl sk-only">prijate</div><div class="fact-lbl en-only">adopted</div></div><div class="fact-item"><div class="fact-val">590 000</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div></div></div></div>
+      <div class="tl-item tl-item--pricing reveal"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-card"><div class="rcard-header" style="padding:1.2rem 1.2rem .6rem"><div class="rcard-flag">DK</div><div><div class="rcard-tag rcard-tag--pricing"><span class="sk-only">Cenova reforma</span><span class="en-only">Pricing reform</span></div><h3 class="rcard-title">Kodan</h3><div class="rcard-meta"><span class="sk-only">Dansko - april 2025 - 794 000 obyvatelov</span><span class="en-only">Denmark - April 2025 - 794,000 residents</span></div></div><div class="rcard-intensity"><span class="intensity-num">4</span><span class="intensity-label">/10</span></div></div><div class="rcard-body" style="padding:.2rem 1.2rem 1.2rem"><p class="sk-only">Kodan zvysila poplatky o 76% (25 na 44 DKK/h v zelenej zone) a zaviedla prve nedeľne spoplatnenie v apri 2025. Vynos 30M DKK/rok pojde na zelene plochy.</p><p class="en-only">Copenhagen raised fees 76% (25 to 44 DKK/h green zone) and introduced first-ever Sunday charges April 2025. Revenue 30M DKK/year directed to green spaces.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">+76%</div><div class="fact-lbl sk-only">narast poplatkov</div><div class="fact-lbl en-only">fee increase</div></div><div class="fact-item"><div class="fact-val">30M DKK</div><div class="fact-lbl sk-only">vynos/rok</div><div class="fact-lbl en-only">revenue/year</div></div><div class="fact-item"><div class="fact-val">nedele</div><div class="fact-lbl sk-only">prvykrat platene</div><div class="fact-lbl en-only">first paid Sundays</div></div></div></div></div></div>
+    </div><!-- /nordic-timeline -->
+  </div>
+</div>
+
+<style>
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;padding-left:3rem;}
+.timeline::before{content:'';position:absolute;left:1.1rem;top:0;bottom:0;width:1px;background:var(--divider);}
+.tl-item{position:relative;padding-bottom:2rem;}
+.tl-dot{position:absolute;left:-1.95rem;top:1.4rem;width:14px;height:14px;border-radius:50%;border:2px solid var(--paper);box-shadow:0 0 0 1px currentColor;}
+.tl-year{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;color:var(--muted);margin-bottom:.5rem;}
+.tl-card{background:var(--warm-white);border:1px solid var(--divider);position:relative;overflow:hidden;}
+.tl-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.tl-item--abolish .tl-card::before{background:var(--col-abolish);}
+.tl-item--maximum .tl-card::before{background:var(--col-maximum);}
+.tl-item--pricing .tl-card::before{background:var(--col-pricing);}
+@media(min-width:700px){
+  .timeline{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding-left:0;}
+  .timeline::before{display:none;}
+  .tl-dot{display:none;}
+  .tl-year{font-size:.7rem;}
+}
+.top10-wrap{margin-top:2.5rem;}
+.top10-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--divider);}
+.top10-list{display:flex;flex-direction:column;gap:.5rem;}
+.top10-item{display:grid;grid-template-columns:2rem 2rem 1fr auto;align-items:center;gap:.8rem;padding:.75rem 1rem;background:var(--warm-white);border:1px solid var(--divider);transition:box-shadow .15s;}
+.top10-item:hover{box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.top10-item--abolish{border-left:3px solid var(--col-abolish);}
+.top10-item--maximum{border-left:3px solid var(--col-maximum);}
+.top10-item--pricing{border-left:3px solid var(--col-pricing);}
+.top10-item--mgmt{border-left:3px solid var(--col-mgmt);}
+.top10-rank{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.08em;}
+.top10-flag{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:700;color:var(--ink);background:var(--cream);padding:.15rem .35rem;text-align:center;}
+.top10-name{font-family:'Fraunces',serif;font-size:.95rem;font-weight:600;color:var(--ink);}
+.top10-desc{font-family:'Figtree',sans-serif;font-size:.72rem;color:var(--muted);margin-top:.15rem;}
+.top10-score{display:flex;align-items:center;gap:.5rem;min-width:80px;}
+.top10-num{font-family:'DM Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--ink);min-width:1.2rem;text-align:right;}
+.top10-bar{flex:1;height:4px;background:var(--divider);}
+.top10-fill{height:100%;transition:width .4s;}
+.top10-item--abolish .top10-fill{background:var(--col-abolish);}
+.top10-item--maximum .top10-fill{background:var(--col-maximum);}
+.top10-item--pricing .top10-fill{background:var(--col-pricing);}
+.top10-item--mgmt .top10-fill{background:var(--col-mgmt);}
+@media(max-width:600px){.top10-item{grid-template-columns:2rem 2rem 1fr;}.top10-score{display:none;}}
+.typo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2rem;}
+.typo-card{padding:1.8rem 1.5rem;position:relative;overflow:hidden;border:1px solid var(--divider);background:var(--warm-white);}
+.typo-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;}
+.typo-card--abolish::before{background:var(--col-abolish);}
+.typo-card--maximum::before{background:var(--col-maximum);}
+.typo-card--pricing::before{background:var(--col-pricing);}
+.typo-card--mgmt::before{background:var(--col-mgmt);}
+.typo-icon{font-family:"DM Mono",monospace;font-size:1.4rem;font-weight:900;width:2.4rem;height:2.4rem;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;border-radius:50%;}
+.typo-card--abolish .typo-icon{background:var(--col-abolish);color:#fff;}
+.typo-card--maximum .typo-icon{background:var(--col-maximum);color:#fff;}
+.typo-card--pricing .typo-icon{background:var(--col-pricing);color:#fff;}
+.typo-card--mgmt .typo-icon{background:var(--col-mgmt);color:#fff;}
+.typo-title{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin:.3rem 0 .7rem;}
+.typo-body{font-family:"Figtree",sans-serif;font-size:.82rem;line-height:1.6;color:var(--muted);margin-bottom:1rem;}
+.typo-examples{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem;}
+.typo-ex{font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.06em;padding:.2rem .5rem;background:var(--cream);border:1px solid var(--divider);color:var(--ink);}
+.typo-stat{padding-top:.8rem;border-top:1px solid var(--divider);}
+.typo-stat-num{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:900;color:var(--ink);}
+.typo-stat-lbl{font-family:"DM Mono",monospace;font-size:.62rem;color:var(--muted);}
+
+#filter-bar{position:sticky;top:56px;z-index:200;background:var(--warm-white);border-bottom:1px solid var(--divider);padding:.6rem 0;}
+.filter-inner{max-width:var(--max-w);margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+.filter-label{font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-right:.3rem;}
+.filt-btn{font-family:"DM Mono",monospace;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:.4em 1em;border:1px solid var(--divider);background:transparent;cursor:pointer;color:var(--muted);transition:all .15s;white-space:nowrap;}
+.filt-btn:hover{background:var(--cream);}
+.filt-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+.filt-btn--abolish.active{background:var(--col-abolish);border-color:var(--col-abolish);color:#fff;}
+.filt-btn--maximum.active{background:var(--col-maximum);border-color:var(--col-maximum);color:#fff;}
+.filt-btn--pricing.active{background:var(--col-pricing);border-color:var(--col-pricing);color:#fff;}
+.filt-btn--mgmt.active{background:var(--col-mgmt);border-color:var(--col-mgmt);color:#fff;}
+.filter-count{font-family:"DM Mono",monospace;font-size:.6rem;color:var(--muted);margin-left:auto;}
+.rcard.hidden{display:none;}
+.tl-item.hidden{display:none;}
+.section-empty-msg{display:none;font-family:"DM Mono",monospace;font-size:.72rem;color:var(--muted);padding:1.5rem 0;letter-spacing:.05em;}
+.section-empty-msg.visible{display:block;}
+
+</style>
+
+<!-- SEC DACH placeholder -->
+<div id="sec-dach">
+  <div class="section reveal">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <div>
+        <h2 class="section-title"><span class="sk-only">DACH — <em>demokratické kompromisy</em></span><span class="en-only">DACH — <em>democratic compromises</em></span></h2>
+        <p class="section-subtitle sk-only">Nemecko, Rakúsko a Švajčiarsko reformujú cez zložité politické koalície.</p>
+        <p class="section-subtitle en-only">Germany, Austria, and Switzerland reform through complex political coalitions.</p>
+      </div>
+    </div>
+    <div class="reform-grid">
+      <div class="rcard rcard--abolish"><div class="rcard-header"><div class="rcard-flag">CH</div><div><div class="rcard-tag rcard-tag--abolish"><span class="sk-only">Historicky kompromis</span><span class="en-only">Historic compromise</span></div><h3 class="rcard-title"><span class="sk-only">Kanton Zurich</span><span class="en-only">Canton Zurich</span></h3><div class="rcard-meta"><span class="sk-only">Svajciarsko jan. 2025</span><span class="en-only">Switzerland Jan 2025</span></div></div><div class="rcard-intensity"><span class="intensity-num">5</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Historicky kanton. kompromis jan. 2025: stavebnici mozu poziadat o menej miest nez mandatuje norma. Fond CHF 30M na cykloinfrastrukturu.</p><p class="en-only">Historic cantonal compromise Jan 2025: developers may request fewer spaces than the norm mandates. CHF 30M fund for cycling infrastructure.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">jan. 2025</div><div class="fact-lbl sk-only">ucinnost</div><div class="fact-lbl en-only">effective</div></div><div class="fact-item"><div class="fact-val">CHF 30M</div><div class="fact-lbl sk-only">fond</div><div class="fact-lbl en-only">fund</div></div><div class="fact-item"><div class="fact-val">1,5M</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div></div></div>
+      <div class="rcard rcard--maximum"><div class="rcard-header"><div class="rcard-flag">CH</div><div><div class="rcard-tag rcard-tag--maximum"><span class="sk-only">Nove maxima</span><span class="en-only">New maximums</span></div><h3 class="rcard-title"><span class="sk-only">Mesto Zurich</span><span class="en-only">City of Zurich</span></h3><div class="rcard-meta"><span class="sk-only">Svajciarsko dec. 2024</span><span class="en-only">Switzerland Dec 2024</span></div></div><div class="rcard-intensity"><span class="intensity-num">6</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">PPVO revizia dec. 2024. Referendum o vahovej dani: 52,6% ano. CHF 332-512/rok podla dlzky.</p><p class="en-only">PPVO revision Dec 2024. Weight-based permit fee referendum: 52.6% yes. CHF 332-512/year by length.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">52,6%</div><div class="fact-lbl sk-only">ano</div><div class="fact-lbl en-only">yes</div></div><div class="fact-item"><div class="fact-val">CHF 332-512</div><div class="fact-lbl sk-only">rok</div><div class="fact-lbl en-only">year</div></div><div class="fact-item"><div class="fact-val">dec. 2024</div><div class="fact-lbl sk-only">ucinnost</div><div class="fact-lbl en-only">effective</div></div></div></div></div>
+      <div class="rcard rcard--pricing"><div class="rcard-header"><div class="rcard-flag">CH</div><div><div class="rcard-tag rcard-tag--pricing"><span class="sk-only">Poplatky podla dlzky</span><span class="en-only">Length-based fees</span></div><h3 class="rcard-title">Basel-Stadt</h3><div class="rcard-meta"><span class="sk-only">Svajciarsko jan. 2025</span><span class="en-only">Switzerland Jan 2025</span></div></div><div class="rcard-intensity"><span class="intensity-num">4</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Od jan. 2025: CHF 332/rok (do 3,9m), 422/rok (3,9-4,9m), 512/rok (nad 4,9m). Prve europske cenove parkovanie podla dlzky vozidla.</p><p class="en-only">From Jan 2025: CHF 332/year (under 3.9m), 422/year (3.9-4.9m), 512/year (over 4.9m). First European length-based parking pricing.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">CHF 332</div><div class="fact-lbl sk-only">male auto</div><div class="fact-lbl en-only">small car</div></div><div class="fact-item"><div class="fact-val">CHF 512</div><div class="fact-lbl sk-only">velke auto</div><div class="fact-lbl en-only">large car</div></div><div class="fact-item"><div class="fact-val">jan. 2025</div><div class="fact-lbl sk-only">ucinnost</div><div class="fact-lbl en-only">effective</div></div></div></div></div>
+      <div class="rcard rcard--maximum"><div class="rcard-header"><div class="rcard-flag">CH</div><div><div class="rcard-tag rcard-tag--maximum"><span class="sk-only">Znizovanie povoleni</span><span class="en-only">Permit reduction</span></div><h3 class="rcard-title">Bern</h3><div class="rcard-meta"><span class="sk-only">Svajciarsko 2024</span><span class="en-only">Switzerland 2024</span></div></div><div class="rcard-intensity"><span class="intensity-num">3</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Pokracujuce znizovanie povoleni v centre. Nove maxima pre kancelarsky segment. Postupny pristup bez politickeho prerusenia.</p><p class="en-only">Continued reduction of downtown permits. New maximums for office segment. Incremental approach without political disruption.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">max.</div><div class="fact-lbl sk-only">pre kancelarie</div><div class="fact-lbl en-only">for offices</div></div><div class="fact-item"><div class="fact-val">2024</div><div class="fact-lbl sk-only">nova politika</div><div class="fact-lbl en-only">new policy</div></div><div class="fact-item"><div class="fact-val">134 000</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div></div></div>
+      <div class="rcard rcard--maximum"><div class="rcard-header"><div class="rcard-flag">AT</div><div><div class="rcard-tag rcard-tag--maximum"><span class="sk-only">Zonalny model</span><span class="en-only">Zonal model</span></div><h3 class="rcard-title"><span class="sk-only">Vieden</span><span class="en-only">Vienna</span></h3><div class="rcard-meta"><span class="sk-only">Rakusko dec. 2023</span><span class="en-only">Austria Dec 2023</span></div></div><div class="rcard-intensity"><span class="intensity-num">5</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Zonalny model dec. 2023: 70/80/100% standardu podla vzdialenosti od MHD. Do 300m od U-Bahn/tramvaje = 70%. Kompenzacny poplatok 12 000 EUR za neupostavane miesto.</p><p class="en-only">Zonal model Dec 2023: 70/80/100% of standard by transit proximity. Within 300m of U-Bahn/tram = 70%. Compensation fee EUR 12,000 per unbuilt space.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">70-100%</div><div class="fact-lbl sk-only">standard/zona</div><div class="fact-lbl en-only">standard/zone</div></div><div class="fact-item"><div class="fact-val">12 000 EUR</div><div class="fact-lbl sk-only">kompenzacia</div><div class="fact-lbl en-only">compensation</div></div><div class="fact-item"><div class="fact-val">1,9M</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div></div></div>
+    </div><!-- /reform-grid -->
+  </div>
+</div>
+
+<!-- SEC WEST+CEE placeholder -->
+<div id="sec-west-cee" style="background:var(--cream)">
+  <div class="section reveal">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <div>
+        <h2 class="section-title"><span class="sk-only">Západ + CEE — <em>ceny vs. kódexy</em></span><span class="en-only">West + CEE — <em>pricing vs. codes</em></span></h2>
+        <p class="section-subtitle sk-only">Francúzsko a Španielsko preferujú cenové nástroje. CEE mení ceny, nie stavebné zákony.</p>
+        <p class="section-subtitle en-only">France and Spain prefer pricing tools. CEE changes on-street prices, not building codes.</p>
+      </div>
+    </div>
+    <div class="reform-grid" id="west-cards">
+      <div class="rcard rcard--pricing"><div class="rcard-header"><div class="rcard-flag">FR</div><div><div class="rcard-tag rcard-tag--pricing"><span class="sk-only">Cenova reforma</span><span class="en-only">Pricing reform</span></div><h3 class="rcard-title"><span class="sk-only">Pariz</span><span class="en-only">Paris</span></h3><div class="rcard-meta"><span class="sk-only">Francuzsko 2024 2,1M</span><span class="en-only">France 2024 2.1M</span></div></div><div class="rcard-intensity"><span class="intensity-num">6</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Pariz zvysil poplatky pre SUV od sept. 2024: 18 EUR/h (3x standard) v 1.-11. obvode. Referendum 54% za. Zaroven -11% licencovanych miest (2022-2024).</p><p class="en-only">Paris raised SUV fees from Sept 2024: EUR 18/h (3x standard) in 1st-11th arrondissements. Referendum: 54% yes. Also -11% licensed spaces (2022-2024).</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">18 EUR/h</div><div class="fact-lbl sk-only">SUV v centre</div><div class="fact-lbl en-only">SUV in centre</div></div><div class="fact-item"><div class="fact-val">54%</div><div class="fact-lbl sk-only">referendum</div><div class="fact-lbl en-only">referendum</div></div><div class="fact-item"><div class="fact-val">-11%</div><div class="fact-lbl sk-only">miest</div><div class="fact-lbl en-only">spaces</div></div></div></div></div>
+      <div class="rcard rcard--abolish"><div class="rcard-header"><div class="rcard-flag">NL</div><div><div class="rcard-tag rcard-tag--abolish"><span class="sk-only">Nulove minima</span><span class="en-only">Zero minimums</span></div><h3 class="rcard-title">Amsterdam</h3><div class="rcard-meta"><span class="sk-only">Holandsko od 2023 921 000</span><span class="en-only">Netherlands since 2023 921,000</span></div></div><div class="rcard-intensity"><span class="intensity-num">7</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Amsterdam zaviedol nulove minima pre centrum od 2023. Znizuje povolenia o 1500/rok a zvysil poplatky na 7,50 EUR/h v najdrahsej zone.</p><p class="en-only">Amsterdam introduced zero minimums for the centre from 2023. Reducing permits by 1,500/year and raised fees to EUR 7.50/h in the top zone.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">0</div><div class="fact-lbl sk-only">minima v centre</div><div class="fact-lbl en-only">minimums centre</div></div><div class="fact-item"><div class="fact-val">-1 500</div><div class="fact-lbl sk-only">povoleni/rok</div><div class="fact-lbl en-only">permits/year</div></div><div class="fact-item"><div class="fact-val">7,50 EUR/h</div><div class="fact-lbl sk-only">max sadzba</div><div class="fact-lbl en-only">max rate</div></div></div></div></div>
+      <div class="rcard rcard--maximum"><div class="rcard-header"><div class="rcard-flag">GB</div><div><div class="rcard-tag rcard-tag--maximum"><span class="sk-only">London Plan maxima</span><span class="en-only">London Plan maximums</span></div><h3 class="rcard-title">London</h3><div class="rcard-meta">UK 2021 9M</div></div><div class="rcard-intensity"><span class="intensity-num">5</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">London Plan 2021 stanovil maxima pre celu GLA. NPPF 2024 rozsiril na celu Angliu. Nove budovy pri dobrej MHD mozu mat nulovy pocet miest.</p><p class="en-only">London Plan 2021 set maximums across the full GLA. NPPF 2024 extended to all England. New buildings near good transit can have zero spaces.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">0</div><div class="fact-lbl sk-only">min pri MHD</div><div class="fact-lbl en-only">min near transit</div></div><div class="fact-item"><div class="fact-val">2021</div><div class="fact-lbl">London Plan</div></div><div class="fact-item"><div class="fact-val">9M</div><div class="fact-lbl sk-only">obyvatelov GLA</div><div class="fact-lbl en-only">GLA residents</div></div></div></div></div>
+      <div class="rcard rcard--mgmt"><div class="rcard-header"><div class="rcard-flag">BE</div><div><div class="rcard-tag rcard-tag--mgmt"><span class="sk-only">Sprava ulic</span><span class="en-only">On-street mgmt</span></div><h3 class="rcard-title"><span class="sk-only">Brusel</span><span class="en-only">Brussels</span></h3><div class="rcard-meta"><span class="sk-only">Belgicko 2024 1,2M</span><span class="en-only">Belgium 2024 1.2M</span></div></div><div class="rcard-intensity"><span class="intensity-num">4</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Brusel spustil My Mobility Plan 2024: rozsiril spoplatnene zony o 12 000 novych miest a zrusil bezplatne parkovanie v okoli staníc metra v Ixelles a Saint-Gilles.</p><p class="en-only">Brussels launched My Mobility Plan 2024: expanded paid zones by 12,000 new spaces and eliminated free parking around metro stations in Ixelles and Saint-Gilles.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">12 000</div><div class="fact-lbl sk-only">novych plat. miest</div><div class="fact-lbl en-only">new paid spaces</div></div><div class="fact-item"><div class="fact-val">2024</div><div class="fact-lbl sk-only">My Mobility Plan</div><div class="fact-lbl en-only">My Mobility Plan</div></div><div class="fact-item"><div class="fact-val">1,2M</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div></div></div>
+      <div class="rcard rcard--pricing"><div class="rcard-header"><div class="rcard-flag">IE</div><div><div class="rcard-tag rcard-tag--pricing"><span class="sk-only">Znizovanie norm</span><span class="en-only">Norm reduction</span></div><h3 class="rcard-title">Dublin</h3><div class="rcard-meta"><span class="sk-only">Irsko 2024 1,4M</span><span class="en-only">Ireland 2024 1.4M</span></div></div><div class="rcard-intensity"><span class="intensity-num">4</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Dublin City Council schvalil revidovane parkovacie standardy v novembri 2024: znizene normy pre rezidenčne projekty v dobre obsluznych lokalitach metra Luas a DART.</p><p class="en-only">Dublin City Council approved revised parking standards November 2024: reduced norms for residential projects in well-served Luas and DART transit locations.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">nov. 2024</div><div class="fact-lbl sk-only">schvalene</div><div class="fact-lbl en-only">approved</div></div><div class="fact-item"><div class="fact-val">Luas+DART</div><div class="fact-lbl sk-only">tranzitne koridory</div><div class="fact-lbl en-only">transit corridors</div></div><div class="fact-item"><div class="fact-val">1,4M</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div></div></div>
+      <div class="rcard rcard--mgmt"><div class="rcard-header"><div class="rcard-flag">ES</div><div><div class="rcard-tag rcard-tag--mgmt">Barcelona</div><h3 class="rcard-title">Barcelona</h3><div class="rcard-meta">Spain 2024 1.6M</div></div><div class="rcard-intensity"><span class="intensity-num">5</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Barcelona pokracuje v Superblocks programe: 2024 pridala 6 novych superblocks a konvertovala 4 200 parkovacich miest na verejny priestor. Tarifa Area Blava +15%.</p><p class="en-only">Barcelona continues Superblocks: 2024 added 6 new superblocks and converted 4,200 spaces to public space. Area Blava tariff raised 15%.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">6</div><div class="fact-lbl sk-only">novych superblocks</div><div class="fact-lbl en-only">new superblocks</div></div><div class="fact-item"><div class="fact-val">4 200</div><div class="fact-lbl sk-only">miest konvert.</div><div class="fact-lbl en-only">spaces converted</div></div><div class="fact-item"><div class="fact-val">+15%</div><div class="fact-lbl sk-only">Area Blava</div><div class="fact-lbl en-only">Area Blava</div></div></div></div></div>
+      <div class="rcard rcard--pricing"><div class="rcard-header"><div class="rcard-flag">PT</div><div><div class="rcard-tag rcard-tag--pricing">Lisbon</div><h3 class="rcard-title">Lisbon</h3><div class="rcard-meta">Portugal 2024 548 000</div></div><div class="rcard-intensity"><span class="intensity-num">3</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Lisabon v roku 2024 spustil pilotny program pre dynamicke parkovacie poplatky v historickom centre Baixa-Chiado. Poplatky sa menia podla obsadenosti — max. 4 EUR/h v spicke.</p><p class="en-only">Lisbon launched a pilot programme for dynamic parking fees in the historic Baixa-Chiado centre in 2024. Fees vary by occupancy — max EUR 4/h at peak.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">4 EUR/h</div><div class="fact-lbl sk-only">max. dynamicka tarifa</div><div class="fact-lbl en-only">max dynamic rate</div></div><div class="fact-item"><div class="fact-val">2024</div><div class="fact-lbl sk-only">pilot spusteny</div><div class="fact-lbl en-only">pilot launched</div></div><div class="fact-item"><div class="fact-val">548 000</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div></div></div>
+    </div><!-- /west-cards -->
+    <div class="section-subheader"><span class="section-number" style="font-size:.9rem">CEE</span><div><h3 class="section-title" style="font-size:1.4rem"><span class="sk-only">Stredna a Vychodni Europa — <em>sprava ulicneho parkovania</em></span><span class="en-only">Central &amp; Eastern Europe — <em>on-street management</em></span></h3></div></div>
+    <div class="reform-grid" id="cee-cards">
+      <div class="rcard rcard--pricing"><div class="rcard-header"><div class="rcard-flag">HU</div><div><div class="rcard-tag rcard-tag--pricing"><span class="sk-only">Cenova reforma</span><span class="en-only">Pricing reform</span></div><h3 class="rcard-title"><span class="sk-only">Budapesť</span><span class="en-only">Budapest</span></h3><div class="rcard-meta"><span class="sk-only">Madarsko 2024 1,7M</span><span class="en-only">Hungary 2024 1.7M</span></div></div><div class="rcard-intensity"><span class="intensity-num">4</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Budapesť rozsiril zony plateného parkovania do 14. obvodu v roku 2024. Zavedenie jednotnej mobilnej aplikacie BKK pre parkovanie aj MHD. Parkovacie poplatky +20% v centre.</p><p class="en-only">Budapest expanded paid parking zones to the 14th district in 2024. Unified BKK mobile app launched for parking and transit. Central parking fees raised by 20%.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">14. obvod</div><div class="fact-lbl sk-only">nova platena zona</div><div class="fact-lbl en-only">new paid zone</div></div><div class="fact-item"><div class="fact-val">+20%</div><div class="fact-lbl sk-only">poplatky centrum</div><div class="fact-lbl en-only">central fees</div></div><div class="fact-item"><div class="fact-val">BKK app</div><div class="fact-lbl sk-only">jednotna aplikacia</div><div class="fact-lbl en-only">unified app</div></div></div></div></div>
+      <div class="rcard rcard--mgmt"><div class="rcard-header"><div class="rcard-flag">CZ</div><div><div class="rcard-tag rcard-tag--mgmt">ZPS</div><h3 class="rcard-title">Praha</h3><div class="rcard-meta">Czech Republic 2024 1.3M</div></div><div class="rcard-intensity"><span class="intensity-num">3</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Praha rozsirila rezidentske parkovacie zony ZPS do Prahy 6 a 9 v 2024. Digitalne parkovacie hodiny. Plany na znizenie noriem pri metre v novom UP.</p><p class="en-only">Prague expanded resident parking zones ZPS to Prague 6 and 9 in 2024. Digital parking clocks introduced. Plans to reduce norms near metro in new master plan.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">Praha 6+9</div><div class="fact-lbl sk-only">nova ZPS zona</div><div class="fact-lbl en-only">new ZPS zone</div></div><div class="fact-item"><div class="fact-val">2024</div><div class="fact-lbl sk-only">rozsirenie</div><div class="fact-lbl en-only">expansion</div></div><div class="fact-item"><div class="fact-val">1,3M</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div></div></div>
+      <div class="rcard rcard--mgmt"><div class="rcard-header"><div class="rcard-flag">HR</div><div><div class="rcard-tag rcard-tag--mgmt">Zagreb</div><h3 class="rcard-title">Zagreb</h3><div class="rcard-meta">Croatia 2024 800 000</div></div><div class="rcard-intensity"><span class="intensity-num">3</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Zagreb zaviedol dynamicke parkovacie poplatky v historickom centre v 2024. Aplikacia ZET Parking umoznuje platebn cez mobil. Prve kroky k znizeniu ulicneho parkovania na Gornji Grad.</p><p class="en-only">Zagreb introduced dynamic parking fees in the historic centre in 2024. ZET Parking app enables mobile payment. First steps toward reducing street parking on Gornji Grad.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">2024</div><div class="fact-lbl sk-only">dynamicke ceny</div><div class="fact-lbl en-only">dynamic pricing</div></div><div class="fact-item"><div class="fact-val">ZET app</div><div class="fact-lbl sk-only">mobil platba</div><div class="fact-lbl en-only">mobile payment</div></div><div class="fact-item"><div class="fact-val">800 000</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div></div></div>
+      <div class="rcard rcard--mgmt"><div class="rcard-header"><div class="rcard-flag">BG</div><div><div class="rcard-tag rcard-tag--mgmt">Sofia</div><h3 class="rcard-title">Sofia</h3><div class="rcard-meta">Bulgaria 2025 1,3M</div></div><div class="rcard-intensity"><span class="intensity-num">3</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Sofia v 2025 rozsirila platenu parkovaciu zonu Blue Zone na 4 nove ctvrti a zvysila poplatky o 30%. Spusteny projekt SISI pre digitalizaciu riadenia parkovania.</p><p class="en-only">Sofia expanded its Blue Zone paid parking to 4 new districts in 2025 and raised fees by 30%. SISI smart parking project launched for digital management.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">+4 obvody</div><div class="fact-lbl sk-only">Blue Zone</div><div class="fact-lbl en-only">Blue Zone</div></div><div class="fact-item"><div class="fact-val">+30%</div><div class="fact-lbl sk-only">poplatky</div><div class="fact-lbl en-only">fees</div></div><div class="fact-item"><div class="fact-val">SISI</div><div class="fact-lbl sk-only">smart parking</div><div class="fact-lbl en-only">smart parking</div></div></div></div></div>
+      <div class="rcard rcard--mgmt"><div class="rcard-header"><div class="rcard-flag">PL</div><div><div class="rcard-tag rcard-tag--mgmt">Warsaw</div><h3 class="rcard-title">Warszawa</h3><div class="rcard-meta">Poland 2024 1.8M</div></div><div class="rcard-intensity"><span class="intensity-num">4</span><span class="intensity-label">/10</span></div></div><div class="rcard-body"><p class="sk-only">Varsava rozsiril Strefe Platneho Parkovani o 5 novych oblasti v 2024 a zvysila poplatky na 6 PLN/h v centre. Paralelna reforma budovych noriem (lex developer) odblokovala 20 000 bytov.</p><p class="en-only">Warsaw expanded its paid parking zone SPP to 5 new areas in 2024 and raised fees to PLN 6/h in the centre. Parallel building norm reform (lex developer) unblocked 20,000 apartments.</p><div class="rcard-facts"><div class="fact-item"><div class="fact-val">+5 oblasti</div><div class="fact-lbl sk-only">nova SPP zona</div><div class="fact-lbl en-only">new SPP zone</div></div><div class="fact-item"><div class="fact-val">6 PLN/h</div><div class="fact-lbl sk-only">centrum</div><div class="fact-lbl en-only">centre</div></div><div class="fact-item"><div class="fact-val">1,8M</div><div class="fact-lbl sk-only">obyvatelov</div><div class="fact-lbl en-only">residents</div></div></div></div></div>
+    </div><!-- /cee-cards -->
+  </div>
+</div>
+<!-- SEC TOP10 + MAP -->
+<div id="sec-top10">
+  <div class="section reveal">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <div>
+        <h2 class="section-title"><span class="sk-only">Heatmapa + Top 10 <em>reforiem</em></span><span class="en-only">Heatmap + Top 10 <em>reforms</em></span></h2>
+        <p class="section-subtitle sk-only">Interaktívna mapa Európy — prepni medzi intenzitou reformy a typom. Klikni na bod pre detail.</p>
+        <p class="section-subtitle en-only">Interactive map of Europe — toggle between reform intensity and type. Click a dot for details.</p>
+      </div>
+    </div>
+
+    <div class="map-controls">
+      <button class="map-btn active" id="btn-intensity" onclick="setMapMode('intensity')">
+        <span class="sk-only">🌡 Intenzita reformy</span><span class="en-only">🌡 Reform intensity</span>
+      </button>
+      <button class="map-btn" id="btn-type" onclick="setMapMode('type')">
+        <span class="sk-only">🏷 Typ reformy</span><span class="en-only">🏷 Reform type</span>
+      </button>
+    </div>
+
+    <div class="map-wrap">
+      <svg id="reform-map" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;cursor:crosshair"><g id="eu-countries"><polygon points="427.1,221.1 471.4,221.1 528.6,110.5 571.4,47.4 757.1,15.8 785.7,31.6 742.9,110.5 642.9,189.5 571.4,205.3 500.0,205.3 428.6,205.3 427.1,221.1" class="eu-land"/>
+<polygon points="528.6,252.6 614.3,252.6 700.0,189.5 757.1,94.7 757.1,47.4 642.9,31.6 614.3,110.5 571.4,189.5 557.1,221.1 528.6,252.6" class="eu-land"/>
+<polygon points="642.9,189.5 757.1,189.5 785.7,110.5 771.4,31.6 742.9,15.8 714.3,31.6 671.4,78.9 642.9,110.5 714.3,157.9 642.9,189.5" class="eu-land"/>
+<polygon points="471.4,276.3 528.6,276.3 528.6,236.8 500.0,221.1 471.4,221.1 471.4,276.3" class="eu-land"/>
+<polygon points="385.7,331.6 328.6,347.4 285.7,347.4 271.4,315.8 242.9,315.8 271.4,284.2 285.7,252.6 342.9,221.1 385.7,221.1 357.1,268.4 342.9,315.8 385.7,331.6" class="eu-land"/>
+<polygon points="271.4,315.8 214.3,323.7 214.3,284.2 271.4,268.4 271.4,315.8" class="eu-land"/>
+<polygon points="328.6,331.6 400.0,331.6 471.4,378.9 457.1,442.1 400.0,457.9 328.6,457.9 328.6,410.5 371.4,394.7 328.6,331.6" class="eu-land"/>
+<polygon points="228.6,442.1 328.6,442.1 400.0,457.9 400.0,473.7 357.1,505.3 342.9,536.8 285.7,568.4 228.6,552.6 228.6,442.1" class="eu-land"/>
+<polygon points="228.6,473.7 228.6,552.6 235.7,536.8 257.1,552.6 271.4,536.8 257.1,489.5 228.6,473.7" class="eu-land"/>
+<polygon points="385.7,331.6 457.1,331.6 457.1,300.0 428.6,300.0 400.0,300.0 385.7,331.6" class="eu-land"/>
+<polygon points="442.9,331.6 571.4,331.6 571.4,378.9 542.9,394.7 500.0,394.7 457.1,378.9 442.9,331.6" class="eu-land"/>
+<polygon points="442.9,331.6 571.4,331.6 571.4,284.2 500.0,268.4 442.9,284.2 442.9,331.6" class="eu-land"/>
+<polygon points="557.1,331.6 700.0,331.6 700.0,284.2 642.9,268.4 557.1,284.2 557.1,331.6" class="eu-land"/>
+<polygon points="528.6,331.6 671.4,331.6 671.4,363.2 614.3,378.9 542.9,378.9 528.6,331.6" class="eu-land"/>
+<polygon points="442.9,378.9 600.0,378.9 600.0,394.7 542.9,394.7 471.4,394.7 442.9,378.9" class="eu-land"/>
+<polygon points="457.1,442.1 528.6,442.1 614.3,505.3 585.7,536.8 571.4,536.8 528.6,505.3 471.4,442.1 457.1,442.1" class="eu-land"/>
+<polygon points="571.4,536.8 571.4,505.3 585.7,521.1 571.4,536.8" class="eu-land"/>
+<polygon points="585.7,378.9 671.4,378.9 671.4,410.5 600.0,410.5 585.7,378.9" class="eu-land"/>
+<polygon points="671.4,378.9 785.7,378.9 785.7,442.1 714.3,442.1 671.4,410.5 671.4,378.9" class="eu-land"/>
+<polygon points="671.4,442.1 757.1,442.1 757.1,473.7 671.4,473.7 671.4,442.1" class="eu-land"/>
+<polygon points="542.9,410.5 628.6,410.5 628.6,442.1 585.7,457.9 557.1,426.3 542.9,410.5" class="eu-land"/>
+<polygon points="628.6,410.5 685.7,410.5 685.7,457.9 628.6,457.9 628.6,410.5" class="eu-land"/>
+<polygon points="642.9,473.7 728.6,473.7 728.6,536.8 671.4,552.6 642.9,536.8 642.9,473.7" class="eu-land"/>
+<polygon points="700.0,315.8 814.3,315.8 814.3,252.6 700.0,252.6 700.0,315.8" class="eu-land"/>
+<polygon points="671.4,315.8 928.6,315.8 928.6,410.5 785.7,410.5 700.0,347.4 671.4,315.8" class="eu-land"/>
+<polygon points="657.1,236.8 757.1,236.8 757.1,189.5 657.1,189.5 657.1,236.8" class="eu-land"/></g><g id="eu-markers"></g></svg>
+      <div class="map-legend" id="map-legend-intensity">
+        <div class="map-legend-item"><div class="map-legend-swatch" style="background:#c8450f"></div><span class="sk-only">Intenzita 8–10 (zrušenie)</span><span class="en-only">Intensity 8–10 (abolition)</span></div>
+        <div class="map-legend-item"><div class="map-legend-swatch" style="background:#e07a3a"></div><span class="sk-only">Intenzita 5–7 (silná reforma)</span><span class="en-only">Intensity 5–7 (strong reform)</span></div>
+        <div class="map-legend-item"><div class="map-legend-swatch" style="background:#e8b44a"></div><span class="sk-only">Intenzita 3–4 (stredná)</span><span class="en-only">Intensity 3–4 (moderate)</span></div>
+        <div class="map-legend-item"><div class="map-legend-swatch" style="background:#a0c878"></div><span class="sk-only">Intenzita 1–2 (slabá)</span><span class="en-only">Intensity 1–2 (weak)</span></div>
+      </div>
+      <div class="map-legend" id="map-legend-type" style="display:none">
+        <div class="map-legend-item"><div class="map-legend-swatch" style="background:var(--col-abolish)"></div><span class="sk-only">Zrušenie minima</span><span class="en-only">Abolition</span></div>
+        <div class="map-legend-item"><div class="map-legend-swatch" style="background:var(--col-maximum)"></div><span class="sk-only">Zavedenie maxima</span><span class="en-only">Maximum</span></div>
+        <div class="map-legend-item"><div class="map-legend-swatch" style="background:var(--col-pricing)"></div><span class="sk-only">Cenová reforma</span><span class="en-only">Pricing</span></div>
+        <div class="map-legend-item"><div class="map-legend-swatch" style="background:var(--col-mgmt)"></div><span class="sk-only">Správa ulíc</span><span class="en-only">Management</span></div>
+      </div>
+    </div>
+
+    <div class="top10-wrap" style="margin-top:2.5rem">
+      <h3 class="top10-title"><span class="sk-only">Top 10 — najvyznamnejsie reformy 2024–2025</span><span class="en-only">Top 10 — most significant reforms 2024–2025</span></h3>
+      <div class="top10-list">
+        <div class="top10-item top10-item--abolish">
+          <div class="top10-rank">01</div>
+          <div class="top10-flag">DE</div>
+          <div class="top10-info">
+            <div class="top10-name"><span class="sk-only">Bavorsko</span><span class="en-only">Bavaria</span></div>
+            <div class="top10-desc"><span class="sk-only">Zrusenie rezidencnych minim — 13M obyvatelov, okt. 2025</span><span class="en-only">Abolition of residential minimums — 13M residents, Oct 2025</span></div>
+          </div>
+          <div class="top10-score"><span class="top10-num">9</span><div class="top10-bar"><div class="top10-fill" style="width:90%"></div></div></div>
+        </div>
+        <div class="top10-item top10-item--abolish">
+          <div class="top10-rank">02</div>
+          <div class="top10-flag">NO</div>
+          <div class="top10-info">
+            <div class="top10-name">Oslo</div>
+            <div class="top10-desc"><span class="sk-only">Prvy velkomesto s nulovymi minimami — dec. 2022</span><span class="en-only">First major city with zero minimums — Dec 2022</span></div>
+          </div>
+          <div class="top10-score"><span class="top10-num">9</span><div class="top10-bar"><div class="top10-fill" style="width:90%"></div></div></div>
+        </div>
+        <div class="top10-item top10-item--abolish">
+          <div class="top10-rank">03</div>
+          <div class="top10-flag">DE</div>
+          <div class="top10-info">
+            <div class="top10-name"><span class="sk-only">Dolne Sasko</span><span class="en-only">Lower Saxony</span></div>
+            <div class="top10-desc"><span class="sk-only">Prve nem. spolkove krajina bez minim, jul. 2024</span><span class="en-only">First German state to abolish minimums, Jul 2024</span></div>
+          </div>
+          <div class="top10-score"><span class="top10-num">8</span><div class="top10-bar"><div class="top10-fill" style="width:80%"></div></div></div>
+        </div>
+        <div class="top10-item top10-item--abolish">
+          <div class="top10-rank">04</div>
+          <div class="top10-flag">NL</div>
+          <div class="top10-info">
+            <div class="top10-name">Amsterdam</div>
+            <div class="top10-desc"><span class="sk-only">Nulove minima + -1500 povoleni/rok</span><span class="en-only">Zero minimums + -1,500 permits/year</span></div>
+          </div>
+          <div class="top10-score"><span class="top10-num">7</span><div class="top10-bar"><div class="top10-fill" style="width:70%"></div></div></div>
+        </div>
+        <div class="top10-item top10-item--abolish">
+          <div class="top10-rank">05</div>
+          <div class="top10-flag">FI</div>
+          <div class="top10-info">
+            <div class="top10-name">Helsinki</div>
+            <div class="top10-desc"><span class="sk-only">Nulove minima v centre, -50% inde — maj 2025</span><span class="en-only">Zero minimums in centre, -50% elsewhere — May 2025</span></div>
+          </div>
+          <div class="top10-score"><span class="top10-num">7</span><div class="top10-bar"><div class="top10-fill" style="width:70%"></div></div></div>
+        </div>
+        <div class="top10-item top10-item--abolish">
+          <div class="top10-rank">06</div>
+          <div class="top10-flag">SE</div>
+          <div class="top10-info">
+            <div class="top10-name">Malmö</div>
+            <div class="top10-desc"><span class="sk-only">P-norma 0 v centre od 2020, revizia 2025</span><span class="en-only">P-norm 0 in centre since 2020, revision 2025</span></div>
+          </div>
+          <div class="top10-score"><span class="top10-num">7</span><div class="top10-bar"><div class="top10-fill" style="width:70%"></div></div></div>
+        </div>
+        <div class="top10-item top10-item--abolish">
+          <div class="top10-rank">07</div>
+          <div class="top10-flag">PL</div>
+          <div class="top10-info">
+            <div class="top10-name"><span class="sk-only">Polsko</span><span class="en-only">Poland</span></div>
+            <div class="top10-desc"><span class="sk-only">Narodni zrusenie 1.5 miesta/byt (lex developer) aug. 2025</span><span class="en-only">National abolition of 1.5 space/apt norm (lex developer) Aug 2025</span></div>
+          </div>
+          <div class="top10-score"><span class="top10-num">6</span><div class="top10-bar"><div class="top10-fill" style="width:60%"></div></div></div>
+        </div>
+        <div class="top10-item top10-item--maximum">
+          <div class="top10-rank">08</div>
+          <div class="top10-flag">CH</div>
+          <div class="top10-info">
+            <div class="top10-name"><span class="sk-only">Mesto Zurich</span><span class="en-only">City of Zurich</span></div>
+            <div class="top10-desc"><span class="sk-only">PPVO + vahova dan referendum 52.6% za — dec. 2024</span><span class="en-only">PPVO + weight-based fee referendum 52.6% yes — Dec 2024</span></div>
+          </div>
+          <div class="top10-score"><span class="top10-num">6</span><div class="top10-bar"><div class="top10-fill" style="width:60%"></div></div></div>
+        </div>
+        <div class="top10-item top10-item--pricing">
+          <div class="top10-rank">09</div>
+          <div class="top10-flag">FR</div>
+          <div class="top10-info">
+            <div class="top10-name"><span class="sk-only">Pariz</span><span class="en-only">Paris</span></div>
+            <div class="top10-desc"><span class="sk-only">SUV tarifa 18 EUR/h, referendum 54% za — sept. 2024</span><span class="en-only">SUV tariff EUR 18/h, referendum 54% yes — Sept 2024</span></div>
+          </div>
+          <div class="top10-score"><span class="top10-num">6</span><div class="top10-bar"><div class="top10-fill" style="width:60%"></div></div></div>
+        </div>
+        <div class="top10-item top10-item--pricing">
+          <div class="top10-rank">10</div>
+          <div class="top10-flag">DK</div>
+          <div class="top10-info">
+            <div class="top10-name"><span class="sk-only">Kodan</span><span class="en-only">Copenhagen</span></div>
+            <div class="top10-desc"><span class="sk-only">+76% poplatky, prve nedele, 30M DKK/rok — apr. 2025</span><span class="en-only">+76% fees, first Sundays, 30M DKK/year — Apr 2025</span></div>
+          </div>
+          <div class="top10-score"><span class="top10-num">4</span><div class="top10-bar"><div class="top10-fill" style="width:40%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="sec-typologies">
+  <div class="section reveal">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <div>
+        <h2 class="section-title"><span class="sk-only">4 typologie <em>europskych reforiem</em></span><span class="en-only">4 typologies <em>of European reform</em></span></h2>
+        <p class="section-subtitle sk-only">Kazde mesto si vybralo inu cestu. Tieto styri vzorce sa opakuju napriec Europou.</p>
+        <p class="section-subtitle en-only">Every city chose a different path. These four patterns repeat across Europe.</p>
+      </div>
+    </div>
+    <div class="typo-grid">
+      <div class="typo-card typo-card--abolish">
+        <div class="typo-icon">A</div>
+        <h3 class="typo-title"><span class="sk-only">Zrusenie minima</span><span class="en-only">Abolition</span></h3>
+        <p class="typo-body sk-only">Zakon odstranuji min. normu. Developeri sa rozhoduju sami. Najradikalnejsi typ — najvyssi dopad na trh s bytmi.</p>
+        <p class="typo-body en-only">Law removes the mandatory minimum norm. Developers decide. Most radical type — highest impact on housing market.</p>
+        <div class="typo-examples"><span class="typo-ex">Bavorsko</span><span class="typo-ex">Dolne Sasko</span><span class="typo-ex">Oslo</span><span class="typo-ex">Helsinki</span><span class="typo-ex">Malmo</span></div>
+        <div class="typo-stat"><span class="typo-stat-num">8</span><span class="typo-stat-lbl sk-only"> miest / krajin</span><span class="typo-stat-lbl en-only"> cities / countries</span></div>
+      </div>
+      <div class="typo-card typo-card--maximum">
+        <div class="typo-icon">B</div>
+        <h3 class="typo-title"><span class="sk-only">Zavedenie maxima</span><span class="en-only">Maximum cap</span></h3>
+        <p class="typo-body sk-only">Zakon zavadza strop — developer nesmie postavit viac ako X miest. Londynsky model. Typicke pre hustye centrum pri MHD.</p>
+        <p class="typo-body en-only">Law sets a ceiling — developer cannot build more than X spaces. The London model. Typical for dense urban areas near transit.</p>
+        <div class="typo-examples"><span class="typo-ex">London</span><span class="typo-ex">UK NPPF</span><span class="typo-ex">Vieden</span><span class="typo-ex">Zurich</span><span class="typo-ex">Bern</span></div>
+        <div class="typo-stat"><span class="typo-stat-num">7</span><span class="typo-stat-lbl sk-only"> miest / krajin</span><span class="typo-stat-lbl en-only"> cities / countries</span></div>
+      </div>
+      <div class="typo-card typo-card--pricing">
+        <div class="typo-icon">C</div>
+        <h3 class="typo-title"><span class="sk-only">Cenova reforma</span><span class="en-only">Pricing reform</span></h3>
+        <p class="typo-body sk-only">Normy zostávaju, ale parkovanie zdrazeje. SUV tarify, dynamicke ceny, vahove dane. Politicky prijatelnejsie — efekt pomalsi.</p>
+        <p class="typo-body en-only">Norms remain but parking gets pricier. SUV tariffs, dynamic pricing, weight taxes. Politically easier — slower effect.</p>
+        <div class="typo-examples"><span class="typo-ex">Pariz</span><span class="typo-ex">Kodan</span><span class="typo-ex">Stockholm</span><span class="typo-ex">Basel</span><span class="typo-ex">Lisabon</span></div>
+        <div class="typo-stat"><span class="typo-stat-num">9</span><span class="typo-stat-lbl sk-only"> miest / krajin</span><span class="typo-stat-lbl en-only"> cities / countries</span></div>
+      </div>
+      <div class="typo-card typo-card--mgmt">
+        <div class="typo-icon">D</div>
+        <h3 class="typo-title"><span class="sk-only">Sprava ulic</span><span class="en-only">Street management</span></h3>
+        <p class="typo-body sk-only">Normy sa nemenia, ale rozsiruju sa platene zony a digitalne systemy. Typicke pre CEE — stavia zaklady pre hlbsiu reformu.</p>
+        <p class="typo-body en-only">Norms unchanged but paid zones and digital systems expand. Typical for CEE — builds foundation for deeper reform.</p>
+        <div class="typo-examples"><span class="typo-ex">Praha</span><span class="typo-ex">Budapest</span><span class="typo-ex">Brusel</span><span class="typo-ex">Barcelona</span><span class="typo-ex">Sofia</span></div>
+        <div class="typo-stat"><span class="typo-stat-num">8</span><span class="typo-stat-lbl sk-only"> miest / krajin</span><span class="typo-stat-lbl en-only"> cities / countries</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">GOSPACE LABS</div>
+      <div style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:rgba(245,240,232,.4);margin-top:.4rem">
+        <span class="sk-only">Parkovacie Reformy v Európe 2024–2025</span>
+        <span class="en-only">European Parking Reform 2024–2025</span>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div class="sk-only">Zdroje: mestské a štátne dokumenty, EU Urban Mobility Observatory,<br>Parking Reform Atlas, Reinventing Parking, akademické časopisy<br><a href="https://fleximodo.com">fleximodo.com</a> · Smart Parking IoT</div>
+      <div class="en-only">Sources: city/state documents, EU Urban Mobility Observatory,<br>Parking Reform Atlas, Reinventing Parking, academic journals<br><a href="https://fleximodo.com">fleximodo.com</a> · Smart Parking IoT</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── LANGUAGE ──
+function setLang(lang){
+  document.documentElement.setAttribute('data-lang',lang);
+  document.getElementById('btn-sk').classList.toggle('active',lang==='sk');
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+}
+
+// ── SCROLL REVEAL ──
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});
+},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── MAP DATA ──
+const REFORM_DATA = [
+  {name:'Bavorsko (Nemecko)',lat:48.79,lng:11.50,intensity:8,type:'abolish',year:2025,
+   desc_sk:'Štátna norma zrušená okt. 2025. 13M obyvateľov. Mestá si môžu nastaviť vlastné normy, max. 2 miesta/byt.',
+   desc_en:'State mandate abolished Oct 2025. 13M residents. Municipalities set own norms, max 2 spaces/unit cap.'},
+  {name:'Dolné Sasko (Nemecko)',lat:52.64,lng:9.85,intensity:8,type:'abolish',year:2024,
+   desc_sk:'Povinná norma zrušená júl 2024. 8M obyvateľov. Mestá nemôžu normu znovu zaviesť.',
+   desc_en:'Residential mandate abolished July 2024. 8M residents. Municipalities cannot reimpose.'},
+  {name:'Poľsko',lat:52.10,lng:19.80,intensity:6,type:'abolish',year:2025,
+   desc_sk:'Národná norma 1,5 miesta/byt zrušená aug. 2025. ~20 000 bytov vo Varšave odblokovaných.',
+   desc_en:'National 1.5 spaces/apartment rule abolished Aug 2025. ~20,000 Warsaw apartments unfrozen.'},
+  {name:'Holandsko',lat:52.25,lng:5.30,intensity:5,type:'abolish',year:2024,
+   desc_sk:'Omgevingswet jan. 2024 — parkovanie plne decentralizované na 342+ obcí. Národné normy zrušené.',
+   desc_en:'Omgevingswet Jan 2024 — parking fully decentralised to 342+ municipalities. National ratios abolished.'},
+  {name:'UK (NPPF)',lat:52.50,lng:-1.50,intensity:4,type:'maximum',year:2024,
+   desc_sk:'NPPF dec. 2024 — rozšírené dôvody pre maximálne limity v lokalitách s dobrou dopravou.',
+   desc_en:'NPPF Dec 2024 — broadened grounds for parking maximums in transit-served locations.'},
+  {name:'Francúzsko',lat:46.60,lng:2.30,intensity:4,type:'maximum',year:2024,
+   desc_sk:'Loi Climat: max. 1 miesto/byt pri MHD, 0,5 pre sociálne bývanie. ZAN: povrchové parkovanie = zastavanie pôdy.',
+   desc_en:'Loi Climat: max 1 space/dwelling near transit, 0.5 for social housing. ZAN: surface parking = land artificialization.'},
+  {name:'Fínsko',lat:61.50,lng:25.80,intensity:3,type:'abolish',year:2025,
+   desc_sk:'Nový stavebný zákon jan. 2025 — zjednodušené povoľovanie, parkovanie ostáva miestnou vecou.',
+   desc_en:'New Building Act Jan 2025 — simplified permitting, parking remains local detailed plan matter.'},
+  {name:'Švédsko',lat:59.30,lng:16.00,intensity:3,type:'abolish',year:2025,
+   desc_sk:'Boverket BFS 2024 (júl 2025) — prechod na funkčné požiadavky, parkovanie zostáva obecné.',
+   desc_en:'Boverket BFS 2024 July 2025 — shift to functional requirements, parking remains municipal.'},
+  {name:'Helsinki',lat:60.17,lng:24.94,intensity:7,type:'abolish',year:2025,
+   desc_sk:'Nulové minimá pre centrum (Pasila + juh od Hakamäentie), -50% inde. Prijaté máj 2025.',
+   desc_en:'Zero minimums for central zone, -50% elsewhere. Adopted May 2025.'},
+  {name:'Oslo',lat:59.91,lng:10.75,intensity:9,type:'abolish',year:2022,
+   desc_sk:'Nulové minimá celomestsky od dec. 2022. Ministerské rozhodnutie máj 2025 sprehľadnilo aplikáciu.',
+   desc_en:'Zero minimums city-wide since Dec 2022. Ministry ruling May 2025 clarified application.'},
+  {name:'Stockholm',lat:59.33,lng:18.07,intensity:5,type:'pricing',year:2025,
+   desc_sk:'Od júl 2025: nové budovy nedostávajú rezidenčné povolenia na parkovanie v ulici. 12 nových platených zón.',
+   desc_en:'From July 2025: new buildings receive no residential street parking permits. 12 new paid zones (Apr 2025).'},
+  {name:'Malmö',lat:55.60,lng:13.00,intensity:7,type:'abolish',year:2020,
+   desc_sk:'P-norm 0 povolená v centrálnych polohách od 2020. Revízia politiky sept. 2025.',
+   desc_en:'P-norm 0 allowed in central locations since 2020. Policy under revision Sept 2025.'},
+  {name:'Göteborg',lat:57.71,lng:11.97,intensity:5,type:'abolish',year:2024,
+   desc_sk:'Flexibilné parkovacie normy — od nuly pre lokality s výbornou MHD. Prijaté 2024.',
+   desc_en:'Flexible parking norms — from zero for excellent-transit locations. Adopted 2024.'},
+  {name:'Kodaň',lat:55.68,lng:12.57,intensity:4,type:'pricing',year:2025,
+   desc_sk:'Nárast poplatkov o 76% (25 na 44 DKK/h zelená zóna) + prvé nedeľné spoplatnenie. Apr. 2025.',
+   desc_en:'76% fee increase (25 to 44 DKK/h green zone) + first-ever Sunday charges. April 2025.'},
+  {name:'Kanton Zürich',lat:47.50,lng:8.75,intensity:5,type:'abolish',year:2025,
+   desc_sk:'Historický parkovací kompromis jan. 2025. Stavebníci môžu žiadať o menej miest. Fond CHF 30M na cyklistiku.',
+   desc_en:'Historic parking compromise Jan 2025. Builders can request fewer spaces. CHF 30M fund redirected to cycling.'},
+  {name:'Mesto Zürich',lat:47.38,lng:8.54,intensity:6,type:'maximum',year:2024,
+   desc_sk:'PPVO revízia dec. 2024 — nižšie minimá + nové maximá podľa kvality MHD. Referendum o váhovej dani (52,6% áno).',
+   desc_en:'PPVO revision Dec 2024 — lower minimums + new maximums by transit quality. Weight-based fee referendum (52.6% yes).'},
+  {name:'Basel-Stadt',lat:47.56,lng:7.59,intensity:4,type:'pricing',year:2025,
+   desc_sk:'Poplatky podľa dĺžky vozidla od jan. 2025: CHF 332/rok (do 3,9m) až CHF 512/rok (nad 4,9m).',
+   desc_en:'Vehicle-length-based permit fees Jan 2025: CHF 332/year under 3.9m to CHF 512/year over 4.9m.'},
+  {name:'Bern',lat:46.95,lng:7.44,intensity:3,type:'maximum',year:2024,
+   desc_sk:'Pokračujúce znižovanie parkovacích povolení v centre. Nové maximá pre kancelárske budovy.',
+   desc_en:'Continued reduction of downtown parking permits. New maximums for office buildings.'},
+  {name:'Viedeň',lat:48.21,lng:16.37,intensity:5,type:'maximum',year:2023,
+   desc_sk:'Zonálny model (70/80/100% štandardu podľa blízkosti MHD), dec. 2023. Kompenzácia 12 000 EUR/miesto.',
+   desc_en:'Zone model (70/80/100% of standard by transit proximity), Dec 2023. Compensation fee 12k EUR/space.'},
+  {name:'Paríž',lat:48.86,lng:2.35,intensity:5,type:'pricing',year:2024,
+   desc_sk:'Referendum feb. 2024: trojnásobné poplatky pre SUV (18 EUR/h). Klimatický plán: odstrániť 60 000 miest (72%).',
+   desc_en:'Referendum Feb 2024: triple fees for SUVs (EUR 18/h). Climate Plan: remove 60,000 of 83,500 on-street spaces (72%).'},
+  {name:'Lyon',lat:45.75,lng:4.83,intensity:3,type:'pricing',year:2024,
+   desc_sk:'Progresívne parkovanie (mar. 2024): 15 EUR/mes. solidárna sadzba, 30 EUR štandard, 45 EUR ťažké vozidlá.',
+   desc_en:'Progressive parking Mar 2024: EUR 15/month solidarity rate, EUR 30 standard, EUR 45 heavy vehicles.'},
+  {name:'Brusel',lat:50.85,lng:4.35,intensity:5,type:'maximum',year:2024,
+   desc_sk:'COBRACE maximá pre kancelárie 250-450 EUR/miesto/rok, +10% ročne. Plány rozšíriť na prenájmy.',
+   desc_en:'COBRACE maximums offices 250-450 EUR/space/year, +10% annually. Plans to extend to leased spaces.'},
+  {name:'Dublin',lat:53.33,lng:-6.25,intensity:6,type:'maximum',year:2024,
+   desc_sk:'Dublin City Development Plan: nulové minimá v centrálnej oblasti, maximá podľa DART zón.',
+   desc_en:'Dublin City Development Plan: zero minimums in central area, maximums by DART zone.'},
+  {name:'Amsterdam',lat:52.37,lng:4.90,intensity:7,type:'abolish',year:2023,
+   desc_sk:'Nulové minimá pre väčšinu centra od 2023. Ročné znižovanie počtu povolení o 1 500.',
+   desc_en:'Zero minimums for most of the centre since 2023. Annual reduction of 1,500 permits per year.'},
+  {name:'Londýn',lat:51.51,lng:-0.12,intensity:7,type:'maximum',year:2021,
+   desc_sk:'London Plan 2021: maximá pre celý GLA. NPPF dec. 2024 posilnil národný rámec pre maximá.',
+   desc_en:'London Plan 2021: maximums across GLA. NPPF Dec 2024 strengthened national framework for maximums.'},
+  {name:'Barcelona',lat:41.39,lng:2.17,intensity:4,type:'pricing',year:2024,
+   desc_sk:'3 500+ miest odstránených cez superbloky. 503 superblokov plánovaných do 2030.',
+   desc_en:'3,500+ spaces removed via superblocks. 503 superblocks planned by 2030.'},
+  {name:'Lisabon',lat:38.72,lng:-9.14,intensity:3,type:'pricing',year:2024,
+   desc_sk:'Rozšírenie platených zón na nové štvrte v rámci SUMP 2030. Pilotné odstraňovanie miest.',
+   desc_en:'Expansion of paid zones to new neighbourhoods under SUMP 2030. Pilot space removal ongoing.'},
+  {name:'Budapešť',lat:47.50,lng:19.04,intensity:3,type:'mgmt',year:2024,
+   desc_sk:'Víkendové spoplatnenie odhlasované nov. 2024. Zóna A: 600 na 800 HUF/h (júl 2026). Koniec bezplatného EV jan. 2027.',
+   desc_en:'Weekend paid parking voted Nov 2024. Zone A: 600 to 800 HUF/h July 2026. End free EV parking Jan 2027.'},
+  {name:'Praha',lat:50.08,lng:14.44,intensity:2,type:'mgmt',year:2025,
+   desc_sk:'Koniec bezplatného parkovania pre EV jan. 2026. Namiesto toho 50% zľava.',
+   desc_en:'End of free EV parking Jan 2026. 50% discount introduced instead.'},
+  {name:'Záhreb',lat:45.81,lng:15.98,intensity:2,type:'mgmt',year:2024,
+   desc_sk:'Bloková reforma parkovania + nedeľné spoplatnenie okt. 2024. Digitalizácia povolení.',
+   desc_en:'Block-based parking overhaul + Sunday paid parking Oct 2024. Permit digitalisation.'},
+  {name:'Sofia',lat:42.70,lng:23.32,intensity:1,type:'mgmt',year:2025,
+   desc_sk:'Zdvojnásobenie parkovacích poplatkov jan. 2026. Rozšírenie platených zón.',
+   desc_en:'Parking fees doubled Jan 2026. Expansion of paid zones.'},
+  {name:'Varšava',lat:52.23,lng:21.01,intensity:5,type:'abolish',year:2025,
+   desc_sk:'Benefity z poľskej národnej reformy: ~20 000 bytov odblokovaných zrušením normy 1,5/byt.',
+   desc_en:'Benefits from Polish national reform: ~20,000 Warsaw apartments unfrozen by abolition of 1.5/unit norm.'},
+];
+
+// ── MAP INIT ──
+// SVG MAP
+let mapMode='intensity';
+const intensityColor=function(v){return v>=8?'#c8450f':v>=5?'#e07a3a':v>=3?'#e8b44a':'#a0c878';};
+const typeColor={abolish:'#c8450f',maximum:'#1a5c3a',pricing:'#1a4a80',mgmt:'#7a3a9a'};
+const typeLabelSk={abolish:'Zrusenie minima',maximum:'Zavedenie maxima',pricing:'Cenova reforma',mgmt:'Sprava ulic'};
+const typeLabelEn={abolish:'Abolition',maximum:'Maximum cap',pricing:'Pricing reform',mgmt:'Street management'};
+function lngToX(lng){return (lng+25)/70*1000;}
+function latToY(lat){return (72-lat)/38*600;}
+var EU_C=[
+['NO', [[4.9,58.0],[5.3,58.4],[4.5,59.2],[5.0,60.0],[5.0,60.5],[5.5,61.0],[4.8,61.5],[5.0,62.0],[4.2,62.4],[4.5,63.0],[5.5,63.5],[6.3,63.9],[7.0,64.2],[8.0,65.0],[10.0,65.5],[12.0,65.8],[13.5,66.0],[14.5,66.5],[15.5,67.0],[16.5,67.5],[17.5,68.0],[18.5,69.0],[19.5,69.5],[20.5,70.0],[22.0,70.5],[24.0,71.0],[26.0,71.0],[28.0,71.2],[30.0,70.8],[31.0,70.2],[31.5,69.5],[30.5,68.8],[28.5,68.0],[27.0,67.0],[26.5,66.0],[25.0,65.0],[24.0,63.5],[22.5,62.0],[21.0,60.5],[19.5,59.5],[18.5,59.0],[17.5,58.5],[16.0,57.5],[14.5,56.5],[12.5,56.0],[10.5,57.0],[8.5,57.5],[6.5,58.0],[4.9,58.0]]],
+['SE', [[5.0,55.5],[6.0,56.0],[8.0,57.0],[10.0,57.5],[12.0,56.5],[12.5,56.0],[14.0,56.0],[15.0,56.5],[16.0,57.0],[17.0,57.5],[18.0,58.0],[18.5,58.5],[19.0,59.5],[19.5,60.5],[20.5,61.5],[21.5,62.5],[22.5,63.5],[23.5,64.5],[24.5,65.5],[24.0,66.5],[22.5,67.5],[20.5,68.5],[18.5,69.5],[17.5,70.0],[15.5,69.5],[14.0,68.0],[14.5,66.5],[15.5,65.5],[14.5,64.5],[13.0,64.0],[12.5,63.0],[12.0,62.0],[11.5,61.0],[11.0,59.5],[10.5,58.5],[9.5,57.5],[8.0,57.0],[6.0,56.0],[5.0,55.5]]],
+['FI', [[21.0,59.5],[22.0,60.0],[23.5,60.0],[25.0,60.5],[27.0,60.5],[28.5,61.0],[29.5,61.5],[30.0,62.5],[30.0,64.0],[29.5,65.0],[29.0,66.0],[28.5,67.0],[27.5,68.0],[26.5,69.0],[25.5,70.0],[27.0,70.5],[29.5,69.5],[29.0,68.0],[28.5,67.0],[30.5,65.5],[30.0,64.0],[29.5,62.5],[28.5,61.5],[27.0,61.0],[25.5,60.5],[24.0,60.0],[22.5,60.0],[21.0,59.5]]],
+['DK', [[8.0,54.5],[9.5,55.5],[10.5,55.5],[10.5,56.5],[10.0,57.5],[9.5,57.5],[9.0,57.0],[8.5,57.0],[8.0,56.5],[8.5,55.5],[8.0,55.0],[8.0,54.5]]],
+['GB', [[-5.5,50.0],[-4.5,50.5],[-3.0,50.5],[-1.5,50.5],[0.0,51.5],[1.5,51.5],[1.5,52.0],[0.5,53.0],[-0.5,54.0],[-1.5,55.0],[-3.0,56.0],[-4.5,57.5],[-5.0,58.0],[-3.5,58.5],[-3.5,57.5],[-4.5,56.5],[-5.0,54.5],[-4.5,53.0],[-3.5,52.5],[-4.0,51.5],[-5.0,51.0],[-5.5,50.0]]],
+['IE', [[-10.0,51.5],[-9.0,51.0],[-8.0,51.5],[-7.0,52.0],[-6.0,52.5],[-6.5,53.5],[-7.5,55.0],[-8.5,55.5],[-10.0,54.0],[-10.5,52.5],[-10.0,51.5]]],
+['PT', [[-9.5,37.0],[-8.5,37.5],[-7.5,37.0],[-7.0,37.5],[-7.0,38.5],[-7.0,39.5],[-6.5,40.5],[-6.5,41.5],[-7.0,42.0],[-8.5,42.0],[-9.0,41.5],[-9.5,40.5],[-9.0,39.0],[-8.5,38.0],[-9.5,37.0]]],
+['ES', [[-9.5,37.0],[-8.5,36.0],[-7.5,36.5],[-6.0,36.0],[-5.0,36.0],[-3.5,36.5],[-2.0,36.5],[-0.5,37.5],[1.5,39.5],[3.5,41.5],[3.0,42.5],[1.5,43.5],[-0.5,43.5],[-2.0,43.5],[-4.0,43.5],[-5.5,43.5],[-7.5,43.5],[-8.5,43.5],[-9.0,43.0],[-8.5,42.5],[-9.0,42.0],[-7.5,42.0],[-7.0,41.5],[-7.0,40.0],[-6.5,39.5],[-7.0,38.5],[-7.5,37.5],[-9.5,37.0]]],
+['FR', [[-2.0,43.5],[-0.5,43.5],[1.5,43.5],[3.0,43.5],[5.0,43.5],[6.0,43.5],[7.5,44.0],[7.0,45.0],[6.5,46.5],[7.0,47.5],[7.5,48.0],[8.0,49.0],[6.5,49.5],[5.0,50.0],[3.5,50.5],[2.5,51.0],[1.5,51.5],[0.5,51.0],[-1.0,51.0],[-2.0,49.5],[-2.0,48.0],[-2.5,47.5],[-1.5,46.0],[-1.5,45.0],[-1.0,44.0],[-1.5,43.5],[-2.0,43.5]]],
+['BE', [[2.5,51.0],[3.5,50.5],[5.0,50.0],[6.0,50.5],[6.5,50.5],[6.0,51.0],[5.0,51.5],[3.5,51.5],[2.5,51.0]]],
+['NL', [[3.5,51.5],[5.0,51.5],[6.5,51.5],[7.0,52.0],[7.0,53.0],[6.5,53.5],[5.5,53.5],[4.5,53.0],[4.0,52.5],[3.5,51.5]]],
+['LU', [[5.5,50.5],[6.5,50.5],[6.5,49.5],[5.5,49.5],[5.5,50.5]]],
+['DE', [[6.0,51.0],[7.0,52.0],[8.0,54.0],[9.0,54.5],[10.0,55.0],[12.0,54.5],[14.0,54.5],[15.0,51.5],[14.5,50.5],[13.5,50.5],[12.5,50.5],[12.0,49.5],[10.5,48.0],[9.5,47.5],[8.0,47.5],[7.5,47.5],[7.0,48.0],[7.5,49.0],[8.0,50.0],[6.5,50.5],[6.0,51.5],[6.0,51.0]]],
+['CH', [[6.0,47.5],[7.5,47.5],[9.0,47.5],[10.5,47.5],[10.5,47.0],[10.0,46.5],[8.5,46.0],[7.0,46.0],[6.5,46.5],[6.0,47.0],[6.0,47.5]]],
+['AT', [[10.0,47.5],[12.0,47.5],[13.5,47.5],[15.0,48.0],[16.5,48.5],[17.0,48.5],[18.0,48.0],[17.0,47.0],[15.5,47.0],[14.0,46.5],[12.5,47.0],[10.5,47.0],[10.0,47.5]]],
+['IT', [[7.0,44.0],[9.0,44.5],[11.0,44.5],[12.5,45.0],[13.5,46.0],[13.5,45.0],[12.5,44.5],[11.5,43.5],[12.0,42.5],[13.0,41.0],[14.0,40.0],[15.5,38.5],[16.0,37.5],[15.5,36.5],[15.0,37.0],[14.0,38.0],[12.5,38.5],[11.5,38.0],[10.0,38.5],[9.5,40.0],[9.0,41.5],[8.5,43.5],[7.5,44.0],[7.0,44.0]]],
+['SI', [[13.5,46.5],[16.0,46.5],[16.5,46.0],[16.0,45.5],[14.5,45.5],[13.5,45.5],[13.5,46.5]]],
+['HR', [[13.5,45.5],[14.5,45.5],[16.5,46.0],[18.5,46.0],[19.0,45.5],[18.0,44.0],[17.5,43.5],[16.5,43.0],[15.5,44.0],[14.5,44.5],[13.5,45.0],[13.5,45.5]]],
+['BA', [[15.5,45.5],[17.5,45.5],[19.0,45.0],[19.5,44.5],[18.5,43.0],[17.5,43.0],[16.0,43.5],[15.5,44.5],[15.5,45.5]]],
+['RS', [[19.0,46.0],[22.0,46.0],[22.5,44.5],[21.5,43.5],[20.0,43.0],[19.0,43.5],[19.0,44.5],[19.0,46.0]]],
+['PL', [[14.5,54.0],[16.5,54.5],[18.5,55.0],[20.5,55.0],[22.5,54.5],[24.0,54.5],[23.5,52.5],[23.0,52.0],[22.5,51.0],[21.0,50.0],[19.0,49.5],[18.0,50.0],[17.0,50.5],[16.0,50.5],[14.5,51.0],[14.0,52.5],[14.5,53.5],[14.5,54.0]]],
+['CZ', [[12.5,51.0],[14.5,51.0],[15.5,51.0],[17.0,51.0],[18.5,50.5],[18.0,49.5],[16.5,49.0],[15.0,49.0],[13.5,49.5],[12.5,50.0],[12.5,51.0]]],
+['SK', [[17.0,49.0],[19.0,49.5],[20.5,49.5],[22.0,49.5],[22.5,49.0],[22.0,48.5],[20.5,48.0],[19.0,48.0],[17.5,48.0],[17.0,49.0]]],
+['HU', [[16.5,48.5],[17.5,48.0],[19.0,48.0],[20.5,48.0],[22.0,48.0],[22.5,48.5],[23.0,47.5],[22.0,46.5],[20.5,46.0],[18.5,46.0],[17.0,46.5],[16.5,47.5],[16.5,48.5]]],
+['RO', [[22.0,48.5],[24.5,48.5],[27.0,48.5],[28.5,48.0],[29.5,47.5],[30.5,46.5],[29.5,45.5],[28.5,45.5],[27.5,46.0],[26.0,45.5],[25.0,45.5],[24.0,44.5],[23.0,44.5],[22.5,45.0],[22.0,46.0],[22.0,47.0],[22.0,48.5]]],
+['BG', [[22.0,44.5],[24.0,44.5],[25.5,44.0],[27.0,44.0],[28.5,43.5],[28.0,42.5],[26.5,42.0],[25.0,41.5],[23.5,42.0],[22.5,42.5],[22.0,43.5],[22.0,44.5]]],
+['GR', [[20.5,42.0],[22.0,42.0],[24.0,42.0],[26.0,41.5],[26.5,41.0],[26.0,40.5],[25.5,39.5],[24.5,39.0],[23.0,38.5],[22.0,38.5],[21.0,38.5],[20.5,39.5],[20.0,40.5],[20.5,42.0]]],
+['UA', [[22.0,52.5],[26.5,52.5],[32.0,52.5],[37.5,50.0],[37.5,47.5],[36.5,46.5],[34.0,46.5],[32.0,46.5],[30.5,46.0],[30.0,45.5],[29.0,45.5],[28.5,46.5],[27.5,48.5],[26.5,48.5],[24.5,48.5],[22.0,48.5],[22.0,50.0],[22.5,51.5],[23.0,52.5],[22.0,52.5]]],
+['BY', [[24.0,54.5],[26.5,55.5],[32.5,54.0],[32.5,52.5],[30.5,51.5],[28.5,51.5],[27.5,51.0],[25.5,51.0],[24.0,52.0],[23.5,52.5],[24.0,54.5]]],
+['LT', [[21.0,56.5],[22.5,57.0],[26.5,57.0],[27.0,55.5],[24.5,54.5],[22.0,54.5],[21.0,55.5],[21.0,56.5]]],
+['LV', [[21.0,57.0],[23.0,57.5],[26.5,58.0],[28.0,57.5],[27.5,56.5],[26.5,55.5],[24.5,55.5],[21.0,56.5],[21.0,57.0]]],
+['EE', [[21.5,59.5],[24.0,59.5],[27.5,59.5],[28.5,57.5],[27.5,57.0],[25.0,58.0],[23.0,57.5],[21.5,58.5],[21.5,59.5]]],
+['MK', [[20.5,42.5],[22.5,42.5],[22.5,41.5],[21.5,41.0],[20.5,41.5],[20.5,42.5]]],
+['AL', [[19.5,42.5],[20.5,42.5],[20.5,41.5],[20.0,40.5],[19.5,40.5],[19.5,42.5]]]
+];
+var tooltip=null;
+function drawCountries(){var g=document.getElementById('eu-countries');if(!g)return;g.innerHTML='';var ns='http://www.w3.org/2000/svg';var bg=document.createElementNS(ns,'rect');bg.setAttribute('x','0');bg.setAttribute('y','0');bg.setAttribute('width','1000');bg.setAttribute('height','600');bg.setAttribute('fill','#cfe8f5');g.appendChild(bg);EU_C.forEach(function(c){var path=document.createElementNS(ns,'path');var d='M'+c[1].map(function(p){return lngToX(p[0]).toFixed(1)+','+latToY(p[1]).toFixed(1);}).join('L')+'Z';path.setAttribute('d',d);path.setAttribute('fill','#ede8de');path.setAttribute('stroke','#b8b0a0');path.setAttribute('stroke-width','0.8');g.appendChild(path);});}
+function showTooltip(evt,html){
+  if(!tooltip){tooltip=document.createElement('div');tooltip.style.cssText='position:fixed;background:#fff;border:1px solid #ddd;padding:10px 14px;font-family:Figtree,sans-serif;font-size:.78rem;line-height:1.5;max-width:240px;box-shadow:0 4px 16px rgba(0,0,0,.12);pointer-events:none;z-index:9999;border-radius:2px;';document.body.appendChild(tooltip);}
+  tooltip.innerHTML=html;tooltip.style.display='block';positionTooltip(evt);
+}
+function positionTooltip(evt){
+  if(!tooltip)return;
+  var x=evt.clientX+14,y=evt.clientY-10;
+  var w=tooltip.offsetWidth,h=tooltip.offsetHeight;
+  tooltip.style.left=(x+w>window.innerWidth?x-w-28:x)+'px';
+  tooltip.style.top=(y+h>window.innerHeight?y-h:y)+'px';
+}
+function hideTooltip(){if(tooltip)tooltip.style.display='none';}
+function renderMarkers(){
+  var svg=document.getElementById('reform-map');
+  if(!svg)return;
+  var g=document.getElementById('eu-markers');
+  if(!g)return;
+  g.innerHTML='';
+  var lang=document.documentElement.getAttribute('data-lang')||'sk';
+  REFORM_DATA.forEach(function(d){
+    if(currentFilter !== 'all' && d.type !== currentFilter) return;
+    var cx=lngToX(d.lng),cy=latToY(d.lat);
+    var col=mapMode==='intensity'?intensityColor(d.intensity):typeColor[d.type];
+    var r=5+d.intensity*1.3;
+    var circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('cx',cx.toFixed(1));
+    circle.setAttribute('cy',cy.toFixed(1));
+    circle.setAttribute('r',r);
+    circle.setAttribute('fill',col);
+    circle.setAttribute('fill-opacity','0.85');
+    circle.setAttribute('stroke','white');
+    circle.setAttribute('stroke-width','1.5');
+    circle.style.cursor='pointer';
+    var desc=lang==='sk'?d.desc_sk:d.desc_en;
+    var typeLabel=lang==='sk'?typeLabelSk[d.type]:typeLabelEn[d.type];
+    var html='<strong style="font-family:Fraunces,serif;font-size:.9rem">'+d.name+'</strong><br><span style="color:'+typeColor[d.type]+'">'+typeLabel+' · '+d.year+'</span><br><span style="color:#888;font-size:.72rem">'+desc+'</span>';
+    circle.addEventListener('mouseenter',function(e){circle.setAttribute('r',r+3);showTooltip(e,html);});
+    circle.addEventListener('mousemove',positionTooltip);
+    circle.addEventListener('mouseleave',function(){circle.setAttribute('r',r);hideTooltip();});
+    g.appendChild(circle);
+  });
+}
+function setMapMode(mode){
+  mapMode=mode;
+  document.getElementById('btn-intensity').classList.toggle('active',mode==='intensity');
+  document.getElementById('btn-type').classList.toggle('active',mode==='type');
+  document.getElementById('map-legend-intensity').style.display=mode==='intensity'?'flex':'none';
+  document.getElementById('map-legend-type').style.display=mode==='type'?'flex':'none';
+  var el=document.getElementById('reform-map');
+  el.style.opacity='.35';
+  setTimeout(function(){renderMarkers();el.style.opacity='1';},200);
+}
+window.addEventListener('DOMContentLoaded',function(){
+  drawCountries();
+  renderMarkers();
+  document.getElementById('btn-sk').addEventListener('click',function(){setTimeout(renderMarkers,60);});
+  document.getElementById('btn-en').addEventListener('click',function(){setTimeout(renderMarkers,60);});
+});
+
+
+// FILTER
+var currentFilter = 'all';
+function applyFilter(type) {
+  currentFilter = type;
+  // update buttons
+  document.querySelectorAll('.filt-btn').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-type') === type);
+  });
+  // filter rcards
+  var allCards = document.querySelectorAll('.rcard');
+  var visible = 0;
+  allCards.forEach(function(card) {
+    var match = type === 'all' || card.classList.contains('rcard--' + type);
+    card.classList.toggle('hidden', !match);
+    if (match) visible++;
+  });
+  // filter timeline items
+  document.querySelectorAll('.tl-item').forEach(function(item) {
+    var match = type === 'all' || item.classList.contains('tl-item--' + type);
+    item.classList.toggle('hidden', !match);
+  });
+  // update map markers
+  renderMarkers();
+  // update count badge
+  var countEl = document.getElementById('filter-count');
+  if (countEl) {
+    if (type === 'all') {
+      countEl.textContent = '';
+    } else {
+      var typeLabelSk2={abolish:'Zrusenie minima',maximum:'Zavedenie maxima',pricing:'Cenova reforma',mgmt:'Sprava ulic'};
+      var typeLabelEn2={abolish:'Abolition',maximum:'Maximum cap',pricing:'Pricing reform',mgmt:'Management'};
+      var lang=document.documentElement.getAttribute('data-lang')||'sk';
+      countEl.textContent = visible + ' ' + (lang==='sk'?'kariet':'cards');
+    }
+  }
+}
+
+
+function toggleDetail(btn){
+  const c=btn.nextElementSibling;
+  const open=c.style.display==='block';
+  c.style.display=open?'none':'block';
+  const sk=btn.querySelector('.sk-only');
+  const en=btn.querySelector('.en-only');
+  if(sk) sk.textContent=open?'+ Detaily reformy':'− Skryť detaily';
+  if(en) en.textContent=open?'+ Reform details':'− Hide details';
+}
+
+// ── ACTIVE NAV on scroll ──
+const sections=["sec-national","sec-nordic","sec-dach","sec-west-cee","sec-top10","sec-typologies"];
+const navLinks=document.querySelectorAll(".site-nav a");
+function updateNav(){let current="";sections.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=120)current="#"+id;});navLinks.forEach(a=>{a.classList.toggle("active",a.getAttribute("href")===current);});}
+window.addEventListener("scroll",updateNav,{passive:true});
+
+// ── MAP invalidateSize ──
+const mapSec=document.getElementById("sec-top10");
+if(mapSec){const mObs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&typeof map!=="undefined"){setTimeout(()=>map.invalidateSize(),200);mObs.unobserve(mapSec);}},{threshold:.1});mObs.observe(mapSec);}
+
+// ── TOP10 bar animate ──
+document.querySelectorAll(".top10-fill").forEach(f=>{const w=f.style.width;f.style.width="0%";const o=new IntersectionObserver(([e])=>{if(e.isIntersecting){setTimeout(()=>{f.style.width=w;},100);o.unobserve(f);}},{threshold:.5});o.observe(f);});
+</script>
+</body>
+</html>

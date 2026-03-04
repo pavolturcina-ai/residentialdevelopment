@@ -1,0 +1,2630 @@
+<!DOCTYPE html>
+<html lang="sk" data-lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Európske mestá s najnižšími parkovacími normami</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1114;
+    --paper: #f5f2eb;
+    --accent: #c8451a;
+    --accent2: #2a6049;
+    --accent3: #1a4a7a;
+    --muted: #7a7570;
+    --divider: #d8d3c8;
+    --card-bg: #faf8f3;
+    --highlight: #fff3cd;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: clip;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, #1a3a2a 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, #1a2a4a 0%, transparent 60%),
+      #0f1114;
+    z-index: 0;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 1; opacity: 0.07;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-top-bar {
+    position: relative; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 2rem 4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .hero-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    background: rgba(200,69,26,0.15);
+    padding: 0.4em 1em;
+    border-radius: 2px;
+    border: 1px solid rgba(200,69,26,0.3);
+  }
+
+  .hero-content {
+    position: relative; z-index: 10;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 4rem 4rem 2rem;
+    max-width: 900px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-title span {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.4);
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 580px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-stats {
+    position: relative; z-index: 10;
+    display: flex; gap: 0;
+    padding: 0 4rem 4rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin-top: 3rem;
+  }
+
+  .hero-stat {
+    flex: 1;
+    padding: 2rem 2rem 0 0;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    opacity: 0;
+    animation: fadeUp 0.8s forwards;
+  }
+  .hero-stat:nth-child(1) { animation-delay: 0.7s; }
+  .hero-stat:nth-child(2) { animation-delay: 0.85s; }
+  .hero-stat:nth-child(3) { animation-delay: 1.0s; }
+  .hero-stat:nth-child(4) { animation-delay: 1.15s; border-right: none; }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+  }
+
+  .hero-stat-num em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main { padding: 0 4rem; }
+
+  /* ── INTRO SECTION ── */
+  .intro-section {
+    max-width: 900px;
+    margin: 6rem auto;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .intro-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .intro-text p {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  .legend-box {
+    background: var(--card-bg);
+    border: 1px solid var(--divider);
+    border-radius: 4px;
+    padding: 1.8rem;
+    position: sticky;
+    top: 2rem;
+  }
+
+  .legend-box h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 0.25em 0.7em;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .badge-red    { background: rgba(200,69,26,0.12); color: #c8451a; border: 1px solid rgba(200,69,26,0.25); }
+  .badge-green  { background: rgba(42,96,73,0.12);  color: #2a6049; border: 1px solid rgba(42,96,73,0.25); }
+  .badge-blue   { background: rgba(26,74,122,0.12); color: #1a4a7a; border: 1px solid rgba(26,74,122,0.25); }
+  .badge-amber  { background: rgba(180,130,0,0.12); color: #8a6200; border: 1px solid rgba(180,130,0,0.25); }
+
+  /* ── REGION HEADERS ── */
+  .region-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 5rem 0 2rem;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .region-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .region-line {
+    flex: 1;
+    height: 1px;
+    background: var(--divider);
+  }
+
+  .region-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+  }
+
+  /* ── CITY GRID ── */
+  .city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--divider);
+    border: 1px solid var(--divider);
+  }
+
+  .city-card {
+    background: var(--card-bg);
+    padding: 1.8rem;
+    position: relative;
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .city-card:hover {
+    background: #fff;
+    z-index: 2;
+    box-shadow: 0 0 0 2px var(--ink);
+  }
+
+  .city-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .city-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .city-country {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+    font-weight: 400;
+  }
+
+  .city-rank {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    background: var(--paper);
+    border: 1px solid var(--divider);
+    padding: 0.3em 0.6em;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .city-metric {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    margin: 1rem 0;
+    padding: 0.8rem;
+    background: var(--paper);
+    border-left: 3px solid var(--accent);
+  }
+
+  .city-metric-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .city-metric-unit {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .city-metric-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .city-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .city-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .city-year {
+    margin-top: 0.8rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── HIGHLIGHT CARD (big cities) ── */
+  .city-card.featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .city-card.featured .city-name { color: #fff; }
+  .city-card.featured .city-country { color: rgba(255,255,255,0.4); }
+  .city-card.featured .city-rank { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); }
+  .city-card.featured .city-metric { background: rgba(255,255,255,0.05); border-left-color: var(--accent); }
+  .city-card.featured .city-metric-label { color: rgba(255,255,255,0.5); }
+  .city-card.featured .city-metric-unit { color: rgba(255,255,255,0.5); }
+  .city-card.featured .city-desc { color: rgba(255,255,255,0.55); }
+  .city-card.featured .city-year { color: rgba(255,255,255,0.3); }
+
+  .featured-left { }
+  .featured-right {
+    padding-top: 0.5rem;
+  }
+
+  .featured-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 0.82rem;
+  }
+
+  .featured-detail:last-child { border-bottom: none; }
+  .featured-detail .key { color: rgba(255,255,255,0.4); font-weight: 300; }
+  .featured-detail .val { color: rgba(255,255,255,0.85); font-family: 'DM Mono', monospace; font-size: 0.75rem; }
+
+  /* ── CEE SECTION ── */
+  .cee-banner {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 2rem 2.5rem;
+    background: #fff3cd;
+    border: 1px solid #e6c84a;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .cee-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .cee-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    color: #7a5500;
+  }
+
+  .cee-banner p {
+    font-size: 0.85rem;
+    color: #8a6200;
+    font-weight: 300;
+  }
+
+  /* ── BOTTOM TABLE ── */
+  .table-section {
+    max-width: 1100px;
+    margin: 5rem auto 0;
+  }
+
+  .table-header-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .table-header-row h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    background: var(--ink);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px 4px 0 0;
+    padding: 1.2rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.3fr 1fr 1fr 1fr 1fr;
+    gap: 0.8rem;
+    align-items: end;
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .filter-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .filter-input, .filter-select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    padding: 0.45rem 0.7rem;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s, background 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .filter-input::placeholder { color: rgba(255,255,255,0.25); }
+
+  .filter-input:focus, .filter-select:focus {
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.1);
+  }
+
+  .filter-select option { background: #1a1a1a; color: #fff; }
+
+  .filter-reset {
+    background: rgba(200,69,26,0.15);
+    border: 1px solid rgba(200,69,26,0.35);
+    border-radius: 2px;
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.45rem 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    align-self: end;
+  }
+
+  .filter-reset:hover {
+    background: rgba(200,69,26,0.3);
+    border-color: var(--accent);
+  }
+
+  .filter-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.3);
+    padding: 0.45rem 0;
+    align-self: end;
+    white-space: nowrap;
+  }
+
+  .filter-count span { color: var(--accent); font-weight: 600; }
+
+  /* clickable sort headers */
+  .data-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .data-table th.sortable:hover { color: rgba(255,255,255,0.7); }
+  .data-table th.sortable::after {
+    content: ' ↕';
+    opacity: 0.35;
+    font-size: 0.65rem;
+  }
+  .data-table th.sort-asc::after  { content: ' ↑'; opacity: 1; color: var(--accent); }
+  .data-table th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--accent); }
+
+  tr.row-hidden { display: none; }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    background: #fff;
+    border: 1px solid var(--divider);
+  }
+
+  .data-table thead tr {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .data-table th {
+    padding: 0.9rem 1.2rem;
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .data-table td {
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid var(--divider);
+    vertical-align: middle;
+  }
+
+  .data-table tr:hover td { background: var(--paper); }
+
+  .data-table .city-col { font-weight: 600; }
+  .data-table .num-col {
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .score-fill {
+    height: 4px;
+    border-radius: 2px;
+    background: var(--accent);
+    transition: width 0.3s;
+    min-width: 4px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 8rem;
+    padding: 3rem 4rem;
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-sources {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-sources a {
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+  }
+
+  .footer-sources a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-top-bar, .hero-content, .hero-stats { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .hero-stats { flex-direction: column; }
+    .main { padding: 0 1.5rem; }
+    .intro-section { grid-template-columns: 1fr; gap: 2rem; }
+    .city-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .footer-sources { text-align: center; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ==== LANGUAGE SWITCHER ==== */
+  [data-lang="en"] .sk-only { display: none !important; }
+  [data-lang="sk"] .en-only { display: none !important; }
+  .lang-switcher { display:flex; gap:0.3rem; align-items:center; }
+  .lang-btn {
+    font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.12em;
+    padding:0.3em 0.8em; border-radius:2px; cursor:pointer;
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);
+    color:rgba(255,255,255,0.45); transition:all 0.2s;
+  }
+  .lang-btn.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .lang-btn:hover:not(.active) { background:rgba(255,255,255,0.12); color:#fff; }
+
+  /* ════ SECTION NAV ════ */
+  .section-nav {
+    position: sticky; top: 0; z-index: 90;
+    background: var(--ink); border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex; gap: 0; overflow-x: auto;
+  }
+  .section-nav a {
+    font-family: 'DM Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+    color: rgba(255,255,255,0.4); padding: 0.9rem 1.6rem;
+    border-bottom: 2px solid transparent; white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .section-nav a:hover { color: #fff; }
+  .section-nav a.active { color: #fff; border-bottom-color: var(--accent); }
+
+  /* ════ DEVELOPER SECTION ════ */
+  .dev-section { margin: 6rem auto 0; padding: 0 0 4rem; }
+
+  .dev-section-title { margin-left: 2rem; margin-right: 2rem;
+    display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;
+  }
+  .dev-section-title h2 {
+    font-family: 'Playfair Display', serif; font-size: 1.6rem;
+    font-weight: 700; white-space: nowrap; margin: 0;
+  }
+  .dev-section-title .title-line {
+    flex: 1; height: 1px; background: var(--divider);
+  }
+
+  /* ── Stat intro cards ── */
+  .dev-intro { margin-left: 2rem; margin-right: 2rem;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5px; background: var(--divider); margin-bottom: 2.5rem;
+    border: 1px solid var(--divider);
+  }
+  .dev-stat-card { background: var(--ink); padding: 2rem; color: #fff; }
+  .dev-stat-big {
+    font-family: 'Playfair Display', serif; font-size: 3rem;
+    font-weight: 900; color: #fff; line-height: 1; display: block;
+  }
+  .dev-stat-big em { font-style: normal; color: var(--accent); }
+  .dev-stat-desc {
+    font-size: 0.82rem; color: rgba(255,255,255,0.45);
+    margin-top: 0.6rem; font-weight: 300; line-height: 1.5;
+  }
+
+  /* ── Filter bar ── */
+  .dev-filter-bar { margin: 0 2rem;
+    background: var(--ink); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px 4px 0 0; padding: 1.2rem 1.5rem;
+    display: grid; grid-template-columns: 1.6fr 1fr 1.2fr 1.3fr auto auto;
+    gap: 0.8rem; align-items: end;
+  }
+  .dev-filter-label {
+    font-family: 'DM Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); display: block; margin-bottom: 0.35rem;
+  }
+  .dev-filter-input {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 2px; color: #fff; font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; padding: 0.45rem 0.7rem; outline: none;
+    width: 100%; transition: border-color 0.2s;
+  }
+  .dev-filter-input:focus { border-color: rgba(255,255,255,0.35); }
+  .dev-filter-select {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 2px; color: #fff; font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; padding: 0.45rem 0.7rem; outline: none;
+    width: 100%; -webkit-appearance: none; transition: border-color 0.2s;
+  }
+  .dev-filter-select:focus { border-color: rgba(255,255,255,0.35); }
+  .dev-filter-reset {
+    background: rgba(200,69,26,0.15); border: 1px solid rgba(200,69,26,0.35);
+    border-radius: 2px; color: var(--accent); font-family: 'DM Mono', monospace;
+    font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.5rem 0.9rem; cursor: pointer; white-space: nowrap;
+    align-self: end;
+  }
+  .dev-filter-count {
+    font-family: 'DM Mono', monospace; font-size: 0.63rem;
+    color: rgba(255,255,255,0.3); align-self: center; white-space: nowrap;
+  }
+
+  /* ── Developer table ── */
+  .dev-table { border-collapse: collapse; font-size: 0.79rem; background: #fff; white-space: nowrap; }
+  .dev-table thead tr { background: var(--ink); color: #fff; }
+  .dev-table th { padding: 0.7rem 1rem; text-align: left; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; white-space: nowrap; }
+  .dev-table th.sortable { cursor: pointer; user-select: none; }
+  .dev-table th.sortable::after  { content: ' ↕'; opacity: 0.35; font-size: 0.58rem; }
+  .dev-table th.sort-asc::after  { content: ' ↑'; opacity: 1; color: var(--accent); }
+  .dev-table th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--accent); }
+  .dev-table td { padding: 0.45rem 1rem; border-bottom: 1px solid var(--divider); vertical-align: middle; white-space: nowrap; }
+  .dev-table tr:hover td { background: var(--paper); }
+  .dev-table .dev-name-col a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  .dev-table .dev-name-col a:hover { color: var(--accent); }
+  .dev-table .dev-name-col a::after { content: ' ↗'; font-size: 0.6rem; opacity: 0.35; }
+  .dev-cities { display: inline-flex; gap: 0.2rem; align-items: center; }
+  .city-pill { font-family: 'DM Mono', monospace; font-size: 0.57rem; padding: 0.12em 0.45em; background: var(--paper); border: 1px solid var(--divider); border-radius: 2px; color: var(--muted); white-space: nowrap; }
+  .parking-free  { color: #2a6049; font-weight: 600; font-size: 0.78rem; }
+  .parking-low   { color: #1a4a7a; font-weight: 500; font-size: 0.78rem; }
+  .parking-std   { color: var(--muted); font-size: 0.78rem; }
+  .cert-col      { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+  tr.dev-hidden  { display: none; }
+
+  /* extra badges */
+  .badge-purple { background: rgba(100,50,150,0.1); color: #6432a0; border: 1px solid rgba(100,50,150,0.25); }
+  .badge-teal   { background: rgba(0,130,120,0.1);  color: #006860; border: 1px solid rgba(0,130,120,0.25); }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .dev-intro             { grid-template-columns: 1fr; }
+    .dev-filter-bar        { grid-template-columns: 1fr 1fr; }
+    .dev-stat-big          { font-size: 2rem; }
+  }
+
+
+  @media (max-width: 768px) {
+    #section-strategy > div[style*="grid-template-columns:1fr 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    #section-paneu > div[style*="grid-template-columns"] {
+      grid-template-columns: 1fr !important;
+    }
+    .dev-filter-bar { margin: 0 2rem; grid-template-columns: 1fr 1fr !important; }
+    .dev-intro      { grid-template-columns: 1fr !important; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-top-bar">
+    <span class="hero-logo">GOSPACE LABS · Urban Mobility Research</span>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <div class="lang-switcher">
+        <button class="lang-btn active" id="btn-sk" onclick="setLang('sk')">SK</button>
+        <button class="lang-btn"        id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <span class="hero-tag">MARCH 2026</span>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow sk-only">Správa o parkovaní v Európe</span>
+    <span class="hero-eyebrow en-only">European Parking Policy Report</span>
+    <h1 class="hero-title">
+      <span class="sk-only">Európa bez<br><span>parkovacích</span><br>povinností</span>
+      <span class="en-only">Europe without<br><span>parking</span><br>mandates</span>
+    </h1>
+    <p class="hero-subtitle sk-only">
+      Prehľad 31 európskych miest s najnižšími normami pre parkovanie pri bytovej výstavbe —
+      od úplného zrušenia minima až po prísne maximá.
+    </p>
+    <p class="hero-subtitle en-only">
+      Overview of 31 European cities with the lowest residential parking norms —
+      from complete abolition of minimums to strict maximums.
+    </p>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">30<em>+</em></span>
+      <span class="hero-stat-label sk-only">analyzovaných miest</span>
+      <span class="hero-stat-label en-only">cities analysed</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">0</span>
+      <span class="hero-stat-label sk-only">min. miest v top mestách</span>
+      <span class="hero-stat-label en-only">min. spaces in top cities</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">49<em>%</em></span>
+      <span class="hero-stat-label sk-only">pokles počtu miest v Londýne</span>
+      <span class="hero-stat-label en-only">reduction in London parking</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">€80k</span>
+      <span class="hero-stat-label sk-only">cena 1 miesta v Prahe</span>
+      <span class="hero-stat-label en-only">cost of 1 space in Prague</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- ══ SECTION NAV ══ -->
+  <nav class="section-nav" id="section-nav">
+    <a href="#section-cities" class="active">
+      <span class="sk-only">🏙 Mestá</span>
+      <span class="en-only">🏙 Cities</span>
+    </a>
+    <a href="#section-developeri">
+      <span class="sk-only">🏗 Developeri</span>
+      <span class="en-only">🏗 Developers</span>
+    </a>
+    <a href="#section-paneu">
+      <span class="sk-only">🌍 Pan-európski</span>
+      <span class="en-only">🌍 Pan-European</span>
+    </a>
+    <a href="#section-strategy">
+      <span class="sk-only">🎯 Stratégia</span>
+      <span class="en-only">🎯 Strategy</span>
+    </a>
+  </nav>
+
+
+  <!-- Intro -->
+  <section class="intro-section reveal">
+    <div class="intro-text">
+      <h2 class="sk-only">Prečo je toto dôležité pre smart parking?</h2>
+      <h2 class="en-only">Why does this matter for smart parking?</h2>
+      <p><span class="sk-only">Mestá, ktoré znižujú alebo rušia parkovacie normy, nevytvoria menej parkingov — vytvoria <strong>efektívnejší trh</strong>. Keď regulovaný prebytok zmizne, technológia na správu existujúcich miest sa stáva zásadnou.</span><span class="en-only">Cities that reduce or abolish parking norms don't create fewer parking spaces — they create a <strong>more efficient market</strong>. When the regulated surplus disappears, technology for managing existing spaces becomes essential.</span></p>
+      <p><span class="sk-only">Londýn, Oslo, Amsterdam, Berlín a desiatky ďalších miest dnes aktívne <strong>obmedzujú tvorbu nových parkovacích kapacít</strong>. Developer v týchto mestách postaví menej miest — a každé jedno musí byť maximálne využité.</span><span class="en-only">London, Oslo, Amsterdam, Berlin and dozens of other cities are actively <strong>restricting the creation of new parking capacity</strong>. Developers in these cities build fewer spaces — and every single one must be maximally utilised.</span></p>
+      <p><span class="sk-only">Pre GOSPACE LABS tento trend znamená rastúci trh: čím menej povinných miest, tým väčší tlak na inteligentné riadenie tých existujúcich.</span><span class="en-only">For GOSPACE LABS this trend means a growing market: the fewer mandatory spaces, the greater the pressure to intelligently manage the ones that remain.</span></p>
+    </div>
+    <div class="legend-box">
+      <h3 class="sk-only">Typy politiky</h3>
+      <h3 class="en-only">Policy types</h3>
+      <div class="legend-item"><span class="badge badge-red">NULOVÉ MINIMUM</span><span class="sk-only"> Zákon nevyžaduje žiadne miesto</span><span class="en-only"> No parking space required by law</span></div>
+      <div class="legend-item"><span class="badge badge-green">MAXIMUM</span><span class="sk-only"> Zákon obmedzuje horný počet</span><span class="en-only"> Law caps the maximum number</span></div>
+      <div class="legend-item"><span class="badge badge-blue">NÍZKE MINIMUM</span><span class="sk-only"> Menej než 0.5 miesta/byt</span><span class="en-only"> Less than 0.5 spaces/unit</span></div>
+      <div class="legend-item"><span class="badge badge-amber">ZNIŽOVANIE</span><span class="sk-only"> Aktívna reforma v procese</span><span class="en-only"> Active reform underway</span></div>
+      <br>
+      <div style="font-size:0.75rem; color: var(--muted); line-height:1.6;">
+        <span class="sk-only"><strong>Meter reformy</strong> = kombinovaný index na základe agresivity politiky, dátumu zavedenia a dosahu (0–10)</span><span class="en-only"><strong>Reform Meter</strong> = combined index of policy aggressiveness, date of introduction and reach (0–10)</span>
+      </div>
+    </div>
+  </section>
+
+  <div id="section-cities"></div>
+  <!-- ══ WESTERN EUROPE ══ -->
+  <div class="region-header reveal">
+    <h2 class="sk-only">Západná Európa — Pionieri</h2><h2 class="en-only">Western Europe — Pioneers</h2>
+    <div class="region-line"></div>
+    <span class="region-count sk-only">14 MIEST</span><span class="region-count en-only">14 CITIES</span>
+  </div>
+
+  <div class="city-grid">
+
+    <!-- OSLO - FEATURED -->
+    <div class="city-card featured reveal">
+      <div class="featured-left">
+        <div class="city-card-top">
+          <div>
+            <div class="city-name">Oslo</div>
+            <div class="city-country sk-only">🇳🇴 Nórsko · 700 000 obyvateľov</div><div class="city-country en-only">🇳🇴 Norway · 700,000 inhabitants</div>
+          </div>
+          <span class="city-rank">#01</span>
+        </div>
+        <div class="city-tags">
+          <span class="badge badge-red">NULOVÉ MINIMUM</span>
+          <span class="badge badge-green">MAXIMUM</span>
+        </div>
+        <div class="city-metric">
+          <span class="city-metric-num">0</span>
+          <div>
+            <div class="city-metric-unit sk-only">min. miest / byt</div><div class="city-metric-unit en-only">min. spaces / unit</div>
+            <div class="city-metric-label">CENTRUM: MAX 0.5/100 m² BRA</div>
+          </div>
+        </div>
+        <p class="city-desc sk-only">Oslo je pravdepodobne najagresívnejšie reformné mesto v Európe. V roku 2022 nahradilo všetky minimá iba maximami. Centrum: max 0,5 miesta na 100 m². Mesto odstránilo všetkých 760 pouličných parkovacích miest z centra (2017–2019). Len 15 % obyvateľov centra vlastní auto.</p><p class="city-desc en-only">Oslo is likely Europe's most aggressive reform city. In 2022 it replaced all minimums with maximums only. Centre: max 0.5 spaces per 100 m². The city removed all 760 on-street parking spaces from the centre (2017–2019). Only 15% of centre residents own a car.</p>
+        <div class="city-year sk-only">REFORMA: December 2022 · Index: 9.8/10</div><div class="city-year en-only">REFORM: December 2022 · Index: 9.8/10</div>
+      </div>
+      <div class="featured-right">
+        <div class="featured-detail"><span class="key sk-only">Typ politiky</span><span class="key en-only">Policy type</span><span class="val sk-only">Iba maximá, 3 zóny</span><span class="val en-only">Maximums only, 3 zones</span></div>
+        <div class="featured-detail"><span class="key sk-only">Centrum (max)</span><span class="key en-only">Centre (max)</span><span class="val">0.5 / 100 m² BRA</span></div>
+        <div class="featured-detail"><span class="key sk-only">Hustá zástavba</span><span class="key en-only">Dense zones</span><span class="val">0.7 / 100 m² BRA</span></div>
+        <div class="featured-detail"><span class="key sk-only">EV nabíjanie</span><span class="key en-only">EV charging</span><span class="val sk-only">Min. 50 % miest</span><span class="val en-only">Min. 50% of spaces</span></div>
+        <div class="featured-detail"><span class="key sk-only">Car-sharing</span><span class="key en-only">Car-sharing</span><span class="val sk-only">Rezerv. 10 % pre zdieľ.</span><span class="val en-only">10% reserved for sharing</span></div>
+        <div class="featured-detail"><span class="key sk-only">Pokles dopravy v centre</span><span class="key en-only">Traffic reduction (centre)</span><span class="val sk-only">-28 % (2016–2019)</span><span class="val en-only">-28% (2016–2019)</span></div>
+        <div class="featured-detail"><span class="key sk-only">Meter reformy</span><span class="key en-only">Reform meter</span><span class="val">9.8 / 10</span></div>
+      </div>
+    </div>
+
+    <!-- AMSTERDAM - FEATURED -->
+    <div class="city-card featured reveal">
+      <div class="featured-left">
+        <div class="city-card-top">
+          <div>
+            <div class="city-name">Amsterdam</div>
+            <div class="city-country sk-only">🇳🇱 Holandsko · 920 000 obyvateľov</div><div class="city-country en-only">🇳🇱 Netherlands · 920,000 inhabitants</div>
+          </div>
+          <span class="city-rank">#02</span>
+        </div>
+        <div class="city-tags">
+          <span class="badge badge-green">MAXIMUM</span>
+          <span class="badge badge-red">NULOVÉ MINIMUM</span>
+        </div>
+        <div class="city-metric">
+          <span class="city-metric-num">0.2</span>
+          <div>
+            <div class="city-metric-unit sk-only">miest / byt (centrum)</div><div class="city-metric-unit en-only">spaces/unit (centre)</div>
+            <div class="city-metric-label sk-only">MAX 0.3 VO VNÚTORNOM MESTE</div><div class="city-metric-label en-only">MAX 0.3 IN INNER CITY</div>
+          </div>
+        </div>
+        <p class="city-desc sk-only">Amsterdam razantne znižuje parkovacie kapacity. Plán: odstrániť ~11 200 pouličných miest (72 % pouličnej kapacity) do 2025. Nové byty v centre nedostávajú oprávnenie na pouličné parkovacie povolenie. Čakacia doba na povolenie: až 13 mesiacov.</p><p class="city-desc en-only">Amsterdam is aggressively reducing parking capacity. Plan: remove ~11,200 on-street spaces (72% of street capacity) by 2025. New apartments in the centre receive no entitlement to an on-street parking permit. Waiting time for a permit: up to 13 months.</p>
+        <div class="city-year sk-only">REFORMA: Priebežná (2019 ciele) · Index: 9.5/10</div><div class="city-year en-only">REFORM: Ongoing (2019 targets) · Index: 9.5/10</div>
+      </div>
+      <div class="featured-right">
+        <div class="featured-detail"><span class="key sk-only">Vnútorné mesto</span><span class="key en-only">Inner city</span><span class="val">Max 0.2–0.3 / byt</span></div>
+        <div class="featured-detail"><span class="key sk-only">Predmestia</span><span class="key en-only">Suburbs</span><span class="val sk-only">Menej než 1.0 / byt</span><span class="val en-only">Less than 1.0 / unit</span></div>
+        <div class="featured-detail"><span class="key sk-only">Pouličné povolenia</span><span class="key en-only">On-street permits</span><span class="val sk-only">Max 1–2 na adresu</span><span class="val en-only">Max 1–2 per address</span></div>
+        <div class="featured-detail"><span class="key sk-only">Čakanie na povolenie</span><span class="key en-only">Permit waiting time</span><span class="val sk-only">Až 13 mesiacov</span><span class="val en-only">Up to 13 months</span></div>
+        <div class="featured-detail"><span class="key sk-only">Cena povolenia</span><span class="key en-only">Permit price</span><span class="val">€535 – €735 / rok</span></div>
+        <div class="featured-detail"><span class="key">Meter reformy</span><span class="val">9.5 / 10</span></div>
+      </div>
+    </div>
+
+    <!-- BERLIN -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Berlín</div>
+          <div class="city-country sk-only">🇩🇪 Nemecko · 3 700 000 obyv.</div><div class="city-country en-only">🇩🇪 Germany · 3,700,000 inhab.</div>
+        </div>
+        <span class="city-rank">#03</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-red">NULOVÉ MINIMUM</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">0</span>
+        <div>
+          <div class="city-metric-unit sk-only">povinných miest / byt</div><div class="city-metric-unit en-only">mandatory spaces / unit</div>
+          <div class="city-metric-label sk-only">PARKOVANIE = ZABERÁ PLOCHU FAR</div><div class="city-metric-label en-only">PARKING COUNTS TOWARD FAR</div>
+        </div>
+      </div>
+      <p class="city-desc sk-only">Developer sám rozhoduje o počte miest. Parkovanie sa počíta do podlažnej plochy (FAR) — staviebník teda obetuje prenajímateľný priestor. Tento mechanizmus bez explicitného maxima prirodzene tlačí na minimum.</p><p class="city-desc en-only">The developer alone decides the number of spaces. Parking counts toward the floor area ratio (FAR) — builders sacrifice rentable space. This mechanism without an explicit cap naturally pushes toward minimum parking.</p>
+      <div class="city-year sk-only">REFORMA: 1990e · Hamburg: 2013</div><div class="city-year en-only">REFORM: 1990s · Hamburg: 2013</div>
+    </div>
+
+    <!-- PARIS -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Paríž</div>
+          <div class="city-country sk-only">🇫🇷 Francúzsko · 2 100 000 obyv.</div><div class="city-country en-only">🇫🇷 France · 2,100,000 inhab.</div>
+        </div>
+        <span class="city-rank">#04</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-red">NULOVÉ MINIMUM</span>
+        <span class="badge badge-green">MAXIMUM</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">0</span>
+        <div>
+          <div class="city-metric-unit sk-only">min. miest / byt</div><div class="city-metric-unit en-only">min. spaces / unit</div>
+          <div class="city-metric-label sk-only">MAX 1 MIESTO / 100 m² BYTU</div><div class="city-metric-label en-only">MAX 1 SPACE / 100 m² FLAT</div>
+        </div>
+      </div>
+      <p class="city-desc sk-only">Celomestsky nulové minimum pre rezidenčnú výstavbu. Maximum 1 miesto na 100 m². Národný zákon: max 0,5 miesta/byt pri sociálnom bývaní do 500 m od MHD. Len 13 % ciest je autom. Plán: odstrániť 70 000 pouličných miest.</p><p class="city-desc en-only">City-wide zero minimum for residential construction. Maximum 1 space per 100 m². National law: max 0.5 spaces/unit for social housing within 500 m of transit. Only 13% of trips are by car. Plan: remove 70,000 on-street spaces.</p>
+      <div class="city-year sk-only">REFORMA: 4. júla 2016 (PLU)</div><div class="city-year en-only">REFORM: 4 July 2016 (PLU)</div>
+    </div>
+
+    <!-- LONDON -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Londýn</div>
+          <div class="city-country sk-only">🇬🇧 Veľká Británia · 9 000 000 obyv.</div><div class="city-country en-only">🇬🇧 United Kingdom · 9,000,000 inhab.</div>
+        </div>
+        <span class="city-rank">#05</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-red">NULOVÉ MINIMUM</span>
+        <span class="badge badge-green">MAXIMUM</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">0</span>
+        <div>
+          <div class="city-metric-unit sk-only">miest v centre</div><div class="city-metric-unit en-only">spaces in centre</div>
+          <div class="city-metric-label sk-only">POVINNE CAR-FREE V PTAL 5-6</div><div class="city-metric-label en-only">MANDATORY CAR-FREE IN PTAL 5–6</div>
+        </div>
+      </div>
+      <p class="city-desc">Centrum: povinne „car-free". Vonkajší Londýn: max 1,5 miesta/byt. 20 % miest musí mať aktívne EV nabíjanie. Výsledok po reforme: -49 % počet miest oproti pred-reformnému priemeru 1,6 miesta/byt. Najdlhší track record na svete (20+ rokov dát).</p>
+      <div class="city-year sk-only">REFORMA: 2004 (London Plan), aktualizácia 2021</div><div class="city-year en-only">REFORM: 2004 (London Plan), updated 2021</div>
+    </div>
+
+    <!-- ZURICH -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Zürich</div>
+          <div class="city-country sk-only">🇨🇭 Švajčiarsko · 430 000 obyv.</div><div class="city-country en-only">🇨🇭 Switzerland · 430,000 inhab.</div>
+        </div>
+        <span class="city-rank">#06</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-green">MAXIMUM</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">1990</span>
+        <div>
+          <div class="city-metric-unit sk-only">→ strop na úrovni r. 1990</div><div class="city-metric-unit en-only">→ cap at 1990 level</div>
+          <div class="city-metric-label sk-only">NOVÉ MIESTO = JEDNO TREBA ZRUŠIŤ</div><div class="city-metric-label en-only">NEW SPACE = ONE MUST BE REMOVED</div>
+        </div>
+      </div>
+      <p class="city-desc sk-only">Historický kompromis (1996): celkový počet parkovacích miest v meste zmrazený na úrovni roku 1990. Každé nové podzemné miesto vyžaduje zrušenie jedného pouličného miesta. Potvrdené referendom v roku 2010 (55 % za). Centrum: 0,35 miest/1000 sq ft.</p><p class="city-desc en-only">Historic compromise (1996): total city parking frozen at 1990 level. Every new underground space requires removing one on-street space. Confirmed by 2010 referendum (55% in favour). Centre: 0.35 spaces/1,000 sq ft.</p>
+      <div class="city-year sk-only">REFORMA: Max od 1989; referendum 2010</div><div class="city-year en-only">REFORM: Max since 1989; referendum 2010</div>
+    </div>
+
+    <!-- STOCKHOLM -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Stockholm</div>
+          <div class="city-country sk-only">🇸🇪 Švédsko · 1 000 000 obyv.</div><div class="city-country en-only">🇸🇪 Sweden · 1,000,000 inhab.</div>
+        </div>
+        <span class="city-rank">#07</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-blue">NÍZKE MINIMUM</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.3</span>
+        <div>
+          <div class="city-metric-unit sk-only">– 0.6 miest / byt</div><div class="city-metric-unit en-only">– 0.6 spaces / unit</div>
+          <div class="city-metric-label sk-only">PODĽA POLOHY A DOSTUPNOSTI MHD</div><div class="city-metric-label en-only">BY LOCATION AND TRANSIT ACCESS</div>
+        </div>
+      </div>
+      <p class="city-desc sk-only">Flexibilná norma 0,3–0,6 miest/byt upravená podľa polohy. Študentské byty: takmer nulová požiadavka. Parkovacie povolenie: až SEK 1 100/mesiac (~130 €) — jedno z najdrahších na svete. Štúdia: vyššie minimá = vyššia automobilová vlastníctvo.</p><p class="city-desc en-only">Flexible norm of 0.3–0.6 spaces/unit adjusted by location. Student housing: near-zero requirement. Parking permit: up to SEK 1,100/month (~€130) — one of the most expensive in the world. Research shows: higher minimums = higher car ownership.</p>
+      <div class="city-year sk-only">REFORMA: Kompletný revamp 2015</div><div class="city-year en-only">REFORM: Complete overhaul 2015</div>
+    </div>
+
+    <!-- COPENHAGEN -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Kodaň</div>
+          <div class="city-country sk-only">🇩🇰 Dánsko · 650 000 obyv.</div><div class="city-country en-only">🇩🇰 Denmark · 650,000 inhab.</div>
+        </div>
+        <span class="city-rank">#08</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-blue">NÍZKE MINIMUM</span>
+        <span class="badge badge-green">MAXIMUM</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">1</span>
+        <div>
+          <div class="city-metric-unit sk-only">/ 100–250 m² podlahy</div><div class="city-metric-unit en-only">/ 100–250 m² floor area</div>
+          <div class="city-metric-label sk-only">FLEXIBILNÁ NORMA + CELOMESTSKÝ STROP</div><div class="city-metric-label en-only">FLEXIBLE NORM + CITY-WIDE CAP</div>
+        </div>
+      </div>
+      <p class="city-desc sk-only">Flexibilná norma: 1 miesto na 100–250 m² podlahy, nastavená podľa projektu. Celkový počet parkovacích miest v meste je zastropovaný. Ørestad (25 000 byt. 2040): znížené normy. Cyklistický podiel dopravy: 62 %.</p><p class="city-desc en-only">Flexible norm: 1 space per 100–250 m² of floor area, set per project. Total city-wide parking spaces are capped. Ørestad (25,000 units by 2040): reduced norms. Cycling modal share: 62%.</p>
+      <div class="city-year sk-only">REFORMA: Priebežná; Ørestad od 2004</div><div class="city-year en-only">REFORM: Ongoing; Ørestad since 2004</div>
+    </div>
+
+    <!-- HELSINKI -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Helsinki</div>
+          <div class="city-country sk-only">🇫🇮 Fínsko · 660 000 obyv.</div><div class="city-country en-only">🇫🇮 Finland · 660,000 inhab.</div>
+        </div>
+        <span class="city-rank">#09</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-amber">ZNIŽOVANIE</span>
+        <span class="badge badge-red">NULOVÉ MINIMUM (navrhované)</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">0</span>
+        <div>
+          <div class="city-metric-unit sk-only">navrhované pre centrum</div><div class="city-metric-unit en-only">proposed for centre</div>
+          <div class="city-metric-label sk-only">ZVYŠOK: ZNÍŽENIE NA 1/220–280 m²</div><div class="city-metric-label en-only">REST: REDUCTION TO 1/220–280 m²</div>
+        </div>
+      </div>
+      <p class="city-desc sk-only">Návrh reformy (máj 2025): centrum — developer rozhoduje sám (nulové minimum). Zvyšok mesta: 1 miesto na 220–280 m² (dnes 100–150 m²). Sociálne byty: -20 %. Car-sharing: každé zdieľané vozidlo šetrí 5 miest. Súčasné normy viedli k stratovým parkoviskám.</p><p class="city-desc en-only">Reform proposal (May 2025): centre — developer decides alone (zero minimum). Rest of city: 1 space per 220–280 m² (currently 100–150 m²). Social housing: -20%. Car-sharing: each shared vehicle saves 5 spaces. Current norms have led to loss-making car parks.</p>
+      <div class="city-year sk-only">REFORMA: Návrh máj 2025 (v procese)</div><div class="city-year en-only">REFORM: Proposal May 2025 (pending)</div>
+    </div>
+
+    <!-- HAMBURG -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Hamburg</div>
+          <div class="city-country sk-only">🇩🇪 Nemecko · 1 850 000 obyv.</div><div class="city-country en-only">🇩🇪 Germany · 1,850,000 inhab.</div>
+        </div>
+        <span class="city-rank">#10</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-red">NULOVÉ MINIMUM</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">0</span>
+        <div>
+          <div class="city-metric-unit sk-only">povinných miest / byt</div><div class="city-metric-unit en-only">mandatory spaces / unit</div>
+          <div class="city-metric-label sk-only">DEVELOPER SA ROZHODUJE SÁM</div><div class="city-metric-label en-only">DEVELOPER DECIDES FREELY</div>
+        </div>
+      </div>
+      <p class="city-desc sk-only">Hamburg nasledoval Berlín a zrušil parkovacie minimá v roku 2013. Developer sám rozhoduje o počte miest. Veľké rozvojové zóny ako HafenCity sa projektujú s minimom parkovania a maximálnym dôrazom na MHD a cyklodopravu.</p><p class="city-desc en-only">Hamburg followed Berlin and abolished parking minimums in 2013. The developer alone decides the number of spaces. Large development zones like HafenCity are designed with minimum parking and maximum emphasis on public transport and cycling.</p>
+      <div class="city-year sk-only">REFORMA: 2013</div><div class="city-year en-only">REFORM: 2013</div>
+    </div>
+
+    <!-- UTRECHT -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Utrecht</div>
+          <div class="city-country sk-only">🇳🇱 Holandsko · 360 000 obyv.</div><div class="city-country en-only">🇳🇱 Netherlands · 360,000 inhab.</div>
+        </div>
+        <span class="city-rank">#11</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-blue">NÍZKE MINIMUM</span>
+        <span class="badge badge-green">MAXIMUM</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.1</span>
+        <div>
+          <div class="city-metric-unit sk-only">– 0.3 miest / byt (centrum)</div><div class="city-metric-unit en-only">– 0.3 spaces / unit (centre)</div>
+          <div class="city-metric-label sk-only">ZÁVISÍ OD DOSTUPNOSTI MHD</div><div class="city-metric-label en-only">DEPENDS ON TRANSIT ACCESSIBILITY</div>
+        </div>
+      </div>
+      <p class="city-desc sk-only">Utrecht zavádza nízke normy kombinované s maximami vo vnútornom meste. Mesto investuje masívne do cyklodopravy (Worlds largest bike parking pri centrálnej stanici: 12 500 miest). Rezidentské parkovacie povolenia sú obmedzené a drahé.</p><p class="city-desc en-only">Utrecht applies low norms combined with maxima in the inner city. The city invests massively in cycling (world's largest bike parking at the central station: 12,500 spaces). Residential parking permits are limited and expensive.</p>
+      <div class="city-year sk-only">REFORMA: Priebežná; Park+Ride stratégia</div><div class="city-year en-only">REFORM: Ongoing; Park+Ride strategy</div>
+    </div>
+
+    <!-- VIENNA -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Viedeň</div>
+          <div class="city-country sk-only">🇦🇹 Rakúsko · 2 000 000 obyv.</div><div class="city-country en-only">🇦🇹 Austria · 2,000,000 inhab.</div>
+        </div>
+        <span class="city-rank">#12</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-amber">ZNIŽOVANIE</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.7</span>
+        <div>
+          <div class="city-metric-unit sk-only">× norma (zóna 1)</div><div class="city-metric-unit en-only">× norm (zone 1)</div>
+          <div class="city-metric-label sk-only">ZÁKLADNÁ NORMA: 1 MIESTO / BYT</div><div class="city-metric-label en-only">BASE NORM: 1 SPACE / UNIT</div>
+        </div>
+      </div>
+      <p class="city-desc">Reforma 2023: Zóna 1 (najlepšia MHD): len 70 % povinného minima. Zóna 2: 80 %. Zníženia za EV nabíjanie a car-sharing. Parkovacie povolenie „Parkpickerl": len €13/mesiac. 70 % ciest v meste prebieha bez auta.</p>
+      <div class="city-year sk-only">REFORMA: Novela stavebného zákona 2023</div><div class="city-year en-only">REFORM: Building code amendment 2023</div>
+    </div>
+
+    <!-- MUNICH -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Mníchov</div>
+          <div class="city-country sk-only">🇩🇪 Nemecko · 1 550 000 obyv.</div><div class="city-country en-only">🇩🇪 Germany · 1,550,000 inhab.</div>
+        </div>
+        <span class="city-rank">#13</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-blue">NÍZKE MINIMUM</span>
+        <span class="badge badge-amber">ZNIŽOVANIE</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.3</span>
+        <div>
+          <div class="city-metric-unit sk-only">– 0.8 miest / byt</div><div class="city-metric-unit en-only">– 0.8 spaces / unit</div>
+          <div class="city-metric-label sk-only">PODĽA POLOHY, ZNÍŽ. ZA MHD</div><div class="city-metric-label en-only">BY LOCATION, REDUCTION NEAR TRANSIT</div>
+        </div>
+      </div>
+      <p class="city-desc sk-only">Bavorské stavebné normy sú federálne, ale Mníchov môže nastaviť redukčné koeficienty. Nové projekty v blízkosti S-Bahn/U-Bahn dostávajú znížené normy. Mníchov aktívne tlačí developérov do car-free konceptov v nových štvrtiach (Münchner Nordosten).</p><p class="city-desc en-only">Bavarian building codes are set federally, but Munich can apply reduction coefficients. New projects near S-Bahn/U-Bahn receive lower norms. Munich actively pushes developers toward car-free concepts in new districts (Münchner Nordosten).</p>
+      <div class="city-year sk-only">REFORMA: Priebežná; Münchner Nordosten 2030+</div><div class="city-year en-only">REFORM: Ongoing; Münchner Nordosten 2030+</div>
+    </div>
+
+    <!-- ANTWERP -->
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div>
+          <div class="city-name">Antverpy</div>
+          <div class="city-country sk-only">🇧🇪 Belgicko · 530 000 obyv.</div><div class="city-country en-only">🇧🇪 Belgium · 530,000 inhab.</div>
+        </div>
+        <span class="city-rank">#14</span>
+      </div>
+      <div class="city-tags">
+        <span class="badge badge-green">MAXIMUM</span>
+        <span class="badge badge-amber">ZNIŽOVANIE</span>
+      </div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.6</span>
+        <div>
+          <div class="city-metric-unit sk-only">max miest / byt (centrum)</div><div class="city-metric-unit en-only">max spaces / unit (centre)</div>
+          <div class="city-metric-label sk-only">POSTUPNÉ ZNIŽOVANIE MAXIMA</div><div class="city-metric-label en-only">PROGRESSIVE REDUCTION OF MAXIMUM</div>
+        </div>
+      </div>
+      <p class="city-desc sk-only">Antverpy patria k progresívnejším belgickým mestám. Centrum: maximum 0,6 miest/byt. Projekt Ringland: prekrytie okružnej diaľnice a zrušenie tisícok parkovacích miest povrchovo. Mesto prepája parkovaciu politiku s nízkoemisnou zónou (LEZ).</p><p class="city-desc en-only">Antwerp is one of Belgium's more progressive cities. Centre: maximum 0.6 spaces/unit. Ringland project: covering the ring road and eliminating thousands of surface parking spaces. The city links parking policy with its low-emission zone (LEZ).</p>
+      <div class="city-year sk-only">REFORMA: Priebežná; LEZ od 2017</div><div class="city-year en-only">REFORM: Ongoing; LEZ since 2017</div>
+    </div>
+  </div>
+
+  <!-- ══ NORDIC & OTHER ══ -->
+  <div class="region-header reveal" style="margin-top:4rem;">
+    <h2 class="sk-only">Severná &amp; Južná Európa</h2><h2 class="en-only">Northern &amp; Southern Europe</h2>
+    <div class="region-line"></div>
+    <span class="region-count sk-only">10 MIEST</span><span class="region-count en-only">10 CITIES</span>
+  </div>
+
+  <div class="city-grid">
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Göteborg</div><div class="city-country sk-only">🇸🇪 Švédsko · 580 000 obyv.</div><div class="city-country en-only">🇸🇪 Sweden · 580,000 inhab.</div></div>
+        <span class="city-rank">#15</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-blue">NÍZKE MINIMUM</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.4</span>
+        <div><div class="city-metric-unit sk-only">miest / byt (centrum)</div><div class="city-metric-unit en-only">spaces / unit (centre)</div><div class="city-metric-label sk-only">FLEXIBILNÁ NORMA ZÁVISLÁ OD MHD</div><div class="city-metric-label en-only">FLEXIBLE NORM BASED ON TRANSIT</div></div>
+      </div>
+      <p class="city-desc sk-only">Göteborg uplatňuje podobný model ako Stockholm s flexibilnými normami. Zóna centra: 0,4 miest/byt. Nové developerské projekty pri prestupných uzloch Göteborgsregionen môžu žiadať o ďalšie zníženie cez mobility management plán.</p><p class="city-desc en-only">Gothenburg applies a similar model to Stockholm with flexible norms. Centre zone: 0.4 spaces/unit. New development projects near Göteborgsregionen transit hubs can apply for further reductions through a mobility management plan.</p>
+      <div class="city-year sk-only">REFORMA: 2016 (normy aktualizované)</div><div class="city-year en-only">REFORM: 2016 (norms updated)</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Malmö</div><div class="city-country sk-only">🇸🇪 Švédsko · 350 000 obyv.</div><div class="city-country en-only">🇸🇪 Sweden · 350,000 inhab.</div></div>
+        <span class="city-rank">#16</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-blue">NÍZKE MINIMUM</span><span class="badge badge-amber">ZNIŽOVANIE</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.3</span>
+        <div><div class="city-metric-unit sk-only">– 0.5 miest / byt</div><div class="city-metric-unit en-only">– 0.5 spaces / unit</div><div class="city-metric-label sk-only">WESTERN HARBOUR: TESNE NAD NULOU</div><div class="city-metric-label en-only">WESTERN HARBOUR: JUST ABOVE ZERO</div></div>
+      </div>
+      <p class="city-desc sk-only">Štvrť Western Harbour (Västra Hamnen) je ukážkovým prípadom car-free urbanizmu: 0,1–0,2 miest/byt. Projekt Hyllie pri novej stanici: minimá tesne pod 0,5. Malmö aktívne propaguje model „1 auto = 1 car-sharing miesto nahradí 8 súkromných miest".</p><p class="city-desc en-only">The Western Harbour (Västra Hamnen) district is a showcase of car-free urbanism: 0.1–0.2 spaces/unit. The Hyllie project near the new station: minimums just below 0.5. Malmö actively promotes the model "1 car-sharing space replaces 8 private spaces".</p>
+      <div class="city-year sk-only">REFORMA: Västra Hamnen 2001–; Hyllie 2012–</div><div class="city-year en-only">REFORM: Västra Hamnen 2001–; Hyllie 2012–</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Helsinki — Kalasatama</div><div class="city-country sk-only">🇫🇮 Fínsko · čtvrť 25 000 obyv.</div><div class="city-country en-only">🇫🇮 Finland · district 25,000 inhab.</div></div>
+        <span class="city-rank">#17</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-blue">NÍZKE MINIMUM</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.25</span>
+        <div><div class="city-metric-unit sk-only">miest / byt (cieľ)</div><div class="city-metric-unit en-only">spaces / unit (target)</div><div class="city-metric-label sk-only">PILOTNÁ „SMART CITY" ŠTVRŤ</div><div class="city-metric-label en-only">PILOT "SMART CITY" DISTRICT</div></div>
+      </div>
+      <p class="city-desc sk-only">Kalasatama je helsinská smart-city demonstrácia: cieľ 0,25 miest/byt. Parkovanie zdieľané medzi rezidentmi a firmami. Senzorová infraštruktúra na parkoviskách. Model dokazuje, že nízke normy musia byť kompenzované inteligentným riadením dostupnosti miest.</p><p class="city-desc en-only">Kalasatama is Helsinki's smart-city demonstration: target 0.25 spaces/unit. Parking shared between residents and businesses. Sensor infrastructure in car parks. The model proves that low norms must be compensated by intelligent management of space availability.</p>
+      <div class="city-year sk-only">REFORMA: Kalasatama od 2012</div><div class="city-year en-only">REFORM: Kalasatama since 2012</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Barcelona</div><div class="city-country sk-only">🇪🇸 Španielsko · 1 600 000 obyv.</div><div class="city-country en-only">🇪🇸 Spain · 1,600,000 inhab.</div></div>
+        <span class="city-rank">#18</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-amber">ZNIŽOVANIE</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">503</span>
+        <div><div class="city-metric-unit sk-only">superblocks celkovo</div><div class="city-metric-unit en-only">superblocks total</div><div class="city-metric-label sk-only">POULIČNÉ PARKOVANIE RUŠENÉ V BLOKOCH</div><div class="city-metric-label en-only">ON-STREET PARKING REMOVED IN BLOCKS</div></div>
+      </div>
+      <p class="city-desc sk-only">Superblocks: 9 blokov uzavretých pre tranzit, parkovanie presunuté do podzemí. Plán 503 superblocks = obsadia 70 % ulíc. Nízkoemisná zóna (ZBE) 95 km² od 2020. Formálne minimá na byty pretrvávajú, ale fyzická kapacita pouličného parkovania sa drasticky znižuje.</p><p class="city-desc en-only">Superblocks: 9-block clusters closed to through-traffic, parking moved underground. Plan: 503 superblocks covering 70% of streets. Low-emission zone (ZBE) 95 km² since 2020. Formal apartment minimums remain, but physical on-street capacity is drastically reduced.</p>
+      <div class="city-year sk-only">REFORMA: Superblocks pilot 2015; ZBE 2020</div><div class="city-year en-only">REFORM: Superblocks pilot 2015; ZBE 2020</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Madrid</div><div class="city-country sk-only">🇪🇸 Španielsko · 3 300 000 obyv.</div><div class="city-country en-only">🇪🇸 Spain · 3,300,000 inhab.</div></div>
+        <span class="city-rank">#19</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-amber">ZNIŽOVANIE</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.5</span>
+        <div><div class="city-metric-unit sk-only">– 1.0 miest / byt</div><div class="city-metric-unit en-only">– 1.0 spaces / unit</div><div class="city-metric-label sk-only">Madrid CENTRAL: REDUKCIA KAPACITY</div><div class="city-metric-label en-only">MADRID CENTRAL: CAPACITY REDUCTION</div></div>
+      </div>
+      <p class="city-desc sk-only">Madrid Central (LEZ) od 2018 výrazne obmedzuje vstup áut do centra, čo znižuje dopyt po parkovaní. Nové projekty v centro histórico musia parkovanie riešiť podzemne s obmedzenými kvótami. Normy sú regionálne (Comunidad de Madrid), mesto ich dopĺňa urbanistickými obmedzeniami.</p><p class="city-desc en-only">Madrid Central (LEZ) since 2018 significantly restricts cars entering the centre, reducing parking demand. New projects in the historic centre must provide underground parking with limited quotas. Norms are regional (Comunidad de Madrid); the city adds urban planning restrictions.</p>
+      <div class="city-year sk-only">REFORMA: Madrid Central 2018; ZBE 2022</div><div class="city-year en-only">REFORM: Madrid Central 2018; ZBE 2022</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Brusel</div><div class="city-country sk-only">🇧🇪 Belgicko · 1 200 000 obyv.</div><div class="city-country en-only">🇧🇪 Belgium · 1,200,000 inhab.</div></div>
+        <span class="city-rank">#20</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-green">MAXIMUM</span><span class="badge badge-amber">ZNIŽOVANIE</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.5</span>
+        <div><div class="city-metric-unit sk-only">max miest / byt (centrum)</div><div class="city-metric-unit en-only">max spaces / unit (centre)</div><div class="city-metric-label sk-only">GOOD MOVE PLÁN 2021–2030</div><div class="city-metric-label en-only">GOOD MOVE PLAN 2021–2030</div></div>
+      </div>
+      <p class="city-desc sk-only">Good Move plán: zníženie počtu áut v Bruseli o 24 % do 2030. Centrum: max 0,5 miest/byt. Neighborhood Traffic Plans obmedzujú tranzit v 65 zónach. Brusel ruší tisíce pouličných parkovísk na cyklopruh a verejné priestranstvá.</p><p class="city-desc en-only">Good Move plan: reduce cars in Brussels by 24% by 2030. Centre: max 0.5 spaces/unit. Neighbourhood Traffic Plans restrict through-traffic in 65 zones. Brussels is converting thousands of on-street parking spaces into cycle lanes and public squares.</p>
+      <div class="city-year sk-only">REFORMA: Good Move plán 2021</div><div class="city-year en-only">REFORM: Good Move plan 2021</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Vigo</div><div class="city-country sk-only">🇪🇸 Španielsko · 295 000 obyv.</div><div class="city-country en-only">🇪🇸 Spain · 295,000 inhab.</div></div>
+        <span class="city-rank">#21</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-blue">NÍZKE MINIMUM</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.5</span>
+        <div><div class="city-metric-unit sk-only">miest / byt (centrum)</div><div class="city-metric-unit en-only">spaces / unit (centre)</div><div class="city-metric-label sk-only">ZNÍŽENIE V HISTORICKOM CENTRE</div><div class="city-metric-label en-only">REDUCTION IN HISTORIC CENTRE</div></div>
+      </div>
+      <p class="city-desc sk-only">Galícijské mestá ako Vigo testujú zníženie noriem v historickom jadre. Centrum: 0,5 miest/byt namiesto národného štandardu 1,0. Spolu s Pontevedrou (kompletne chodcovské centrum, 0 pouličných miest) patria medzi španielskych lídrov reštrukturalizácie parkovania.</p><p class="city-desc en-only">Galician cities like Vigo are testing reduced norms in the historic core. Centre: 0.5 spaces/unit instead of the national standard of 1.0. Together with Pontevedra (fully pedestrianised centre, 0 on-street spaces) they are Spain's parking reform leaders.</p>
+      <div class="city-year sk-only">REFORMA: PGOM revízia</div><div class="city-year en-only">REFORM: PGOM revision</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Bordeaux</div><div class="city-country sk-only">🇫🇷 Francúzsko · 260 000 obyv.</div><div class="city-country en-only">🇫🇷 France · 260,000 inhab.</div></div>
+        <span class="city-rank">#22</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-blue">NÍZKE MINIMUM</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.5</span>
+        <div><div class="city-metric-unit sk-only">miest / byt (centrum)</div><div class="city-metric-unit en-only">spaces / unit (centre)</div><div class="city-metric-label sk-only">FRANCÚZSKY NÁRODNÝ ZÁKON LIMITUJE MAXIMÁ</div><div class="city-metric-label en-only">FRENCH NATIONAL LAW CAPS MAXIMUMS</div></div>
+      </div>
+      <p class="city-desc sk-only">Francúzsky národný zákon (SRU) obmedzuje, ako vysoké môžu byť parkovacie minimá. Bordeaux Métropole: centrum 0,5 miest/byt, pri MHD blízko nuly. Tram-réseau mesta (6 liniek) umožňuje agresívne znižovanie noriem v celej aglomerácii.</p><p class="city-desc en-only">The French national law (SRU) limits how high parking minimums can be. Bordeaux Métropole: centre 0.5 spaces/unit, near zero beside transit. The city's tram network (6 lines) enables aggressive norm reduction across the whole agglomeration.</p>
+      <div class="city-year sk-only">REFORMA: PLU-I Bordeaux Métropole</div><div class="city-year en-only">REFORM: PLU-I Bordeaux Métropole</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Grenoble</div><div class="city-country sk-only">🇫🇷 Francúzsko · 160 000 obyv.</div><div class="city-country en-only">🇫🇷 France · 160,000 inhab.</div></div>
+        <span class="city-rank">#23</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-red">NULOVÉ MINIMUM</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0</span>
+        <div><div class="city-metric-unit sk-only">min. miest v centre</div><div class="city-metric-unit en-only">min. spaces in centre</div><div class="city-metric-label sk-only">CENTRE HISTORIQUE: NULOVÉ MINIMUM</div><div class="city-metric-label en-only">CENTRE HISTORIQUE: ZERO MINIMUM</div></div>
+      </div>
+      <p class="city-desc sk-only">Grenoble: historické centrum — nulové parkovacie minimum pre rezidenčné projekty. Mesto preslávené agresívnou politikou trvalo udržateľnej mobility: bezplatná MHD pre sociálne skupiny, rozsiahla cyklosieť 450+ km. Modèle français progressif.</p><p class="city-desc en-only">Grenoble: historic centre — zero parking minimum for residential projects. The city is renowned for aggressive sustainable mobility policy: free public transport for social groups, extensive cycle network 450+ km. The progressive French model.</p>
+      <div class="city-year sk-only">REFORMA: PLU revízia 2019</div><div class="city-year en-only">REFORM: PLU revision 2019</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Lyon</div><div class="city-country sk-only">🇫🇷 Francúzsko · 520 000 obyv.</div><div class="city-country en-only">🇫🇷 France · 520,000 inhab.</div></div>
+        <span class="city-rank">#24</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-blue">NÍZKE MINIMUM</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.4</span>
+        <div><div class="city-metric-unit sk-only">miest / byt (centrum)</div><div class="city-metric-unit en-only">spaces / unit (centre)</div><div class="city-metric-label sk-only">PRESQU'ÎLE: BLÍZKO NULY</div><div class="city-metric-label en-only">PRESQU'ÎLE: NEAR ZERO</div></div>
+      </div>
+      <p class="city-desc sk-only">Lyon Métropole zaviedlo diferencované normy: na poloostrove Presqu'île (husto obývané centrum) takmer nulové minimá. Okrajové časti: 0,4–0,8/byt. Tramvajová sieť 7 liniek + metro + velopartage umožňuje výrazné zníženie automobilovej závislosti.</p><p class="city-desc en-only">Lyon Métropole introduced differentiated norms: on the Presqu'île peninsula (densely populated centre) near-zero minimums. Outer zones: 0.4–0.8/unit. Tram network of 7 lines + metro + bike-sharing enables significant reduction in car dependency.</p>
+      <div class="city-year sk-only">REFORMA: PLU-H Métropole de Lyon</div><div class="city-year en-only">REFORM: PLU-H Métropole de Lyon</div>
+    </div>
+  </div>
+
+  <!-- CEE Banner -->
+  <div class="cee-banner reveal" style="margin-top:5rem;">
+    <div class="cee-icon">⚠️</div>
+    <div>
+      <h3 class="sk-only">Stredná a Východná Európa: 5–10 rokov za Západom</h3><h3 class="en-only">Central &amp; Eastern Europe: 5–10 Years Behind the West</h3>
+      <p class="sk-only">CEE krajiny väčšinou stále uplatňujú národné technické normy z 90. rokov vyžadujúce ~1 miesto/byt. Najvýznamnejšie výnimky sú Praha (návrh reformy), Graz (Mobility Contracts) a Wrocław (max 1 miesto/byt v centre). Slovensko (STN 73 6110), Maďarsko a Poľsko zostávajú konzervatívne — čo je pre GOSPACE LABS trh budúcnosti.</p><p class="en-only">CEE countries mostly still apply national technical standards from the 1990s requiring ~1 space/unit. The most significant exceptions are Prague (reform proposal), Graz (Mobility Contracts) and Wrocław (max 1 space/unit in centre). Slovakia (STN 73 6110), Hungary and Poland remain conservative — making them the future market for GOSPACE LABS.</p>
+    </div>
+  </div>
+
+  <!-- ══ CEE ══ -->
+  <div class="region-header reveal">
+    <h2 class="sk-only">Stredná Európa — Emerging</h2><h2 class="en-only">Central Europe — Emerging</h2>
+    <div class="region-line"></div>
+    <span class="region-count sk-only">7 MIEST</span><span class="region-count en-only">7 CITIES</span>
+  </div>
+
+  <div class="city-grid">
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Praha</div><div class="city-country sk-only">🇨🇿 Česká republika · 1 350 000 obyv.</div><div class="city-country en-only">🇨🇿 Czech Republic · 1,350,000 inhab.</div></div>
+        <span class="city-rank">#25</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-amber">ZNIŽOVANIE</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">−25%</span>
+        <div><div class="city-metric-unit sk-only">navrhovaná redukcia noriem</div><div class="city-metric-unit en-only">proposed norm reduction</div><div class="city-metric-label sk-only">CENTRUM: PLNÁ VOĽNOSŤ DEVELOPERA</div><div class="city-metric-label en-only">CENTRE: FULL DEVELOPER FREEDOM</div></div>
+      </div>
+      <p class="city-desc sk-only">Najambicióznejší návrh reformy v CEE. Praha navrhuje: centrum — developer sám rozhoduje; priemer mesta: -25 % noriem. Dôvod: jedno podzemné parkovacie miesto v historickom centre stojí až CZK 2 mil. (€80 000+). Priamo súvisí s dostupnosťou bytov.</p><p class="city-desc en-only">The most ambitious reform proposal in CEE. Prague proposes: centre — developer decides alone; city average: -25% norms. Reason: one underground parking space in the historic centre costs up to CZK 2 million (€80,000+). Directly linked to housing affordability.</p>
+      <div class="city-year sk-only">REFORMA: Návrh zmeny noriem 2022 (stav: v procese)</div><div class="city-year en-only">REFORM: Norm change proposal 2022 (status: pending)</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Graz</div><div class="city-country sk-only">🇦🇹 Rakúsko · 330 000 obyv.</div><div class="city-country en-only">🇦🇹 Austria · 330,000 inhab.</div></div>
+        <span class="city-rank">#26</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-amber">ZNIŽOVANIE</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.5</span>
+        <div><div class="city-metric-unit sk-only">– 0.8 miest / byt</div><div class="city-metric-unit en-only">– 0.8 spaces / unit</div><div class="city-metric-label sk-only">MOBILITY CONTRACTS — ZNÍŽENIE POD KRAJ. NORMU</div><div class="city-metric-label en-only">MOBILITY CONTRACTS — BELOW REGIONAL NORM</div></div>
+      </div>
+      <p class="city-desc sk-only">Najprogesívnejší mechanizmus v CEE: Mobility Contracts umožňujú znížiť normy pod krajinský zákonný štandard (1 miesto/byt) na základe dohody o MHD, cykloinfraštruktúre a car-sharingu. Od 2011 podpísaných ~35 zmlúv. Podiel individuálnej dopravy: 46,8 % → 41,6 % (2013–2018).</p><p class="city-desc en-only">The most progressive mechanism in CEE: Mobility Contracts allow norms to be reduced below the regional legal standard (1 space/unit) in exchange for commitments on transit, cycling infrastructure and car-sharing. Since 2011: ~35 contracts signed. Private car modal share: 46.8% → 41.6% (2013–2018).</p>
+      <div class="city-year sk-only">REFORMA: Mobility Contracts od 2011</div><div class="city-year en-only">REFORM: Mobility Contracts since 2011</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Wrocław</div><div class="city-country sk-only">🇵🇱 Poľsko · 640 000 obyv.</div><div class="city-country en-only">🇵🇱 Poland · 640,000 inhab.</div></div>
+        <span class="city-rank">#27</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-green">MAXIMUM</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">1.0</span>
+        <div><div class="city-metric-unit sk-only">max miest / byt (centrum)</div><div class="city-metric-unit en-only">max spaces / unit (centre)</div><div class="city-metric-label sk-only">MAXIMUM V CENTRE — ÚNICA V POĽSKU</div><div class="city-metric-label en-only">MAXIMUM IN CENTRE — UNIQUE IN POLAND</div></div>
+      </div>
+      <p class="city-desc sk-only">Wrocław je jedinou poľskou metropolou s parkovacím maximom v centre: max 1 miesto/byt. Ostatné poľské mestá vyžadujú 1,0–1,6 minimá. 87 % poľských územných plánov má iba minimá, žiadne maximá (štúdia 547 plánov). Wrocław teda vyčnieva ako CEE pionier.</p><p class="city-desc en-only">Wrocław is the only Polish metropolis with a parking maximum in the centre: max 1 space/unit. Other Polish cities require 1.0–1.6 minimums. 87% of Polish land-use plans have only minimums, no maximums (study of 547 plans). Wrocław stands out as a CEE pioneer.</p>
+      <div class="city-year sk-only">REFORMA: Územný plán centra (post-2016)</div><div class="city-year en-only">REFORM: Central area land-use plan (post-2016)</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Salzburg</div><div class="city-country sk-only">🇦🇹 Rakúsko · 155 000 obyv.</div><div class="city-country en-only">🇦🇹 Austria · 155,000 inhab.</div></div>
+        <span class="city-rank">#28</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-amber">ZNIŽOVANIE</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">€20k</span>
+        <div><div class="city-metric-unit sk-only">kompenzácia / nerealizované miesto</div><div class="city-metric-unit en-only">compensation / unrealised space</div><div class="city-metric-label sk-only">4 ZÓNY (A–D) + MOBILITY MANAGEMENT</div><div class="city-metric-label en-only">4 ZONES (A–D) + MOBILITY MANAGEMENT</div></div>
+      </div>
+      <p class="city-desc sk-only">Salzburg: 4-zónový systém noriem (A–D). Mobility management opatrenia môžu znížiť povinný počet miest. Ak developer nevybuduje povinné miesto, platí kompenzáciu €20 000/miesto do mestského fondu mobility. Stimul aj bez priameho zrušenia noriem.</p><p class="city-desc en-only">Salzburg: 4-zone norm system (A–D). Mobility management measures can reduce the required number of spaces. If a developer does not build a required space, they pay a €20,000/space compensation into the city mobility fund. An incentive even without direct abolition of norms.</p>
+      <div class="city-year sk-only">REFORMA: Stellplatzverordnung 2016</div><div class="city-year en-only">REFORM: Stellplatzverordnung 2016</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Linz</div><div class="city-country sk-only">🇦🇹 Rakúsko · 205 000 obyv.</div><div class="city-country en-only">🇦🇹 Austria · 205,000 inhab.</div></div>
+        <span class="city-rank">#29</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-amber">ZNIŽOVANIE</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.7</span>
+        <div><div class="city-metric-unit sk-only">× zákonná norma (centrum)</div><div class="city-metric-unit en-only">× statutory norm (centre)</div><div class="city-metric-label sk-only">ZNÍŽENIE PRI TRAMVAJOVÝCH LINKÁCH</div><div class="city-metric-label en-only">REDUCTION NEAR TRAM LINES</div></div>
+      </div>
+      <p class="city-desc sk-only">Linz aktívne znižuje parkovacie normy pre byty v blízkosti tramvajovej siete a obchvatu. Projekty v dosahu 300 m od zastávky MHD: 70 % zákonnej normy. Horné Rakúsko pripravuje ďalšie legislatívne zmeny po vzore Viedne (reforma 2023).</p><p class="city-desc en-only">Linz is actively reducing parking norms for apartments near the tram network and ring road. Projects within 300 m of a transit stop: 70% of the statutory norm. Upper Austria is preparing further legislative changes following Vienna's 2023 reform.</p>
+      <div class="city-year sk-only">REFORMA: Linz MobilitätsPlan 2030</div><div class="city-year en-only">REFORM: Linz MobilitätsPlan 2030</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Gdańsk</div><div class="city-country sk-only">🇵🇱 Poľsko · 490 000 obyv.</div><div class="city-country en-only">🇵🇱 Poland · 490,000 inhab.</div></div>
+        <span class="city-rank">#30</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-amber">ZNIŽOVANIE</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">0.8</span>
+        <div><div class="city-metric-unit sk-only">miest / byt (centrum)</div><div class="city-metric-unit en-only">spaces / unit (centre)</div><div class="city-metric-label sk-only">POSTUPNE ZNIŽUJE NA 0.5 V CENTRE</div><div class="city-metric-label en-only">PROGRESSIVELY REDUCING TO 0.5 IN CENTRE</div></div>
+      </div>
+      <p class="city-desc sk-only">Gdańsk je po Wrocławe najaktívnejším poľským reformným mestom. Cieľ: znížiť normy v historickom Starom Meste a Wrzeszczu na 0,5 miest/byt. SUMP (Plán trvalo udržateľnej mestskej mobility) explicitne hovorí o odkláňaní sa od auto-dependentného plánovania.</p><p class="city-desc en-only">Gdańsk is Poland's second most active reform city after Wrocław. Goal: reduce norms in the historic Old Town and Wrzeszcz to 0.5 spaces/unit. The SUMP (Sustainable Urban Mobility Plan) explicitly addresses moving away from car-dependent planning.</p>
+      <div class="city-year sk-only">REFORMA: SUMP Gdańsk 2030</div><div class="city-year en-only">REFORM: SUMP Gdańsk 2030</div>
+    </div>
+
+    <div class="city-card reveal">
+      <div class="city-card-top">
+        <div><div class="city-name">Bratislava</div><div class="city-country sk-only">🇸🇰 Slovensko · 475 000 obyv.</div><div class="city-country en-only">🇸🇰 Slovakia · 475,000 inhab.</div></div>
+        <span class="city-rank">#31</span>
+      </div>
+      <div class="city-tags"><span class="badge badge-amber">ZNIŽOVANIE (diskusia)</span></div>
+      <div class="city-metric">
+        <span class="city-metric-num">~1.0</span>
+        <div><div class="city-metric-unit sk-only">miest / byt (STN norma)</div><div class="city-metric-unit en-only">spaces / unit (STN norm)</div><div class="city-metric-label sk-only">STN 73 6110 — REVÍZIA V DISKUSII</div><div class="city-metric-label en-only">STN 73 6110 — REVISION UNDER DISCUSSION</div></div>
+      </div>
+      <p class="city-desc sk-only">Bratislava v súčasnosti uplatňuje STN 73 6110 (~1 miesto/byt s koeficientom MHD). Diskusia o reforme prebieha (IUR navrhuje novú parkovaciu normu). Extrémny tlak na parkovanie v centre. Preto vznikajú pilotné projekty ako Resident Parking Zones (RPZ) — systém, kde GOSPACE má priamy potenciál.</p><p class="city-desc en-only">Bratislava currently applies STN 73 6110 (~1 space/unit with a transit coefficient). Reform discussion is ongoing (IUR proposes a new parking norm). Extreme parking pressure in the centre. Pilot projects such as Resident Parking Zones (RPZ) are emerging — a system where GOSPACE has direct potential.</p>
+      <div class="city-year sk-only">REFORMA: STN revízia v diskusii; RPZ piloty od 2022</div><div class="city-year en-only">REFORM: STN revision under discussion; RPZ pilots since 2022</div>
+    </div>
+
+  </div>
+
+  <!-- ══ SUMMARY TABLE ══ -->
+  <section class="table-section reveal" style="margin-top:5rem; padding-bottom: 6rem;">
+    <div class="table-header-row">
+      <h2 class="sk-only">Prehľad 31 miest</h2><h2 class="en-only">Overview of 31 Cities</h2>
+      <div class="region-line"></div>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+      <div class="filter-group">
+        <span class="filter-label sk-only">Mesto</span><span class="filter-label en-only">City</span>
+        <input class="filter-input" id="f-mesto" type="text" placeholder="Hľadaj... / Search...">
+      </div>
+      <div class="filter-group">
+        <span class="filter-label sk-only">Krajina</span><span class="filter-label en-only">Country</span>
+        <select class="filter-select" id="f-krajina">
+          <option value=""><span class="sk-only">Všetky</span><span class="en-only">All</span></option>
+          <option>Nórsko</option>
+          <option>Holandsko</option>
+          <option>Nemecko</option>
+          <option>Francúzsko</option>
+          <option>Veľká Británia</option>
+          <option>Švajčiarsko</option>
+          <option>Švédsko</option>
+          <option>Dánsko</option>
+          <option>Fínsko</option>
+          <option>Belgicko</option>
+          <option>Rakúsko</option>
+          <option>Španielsko</option>
+          <option>Česká republika</option>
+          <option>Poľsko</option>
+          <option>Slovensko</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label sk-only">Typ politiky</span><span class="filter-label en-only">Policy type</span>
+        <select class="filter-select" id="f-typ">
+          <option value="">Všetky / All</option>
+          <option value="nulove">Nulové minimum / Zero min.</option>
+
+          <option value="maximum">Maximum</option>
+          <option value="nizke">Nízke minimum / Low min.</option>
+          <option value="znizovanie">Znižovanie / Reducing</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label sk-only">Min. miesta / byt</span><span class="filter-label en-only">Min. spaces / unit</span>
+        <select class="filter-select" id="f-min">
+          <option value="">Všetky / All</option>
+          <option value="0">= 0 (nulové / zero)</option>
+          <option value="low">≤ 0.5</option>
+          <option value="mid">0.5 – 1.0</option>
+          <option value="high">> 1.0</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label sk-only">Max. miesta / byt</span><span class="filter-label en-only">Max. spaces / unit</span>
+        <select class="filter-select" id="f-max">
+          <option value="">Všetky / All</option>
+          <option value="has">Má maximum / Has maximum</option>
+          <option value="none">Bez maxima / No maximum (—)</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label sk-only">Rok reformy</span><span class="filter-label en-only">Reform year</span>
+        <select class="filter-select" id="f-rok">
+          <option value="">Všetky / All</option>
+          <option value="pre2010">Pred 2010 / Before 2010</option>
+          <option value="2010-2019">2010–2019</option>
+          <option value="2020+">2020+ (newest)</option>
+          <option value="ongoing">Priebežne / Ongoing</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label sk-only">Meter reformy</span><span class="filter-label en-only">Reform meter</span>
+        <select class="filter-select" id="f-meter">
+          <option value="">Všetky / All</option>
+          <option value="9+">≥ 9.0 (Excelentné / Excellent)</option>
+          <option value="7+">≥ 7.0 (Dobré / Good)</option>
+          <option value="5+">≥ 5.0 (Stredné / Medium)</option>
+          <option value="under5">< 5.0 (Začínajúce / Emerging)</option>
+        </select>
+      </div>
+      <button class="filter-reset" id="f-reset" onclick="resetFilters()">✕ Reset</button>
+      <div class="filter-count" id="f-count"><span id="f-visible">31</span> / 31 <span class="sk-only">miest</span><span class="en-only">cities</span></div>
+    </div>
+
+    <table class="data-table" id="main-table">
+      <thead>
+        <tr>
+          <th class="sortable" data-col="0">#</th>
+          <th class="sortable" data-col="1"><span class="sk-only">Mesto</span><span class="en-only">City</span></th>
+          <th class="sortable" data-col="2"><span class="sk-only">Krajina</span><span class="en-only">Country</span></th>
+          <th><span class="sk-only">Typ politiky</span><span class="en-only">Policy type</span></th>
+          <th class="sortable" data-col="4"><span class="sk-only">Min. miesta / byt</span><span class="en-only">Min. spaces / unit</span></th>
+          <th><span class="sk-only">Max. miesta / byt</span><span class="en-only">Max. spaces / unit</span></th>
+          <th class="sortable" data-col="6"><span class="sk-only">Rok reformy</span><span class="en-only">Reform year</span></th>
+          <th class="sortable" data-col="7"><span class="sk-only">Meter reformy</span><span class="en-only">Reform meter</span></th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <tr data-mesto="oslo" data-krajina="Nórsko" data-typ="nulove maximum" data-min="0" data-max="has" data-rok="2022" data-meter="9.8"><td>1</td><td class="city-col">Oslo</td><td>🇳🇴 Nórsko</td><td><span class="badge badge-red">NULOVÉ MIN.</span> <span class="badge badge-green">MAXIMUM</span></td><td class="num-col">0</td><td class="num-col">0.5/100m²</td><td>2022</td><td><div class="score-bar"><div class="score-fill" style="width:98%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">9.8</span></div></td></tr>
+        <tr data-mesto="amsterdam" data-krajina="Holandsko" data-typ="maximum nulove" data-min="0" data-max="has" data-rok="2019" data-meter="9.5"><td>2</td><td class="city-col">Amsterdam</td><td>🇳🇱 Holandsko</td><td><span class="badge badge-green">MAXIMUM</span> <span class="badge badge-red">NULOVÉ MIN.</span></td><td class="num-col">0</td><td class="num-col">0.2–0.3</td><td>2019</td><td><div class="score-bar"><div class="score-fill" style="width:95%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">9.5</span></div></td></tr>
+        <tr data-mesto="berlin" data-krajina="Nemecko" data-typ="nulove" data-min="0" data-max="none" data-rok="1990" data-meter="9.3"><td>3</td><td class="city-col">Berlín</td><td>🇩🇪 Nemecko</td><td><span class="badge badge-red">NULOVÉ MIN.</span></td><td class="num-col">0</td><td class="num-col">—</td><td>1990e</td><td><div class="score-bar"><div class="score-fill" style="width:93%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">9.3</span></div></td></tr>
+        <tr data-mesto="pariz" data-krajina="Francúzsko" data-typ="nulove maximum" data-min="0" data-max="has" data-rok="2016" data-meter="9.2"><td>4</td><td class="city-col">Paríž</td><td>🇫🇷 Francúzsko</td><td><span class="badge badge-red">NULOVÉ MIN.</span> <span class="badge badge-green">MAXIMUM</span></td><td class="num-col">0</td><td class="num-col">1/100m²</td><td>2016</td><td><div class="score-bar"><div class="score-fill" style="width:92%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">9.2</span></div></td></tr>
+        <tr data-mesto="londyn" data-krajina="Veľká Británia" data-typ="nulove maximum" data-min="0" data-max="has" data-rok="2004" data-meter="9.0"><td>5</td><td class="city-col">Londýn</td><td>🇬🇧 Veľká Británia</td><td><span class="badge badge-red">NULOVÉ MIN.</span> <span class="badge badge-green">MAXIMUM</span></td><td class="num-col">0 (centrum)</td><td class="num-col">1.5 (vonk.)</td><td>2004</td><td><div class="score-bar"><div class="score-fill" style="width:90%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">9.0</span></div></td></tr>
+        <tr data-mesto="zurich" data-krajina="Švajčiarsko" data-typ="maximum" data-min="-" data-max="has" data-rok="1989" data-meter="8.9"><td>6</td><td class="city-col">Zürich</td><td>🇨🇭 Švajčiarsko</td><td><span class="badge badge-green">MAXIMUM</span></td><td class="num-col">—</td><td class="num-col">strop 1990</td><td>1989/2010</td><td><div class="score-bar"><div class="score-fill" style="width:89%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">8.9</span></div></td></tr>
+        <tr data-mesto="hamburg" data-krajina="Nemecko" data-typ="nulove" data-min="0" data-max="none" data-rok="2013" data-meter="8.8"><td>7</td><td class="city-col">Hamburg</td><td>🇩🇪 Nemecko</td><td><span class="badge badge-red">NULOVÉ MIN.</span></td><td class="num-col">0</td><td class="num-col">—</td><td>2013</td><td><div class="score-bar"><div class="score-fill" style="width:88%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">8.8</span></div></td></tr>
+        <tr data-mesto="grenoble" data-krajina="Francúzsko" data-typ="nulove" data-min="0" data-max="none" data-rok="2019" data-meter="8.7"><td>8</td><td class="city-col">Grenoble</td><td>🇫🇷 Francúzsko</td><td><span class="badge badge-red">NULOVÉ MIN.</span></td><td class="num-col">0 (centrum)</td><td class="num-col">—</td><td>2019</td><td><div class="score-bar"><div class="score-fill" style="width:87%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">8.7</span></div></td></tr>
+        <tr data-mesto="kodan" data-krajina="Dánsko" data-typ="nizke maximum" data-min="low" data-max="has" data-rok="2004" data-meter="8.6"><td>9</td><td class="city-col">Kodaň</td><td>🇩🇰 Dánsko</td><td><span class="badge badge-blue">NÍZKE MIN.</span> <span class="badge badge-green">MAXIMUM</span></td><td class="num-col">1/100–250m²</td><td class="num-col">strop celomestský</td><td>2004–</td><td><div class="score-bar"><div class="score-fill" style="width:86%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">8.6</span></div></td></tr>
+        <tr data-mesto="stockholm" data-krajina="Švédsko" data-typ="nizke" data-min="low" data-max="has" data-rok="2015" data-meter="8.4"><td>10</td><td class="city-col">Stockholm</td><td>🇸🇪 Švédsko</td><td><span class="badge badge-blue">NÍZKE MIN.</span></td><td class="num-col">0.3</td><td class="num-col">0.6</td><td>2015</td><td><div class="score-bar"><div class="score-fill" style="width:84%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">8.4</span></div></td></tr>
+        <tr data-mesto="malmo" data-krajina="Švédsko" data-typ="nizke" data-min="low" data-max="has" data-rok="2001" data-meter="8.3"><td>11</td><td class="city-col">Malmö</td><td>🇸🇪 Švédsko</td><td><span class="badge badge-blue">NÍZKE MIN.</span></td><td class="num-col">0.3 (centrum)</td><td class="num-col">0.5</td><td>2001–</td><td><div class="score-bar"><div class="score-fill" style="width:83%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">8.3</span></div></td></tr>
+        <tr data-mesto="utrecht" data-krajina="Holandsko" data-typ="nizke maximum" data-min="low" data-max="has" data-rok="2012" data-meter="8.3"><td>12</td><td class="city-col">Utrecht</td><td>🇳🇱 Holandsko</td><td><span class="badge badge-blue">NÍZKE MIN.</span> <span class="badge badge-green">MAXIMUM</span></td><td class="num-col">0.1</td><td class="num-col">0.3 (centrum)</td><td>2012–</td><td><div class="score-bar"><div class="score-fill" style="width:83%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">8.3</span></div></td></tr>
+        <tr data-mesto="helsinki" data-krajina="Fínsko" data-typ="znizovanie" data-min="0" data-max="none" data-rok="ongoing" data-meter="8.0"><td>13</td><td class="city-col">Helsinki</td><td>🇫🇮 Fínsko</td><td><span class="badge badge-amber">ZNIŽOVANIE</span></td><td class="num-col">0 (navrhov.)</td><td class="num-col">—</td><td>2025 (návrh)</td><td><div class="score-bar"><div class="score-fill" style="width:80%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">8.0</span></div></td></tr>
+        <tr data-mesto="goteborg" data-krajina="Švédsko" data-typ="nizke" data-min="low" data-max="none" data-rok="2016" data-meter="7.8"><td>14</td><td class="city-col">Göteborg</td><td>🇸🇪 Švédsko</td><td><span class="badge badge-blue">NÍZKE MIN.</span></td><td class="num-col">0.4</td><td class="num-col">—</td><td>2016</td><td><div class="score-bar"><div class="score-fill" style="width:78%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">7.8</span></div></td></tr>
+        <tr data-mesto="brusel" data-krajina="Belgicko" data-typ="maximum" data-min="-" data-max="has" data-rok="2021" data-meter="7.8"><td>15</td><td class="city-col">Brusel</td><td>🇧🇪 Belgicko</td><td><span class="badge badge-green">MAXIMUM</span></td><td class="num-col">—</td><td class="num-col">0.5 (centrum)</td><td>2021</td><td><div class="score-bar"><div class="score-fill" style="width:78%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">7.8</span></div></td></tr>
+        <tr data-mesto="antverpy" data-krajina="Belgicko" data-typ="maximum" data-min="-" data-max="has" data-rok="2017" data-meter="7.6"><td>16</td><td class="city-col">Antverpy</td><td>🇧🇪 Belgicko</td><td><span class="badge badge-green">MAXIMUM</span></td><td class="num-col">—</td><td class="num-col">0.6 (centrum)</td><td>2017–</td><td><div class="score-bar"><div class="score-fill" style="width:76%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">7.6</span></div></td></tr>
+        <tr data-mesto="vieden" data-krajina="Rakúsko" data-typ="znizovanie" data-min="mid" data-max="none" data-rok="2023" data-meter="7.5"><td>17</td><td class="city-col">Viedeň</td><td>🇦🇹 Rakúsko</td><td><span class="badge badge-amber">ZNIŽOVANIE</span></td><td class="num-col">0.7 × norma</td><td class="num-col">—</td><td>2023</td><td><div class="score-bar"><div class="score-fill" style="width:75%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">7.5</span></div></td></tr>
+        <tr data-mesto="lyon" data-krajina="Francúzsko" data-typ="nizke" data-min="low" data-max="none" data-rok="ongoing" data-meter="7.4"><td>18</td><td class="city-col">Lyon</td><td>🇫🇷 Francúzsko</td><td><span class="badge badge-blue">NÍZKE MIN.</span></td><td class="num-col">0.4</td><td class="num-col">—</td><td>PLU-H</td><td><div class="score-bar"><div class="score-fill" style="width:74%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">7.4</span></div></td></tr>
+        <tr data-mesto="bordeaux" data-krajina="Francúzsko" data-typ="nizke" data-min="low" data-max="none" data-rok="ongoing" data-meter="7.2"><td>19</td><td class="city-col">Bordeaux</td><td>🇫🇷 Francúzsko</td><td><span class="badge badge-blue">NÍZKE MIN.</span></td><td class="num-col">0.5</td><td class="num-col">—</td><td>PLU-I</td><td><div class="score-bar"><div class="score-fill" style="width:72%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">7.2</span></div></td></tr>
+        <tr data-mesto="mnichov" data-krajina="Nemecko" data-typ="nizke" data-min="low" data-max="has" data-rok="ongoing" data-meter="7.1"><td>20</td><td class="city-col">Mníchov</td><td>🇩🇪 Nemecko</td><td><span class="badge badge-blue">NÍZKE MIN.</span></td><td class="num-col">0.3 (centrum)</td><td class="num-col">0.8</td><td>priebežne</td><td><div class="score-bar"><div class="score-fill" style="width:71%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">7.1</span></div></td></tr>
+        <tr data-mesto="barcelona" data-krajina="Španielsko" data-typ="znizovanie" data-min="mid" data-max="none" data-rok="2015" data-meter="7.0"><td>21</td><td class="city-col">Barcelona</td><td>🇪🇸 Španielsko</td><td><span class="badge badge-amber">ZNIŽOVANIE</span></td><td class="num-col">var.</td><td class="num-col">—</td><td>2015–</td><td><div class="score-bar"><div class="score-fill" style="width:70%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">7.0</span></div></td></tr>
+        <tr data-mesto="kalasatama" data-krajina="Fínsko" data-typ="nizke" data-min="low" data-max="none" data-rok="2012" data-meter="6.9"><td>22</td><td class="city-col">Helsinki — Kalasatama</td><td>🇫🇮 Fínsko</td><td><span class="badge badge-blue">NÍZKE MIN.</span></td><td class="num-col">0.25</td><td class="num-col">—</td><td>2012</td><td><div class="score-bar"><div class="score-fill" style="width:69%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">6.9</span></div></td></tr>
+        <tr data-mesto="madrid" data-krajina="Španielsko" data-typ="znizovanie" data-min="mid" data-max="none" data-rok="2018" data-meter="6.5"><td>23</td><td class="city-col">Madrid</td><td>🇪🇸 Španielsko</td><td><span class="badge badge-amber">ZNIŽOVANIE</span></td><td class="num-col">0.5–1.0</td><td class="num-col">—</td><td>2018</td><td><div class="score-bar"><div class="score-fill" style="width:65%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">6.5</span></div></td></tr>
+        <tr data-mesto="vigo" data-krajina="Španielsko" data-typ="nizke" data-min="low" data-max="none" data-rok="ongoing" data-meter="6.2"><td>24</td><td class="city-col">Vigo</td><td>🇪🇸 Španielsko</td><td><span class="badge badge-blue">NÍZKE MIN.</span></td><td class="num-col">0.5</td><td class="num-col">—</td><td>PGOM</td><td><div class="score-bar"><div class="score-fill" style="width:62%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">6.2</span></div></td></tr>
+        <tr data-mesto="praha" data-krajina="Česká republika" data-typ="znizovanie" data-min="mid" data-max="none" data-rok="ongoing" data-meter="5.5"><td>25</td><td class="city-col">Praha</td><td>🇨🇿 Česká republika</td><td><span class="badge badge-amber">ZNIŽOVANIE</span></td><td class="num-col">−25 % navrhov.</td><td class="num-col">—</td><td>2022 (návrh)</td><td><div class="score-bar"><div class="score-fill" style="width:55%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">5.5</span></div></td></tr>
+        <tr data-mesto="graz" data-krajina="Rakúsko" data-typ="znizovanie" data-min="low" data-max="none" data-rok="2011" data-meter="5.4"><td>26</td><td class="city-col">Graz</td><td>🇦🇹 Rakúsko</td><td><span class="badge badge-amber">ZNIŽOVANIE</span></td><td class="num-col">0.5–0.8</td><td class="num-col">—</td><td>2011</td><td><div class="score-bar"><div class="score-fill" style="width:54%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">5.4</span></div></td></tr>
+        <tr data-mesto="wroclaw" data-krajina="Poľsko" data-typ="maximum" data-min="-" data-max="has" data-rok="2016" data-meter="5.0"><td>27</td><td class="city-col">Wrocław</td><td>🇵🇱 Poľsko</td><td><span class="badge badge-green">MAXIMUM</span></td><td class="num-col">—</td><td class="num-col">max 1.0 (centrum)</td><td>post-2016</td><td><div class="score-bar"><div class="score-fill" style="width:50%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">5.0</span></div></td></tr>
+        <tr data-mesto="salzburg" data-krajina="Rakúsko" data-typ="znizovanie" data-min="mid" data-max="none" data-rok="2016" data-meter="4.8"><td>28</td><td class="city-col">Salzburg</td><td>🇦🇹 Rakúsko</td><td><span class="badge badge-amber">ZNIŽOVANIE</span></td><td class="num-col">zóna-dep.</td><td class="num-col">—</td><td>2016</td><td><div class="score-bar"><div class="score-fill" style="width:48%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">4.8</span></div></td></tr>
+        <tr data-mesto="linz" data-krajina="Rakúsko" data-typ="znizovanie" data-min="mid" data-max="none" data-rok="ongoing" data-meter="4.5"><td>29</td><td class="city-col">Linz</td><td>🇦🇹 Rakúsko</td><td><span class="badge badge-amber">ZNIŽOVANIE</span></td><td class="num-col">0.7 × norma</td><td class="num-col">—</td><td>2030 plán</td><td><div class="score-bar"><div class="score-fill" style="width:45%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">4.5</span></div></td></tr>
+        <tr data-mesto="gdansk" data-krajina="Poľsko" data-typ="znizovanie" data-min="mid" data-max="none" data-rok="ongoing" data-meter="4.2"><td>30</td><td class="city-col">Gdańsk</td><td>🇵🇱 Poľsko</td><td><span class="badge badge-amber">ZNIŽOVANIE</span></td><td class="num-col">0.8 → 0.5</td><td class="num-col">—</td><td>SUMP 2030</td><td><div class="score-bar"><div class="score-fill" style="width:42%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--accent)">4.2</span></div></td></tr>
+        <tr data-mesto="bratislava" data-krajina="Slovensko" data-typ="znizovanie" data-min="high" data-max="none" data-rok="ongoing" data-meter="2.5"><td>31</td><td class="city-col">Bratislava</td><td>🇸🇰 Slovensko</td><td><span class="badge badge-amber">ZNIŽOVANIE (diskusia)</span></td><td class="num-col">~1.0 (STN)</td><td class="num-col">—</td><td>STN revízia</td><td><div class="score-bar"><div class="score-fill" style="width:25%"></div><span style="font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--muted)">2.5</span></div></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+
+  <!-- ══ DEVELOPER SECTION ══ -->
+  <section class="dev-section" id="section-developeri">
+
+    <div class="dev-section-title">
+      <h2 class="sk-only">TOP rezidenční developeri v 31 mestách</h2>
+      <h2 class="en-only">TOP Residential Developers across 31 Cities</h2>
+      <div class="title-line"></div>
+    </div>
+
+    <!-- stat intro -->
+    <div class="dev-intro">
+      <div class="dev-stat-card">
+        <span class="dev-stat-big">48</span>
+        <div class="dev-stat-desc sk-only">aktívnych rezidenčných developerov identifikovaných vo všetkých 31 mestách s progresívnou parkovacou politikou</div>
+        <div class="dev-stat-desc en-only">active residential developers identified across all 31 cities with progressive parking policies</div>
+      </div>
+      <div class="dev-stat-card">
+        <span class="dev-stat-big">12<em>+</em></span>
+        <div class="dev-stat-desc sk-only">developerov s explicitnou car-free alebo low-parking politikou — priamy potenciál pre smart parking IoT riešenia GOSPACE</div>
+        <div class="dev-stat-desc en-only">developers with explicit car-free or low-parking policy — direct potential for GOSPACE smart parking IoT solutions</div>
+      </div>
+      <div class="dev-stat-card">
+        <span class="dev-stat-big">10<em>×</em></span>
+        <div class="dev-stat-desc sk-only">pan-európski hráči aktívni v 4–10 mestách — jedna partnerská dohoda otvára viaceré trhy naraz</div>
+        <div class="dev-stat-desc en-only">pan-European players active in 4–10 cities — one partnership agreement opens multiple markets at once</div>
+      </div>
+    </div>
+
+    <!-- filter bar -->
+    <div class="dev-filter-bar">
+      <div>
+        <span class="dev-filter-label sk-only">Developer / Hľadaj</span>
+        <span class="dev-filter-label en-only">Developer / Search</span>
+        <input class="dev-filter-input" id="d-name" type="text" placeholder="Hľadaj... / Search..." oninput="applyDevFilters()">
+      </div>
+      <div>
+        <span class="dev-filter-label sk-only">Krajina HQ</span>
+        <span class="dev-filter-label en-only">HQ Country</span>
+        <select class="dev-filter-select" id="d-country" onchange="applyDevFilters()">
+          <option value="">—</option>
+          <option>Nórsko</option><option>Švédsko</option><option>Fínsko</option><option>Dánsko</option>
+          <option>Holandsko</option><option>Belgicko</option><option>Nemecko</option><option>Rakúsko</option>
+          <option>Francúzsko</option><option>Veľká Británia</option><option>Švajčiarsko</option>
+          <option>Španielsko</option><option>Česká republika</option><option>Poľsko</option><option>Slovensko</option>
+        </select>
+      </div>
+      <div>
+        <span class="dev-filter-label sk-only">Typ developera</span>
+        <span class="dev-filter-label en-only">Developer type</span>
+        <select class="dev-filter-select" id="d-type" onchange="applyDevFilters()">
+          <option value="">—</option>
+          <option value="cooperative">Kooperatíva / Cooperative</option>
+          <option value="municipal">Mestský / Municipal</option>
+          <option value="national">Národný / National</option>
+          <option value="international">Medzinárodný / International</option>
+          <option value="sustainable">Zelený / Sustainable</option>
+          <option value="nonprofit">Nezisková / Non-profit</option>
+        </select>
+      </div>
+      <div>
+        <span class="dev-filter-label sk-only">Parkovací prístup</span>
+        <span class="dev-filter-label en-only">Parking approach</span>
+        <select class="dev-filter-select" id="d-parking" onchange="applyDevFilters()">
+          <option value="">—</option>
+          <option value="carfree">🚗❌ Car-free (0 miest / spaces)</option>
+          <option value="low">🚗↓ Nízke / Low parking</option>
+          <option value="standard">🚗 Štandardné / Standard</option>
+        </select>
+      </div>
+      <button class="dev-filter-reset" onclick="resetDevFilters()">✕ Reset</button>
+      <div class="dev-filter-count"><span id="d-visible" style="color:var(--accent);font-weight:600">48</span>&thinsp;/ 48</div>
+    </div>
+
+    <!-- table injected in step 6 -->
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;border-top:1px solid var(--divider)">
+      <table class="dev-table" id="dev-table">
+      <thead>
+        <tr>
+          <th style="width:28px">#</th>
+          <th class="sortable" data-dcol="1"><span class="sk-only">Developer</span><span class="en-only">Developer</span></th>
+          <th class="sortable" data-dcol="2"><span class="sk-only">HQ krajina</span><span class="en-only">HQ country</span></th>
+          <th><span class="sk-only">Typ</span><span class="en-only">Type</span></th>
+          <th><span class="sk-only">Aktívny v mestách</span><span class="en-only">Active in cities</span></th>
+          <th><span class="sk-only">Parkovací prístup</span><span class="en-only">Parking approach</span></th>
+          <th><span class="sk-only">Vlajkový projekt</span><span class="en-only">Flagship project</span></th>
+          <th><span class="sk-only">Certifikáty</span><span class="en-only">Certifications</span></th>
+        </tr>
+      </thead>
+      <tbody id="dev-body">
+
+      <tr data-name="riksbyggen" data-country="Švédsko" data-type="cooperative" data-parking="carfree">
+        <td>1</td><td class="dev-name-col"><a href="https://www.riksbyggen.se" target="_blank">Riksbyggen</a></td>
+        <td>🇸🇪 Švédsko</td><td><span class="badge badge-teal">KOOPERATÍVA</span></td>
+        <td class="dev-cities"><span class="city-pill">Stockholm</span><span class="city-pill">Göteborg</span><span class="city-pill">Malmö</span></td>
+        <td><span class="parking-free">🚗❌ Car-free pioneer</span></td>
+        <td>Brf Viva: 132 bytov, 0 miest, zdieľané e-bikes</td>
+        <td class="cert-col">Nordic Swan · Citylab Award</td>
+      </tr>
+      <tr data-name="kalkbreite" data-country="Švajčiarsko" data-type="cooperative" data-parking="carfree">
+        <td>2</td><td class="dev-name-col"><a href="https://www.kalkbreite.net" target="_blank">Kalkbreite Genossenschaft</a></td>
+        <td>🇨🇭 Švajčiarsko</td><td><span class="badge badge-teal">KOOPERATÍVA</span></td>
+        <td class="dev-cities"><span class="city-pill">Zürich</span></td>
+        <td><span class="parking-free">🚗❌ 0.07 miest/byt</span></td>
+        <td>Kalkbreite: 97 bytov, 2 miesta, zmluvný zákaz auta</td>
+        <td class="cert-col">Minergie-P-Eco · 2000-Watt-Areal</td>
+      </tr>
+      <tr data-name="mehr als wohnen" data-country="Švajčiarsko" data-type="cooperative" data-parking="carfree">
+        <td>3</td><td class="dev-name-col"><a href="https://www.mehralswohnen.ch" target="_blank">Mehr als Wohnen</a></td>
+        <td>🇨🇭 Švajčiarsko</td><td><span class="badge badge-teal">KOOPERATÍVA</span></td>
+        <td class="dev-cities"><span class="city-pill">Zürich</span></td>
+        <td><span class="parking-free">🚗❌ Nearly car-free</span></td>
+        <td>Hunziker Areal: 370+ bytov, −60% CO₂ mobilita, World Habitat Award 2016</td>
+        <td class="cert-col">2000-Watt-Areal · Minergie</td>
+      </tr>
+      <tr data-name="howoge" data-country="Nemecko" data-type="municipal" data-parking="carfree">
+        <td>4</td><td class="dev-name-col"><a href="https://www.howoge.de" target="_blank">HOWOGE Berlin</a></td>
+        <td>🇩🇪 Nemecko</td><td><span class="badge badge-amber">MESTSKÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Berlín</span></td>
+        <td><span class="parking-free">🚗❌ 2 miesta / 169 bytov</span></td>
+        <td>Rummelsburger Bucht: 169 bytov, 2 parkovacie miesta, 400 cyklomiest</td>
+        <td class="cert-col">EH40 · PV strechy</td>
+      </tr>
+      <tr data-name="ohboy" data-country="Švédsko" data-type="sustainable" data-parking="carfree">
+        <td>5</td><td class="dev-name-col"><a href="https://www.ohboy.se" target="_blank">Ohboy</a></td>
+        <td>🇸🇪 Švédsko</td><td><span class="badge badge-green">ZELENÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Malmö</span></td>
+        <td><span class="parking-free">🚗❌ P-norm 0 pioneer</span></td>
+        <td>Malmö pilot: prvý bytový dom v Švédsku s P-normou 0 (schválené 2023)</td>
+        <td class="cert-col">Miljöbyggnad · P-norm 0</td>
+      </tr>
+      <tr data-name="revive" data-country="Belgicko" data-type="sustainable" data-parking="carfree">
+        <td>6</td><td class="dev-name-col"><a href="https://www.revive.be" target="_blank">Revive</a></td>
+        <td>🇧🇪 Belgicko</td><td><span class="badge badge-green">B CORP</span></td>
+        <td class="dev-cities"><span class="city-pill">Brusel</span><span class="city-pill">Antverpy</span></td>
+        <td><span class="parking-free">🚗❌ 84% car-free plochy</span></td>
+        <td>EKLA Brussels; 100+ ha brownfield obnovených; soft mobile approach</td>
+        <td class="cert-col">B Corp · BREEAM</td>
+      </tr>
+      <tr data-name="synchroon" data-country="Holandsko" data-type="sustainable" data-parking="carfree">
+        <td>7</td><td class="dev-name-col"><a href="https://synchroon.nl" target="_blank">Synchroon</a></td>
+        <td>🇳🇱 Holandsko</td><td><span class="badge badge-green">ZELENÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Utrecht</span></td>
+        <td><span class="parking-free">🚗❌ Merwede 0.3 norm</span></td>
+        <td>Merwede Utrecht: 6 000 bytov, Mobility Company, garáže len na okraji</td>
+        <td class="cert-col">BREEAM · Mobiliteitsbedrijf</td>
+      </tr>
+      <tr data-name="am bam" data-country="Holandsko" data-type="national" data-parking="carfree">
+        <td>8</td><td class="dev-name-col"><a href="https://www.am.nl" target="_blank">AM (BAM Group)</a></td>
+        <td>🇳🇱 Holandsko</td><td><span class="badge badge-blue">NÁRODNÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Amsterdam</span><span class="city-pill">Utrecht</span></td>
+        <td><span class="parking-free">🚗❌ Bajeskwartier car-free</span></td>
+        <td>Bajeskwartier: 1 350 bytov (OMA), 98% materiálový reuse, car-free nad zemou</td>
+        <td class="cert-col">BREEAM Excellent · Energie-neutraal</td>
+      </tr>
+      <tr data-name="are austria" data-country="Rakúsko" data-type="municipal" data-parking="carfree">
+        <td>9</td><td class="dev-name-col"><a href="https://www.are.at" target="_blank">ARE Austrian Real Estate</a></td>
+        <td>🇦🇹 Rakúsko</td><td><span class="badge badge-amber">ŠTÁTNY</span></td>
+        <td class="dev-cities"><span class="city-pill">Viedeň</span><span class="city-pill">Graz</span><span class="city-pill">Linz</span></td>
+        <td><span class="parking-free">🚗❌ Aspern Seestadt autofrei</span></td>
+        <td>Aspern Seestadt: 270 bytov, car-free, Climate Minister Award</td>
+        <td class="cert-col">klimaaktiv · Bicycle Standard</td>
+      </tr>
+      <tr data-name="peabody" data-country="Veľká Británia" data-type="nonprofit" data-parking="carfree">
+        <td>10</td><td class="dev-name-col"><a href="https://www.peabody.org.uk" target="_blank">Peabody</a></td>
+        <td>🇬🇧 UK</td><td><span class="badge badge-teal">CHARITATÍVNA HA</span></td>
+        <td class="dev-cities"><span class="city-pill">Londýn</span></td>
+        <td><span class="parking-free">🚗❌ Barkingside car-free</span></td>
+        <td>Barkingside Yard: 98 bytov, 100% sociálny nájom, car-free (Blue Badge only)</td>
+        <td class="cert-col">EPC A · BREEAM</td>
+      </tr>
+      <tr data-name="berkeley group" data-country="Veľká Británia" data-type="national" data-parking="carfree">
+        <td>11</td><td class="dev-name-col"><a href="https://www.berkeleygroup.co.uk" target="_blank">Berkeley Group</a></td>
+        <td>🇬🇧 UK</td><td><span class="badge badge-blue">NÁRODNÝ FTSE100</span></td>
+        <td class="dev-cities"><span class="city-pill">Londýn</span></td>
+        <td><span class="parking-free">🚗❌ Trillium car-free</span></td>
+        <td>Trillium Paddington: 1 000+ cyklomiest, 200% biodiversity net gain</td>
+        <td class="cert-col">BREEAM Excellent · Passivhaus</td>
+      </tr>
+      <tr data-name="obos" data-country="Nórsko" data-type="cooperative" data-parking="low">
+        <td>12</td><td class="dev-name-col"><a href="https://www.obos.no" target="_blank">OBOS</a></td>
+        <td>🇳🇴 Nórsko</td><td><span class="badge badge-teal">KOOPERATÍVA</span></td>
+        <td class="dev-cities"><span class="city-pill">Oslo</span><span class="city-pill">Stockholm</span></td>
+        <td><span class="parking-low">🚗↓ Low parking + BREEAM</span></td>
+        <td>Løren Botaniske (390 bytov); Oen — prvá energy-positive budova v Nórsku</td>
+        <td class="cert-col">BREEAM-NOR · Energy+</td>
+      </tr>
+      <tr data-name="nordr" data-country="Nórsko" data-type="international" data-parking="low">
+        <td>13</td><td class="dev-name-col"><a href="https://www.nordr.com" target="_blank">Nordr</a></td>
+        <td>🇳🇴 Nórsko</td><td><span class="badge badge-purple">NORDIC GROUP</span></td>
+        <td class="dev-cities"><span class="city-pill">Oslo</span><span class="city-pill">Stockholm</span><span class="city-pill">Malmö</span><span class="city-pill">Göteborg</span></td>
+        <td><span class="parking-low">🚗↓ Low parking</span></td>
+        <td>Grønvollkvartalet Oslo: 412 eco-certified bytov (2024–2027)</td>
+        <td class="cert-col">BREEAM · Mass timber</td>
+      </tr>
+      <tr data-name="kojamo lumo" data-country="Fínsko" data-type="national" data-parking="low">
+        <td>14</td><td class="dev-name-col"><a href="https://kojamo.fi" target="_blank">Kojamo (Lumo)</a></td>
+        <td>🇫🇮 Fínsko</td><td><span class="badge badge-blue">NÁRODNÝ LIST.</span></td>
+        <td class="dev-cities"><span class="city-pill">Helsinki</span></td>
+        <td><span class="parking-low">🚗↓ Car-sharing advocate</span></td>
+        <td>Lumo Tower: 291 bytov, 31 poschodí, Kalasatama; partnerstvo 24Rent car-sharing</td>
+        <td class="cert-col">LEED · Energy A</td>
+      </tr>
+      <tr data-name="yit corporation" data-country="Fínsko" data-type="international" data-parking="low">
+        <td>15</td><td class="dev-name-col"><a href="https://www.yitgroup.com" target="_blank">YIT Corporation</a></td>
+        <td>🇫🇮 Fínsko</td><td><span class="badge badge-purple">MEDZINÁRODNÁ</span></td>
+        <td class="dev-cities"><span class="city-pill">Helsinki</span><span class="city-pill">Praha</span><span class="city-pill">Bratislava</span></td>
+        <td><span class="parking-low">🚗↓ Car-free village YIT</span></td>
+        <td>Kiela FI: car-free dedina; Pradiareň 1900 BA (BREEAM Outstanding)</td>
+        <td class="cert-col">BREEAM Outstanding · LEED Platinum</td>
+      </tr>
+      <tr data-name="jm ab" data-country="Švédsko" data-type="national" data-parking="low">
+        <td>16</td><td class="dev-name-col"><a href="https://www.jm.se" target="_blank">JM AB</a></td>
+        <td>🇸🇪 Švédsko</td><td><span class="badge badge-blue">NÁRODNÝ LIST.</span></td>
+        <td class="dev-cities"><span class="city-pill">Stockholm</span><span class="city-pill">Göteborg</span><span class="city-pill">Oslo</span><span class="city-pill">Helsinki</span></td>
+        <td><span class="parking-low">🚗↓ Transit-oriented core</span></td>
+        <td>Kolkajen Stockholm (waterfront); najlepšia zákaznícka spokojnosť v Nordics</td>
+        <td class="cert-col">Miljöbyggnad · BREEAM</td>
+      </tr>
+      <tr data-name="bonava" data-country="Švédsko" data-type="international" data-parking="low">
+        <td>17</td><td class="dev-name-col"><a href="https://www.bonava.com" target="_blank">Bonava</a></td>
+        <td>🇸🇪 Švédsko</td><td><span class="badge badge-purple">MEDZINÁRODNÁ</span></td>
+        <td class="dev-cities"><span class="city-pill">Berlín</span><span class="city-pill">Hamburg</span><span class="city-pill">Stockholm</span><span class="city-pill">Helsinki</span></td>
+        <td><span class="parking-low">🚗↓ SBTi 1.5°C aligned</span></td>
+        <td>Prvý európsky developer schválený SBTi; transit-oriented vo všetkých trhoch</td>
+        <td class="cert-col">SBTi 1.5°C · BREEAM</td>
+      </tr>
+      <tr data-name="nrep urban partners" data-country="Dánsko" data-type="sustainable" data-parking="low">
+        <td>18</td><td class="dev-name-col"><a href="https://nrep.com" target="_blank">NREP / Urban Partners</a></td>
+        <td>🇩🇰 Dánsko</td><td><span class="badge badge-green">INŠTITUCIONÁLNY</span></td>
+        <td class="dev-cities"><span class="city-pill">Kodaň</span><span class="city-pill">Stockholm</span><span class="city-pill">Helsinki</span></td>
+        <td><span class="parking-low">🚗↓ 5-min city concept</span></td>
+        <td>UN17 Village Kodaň: 535 bytov, všetkých 17 OSN SDG v jednom projekte</td>
+        <td class="cert-col">DGNB · FutureCem</td>
+      </tr>
+      <tr data-name="skanska" data-country="Švédsko" data-type="international" data-parking="low">
+        <td>19</td><td class="dev-name-col"><a href="https://www.skanska.com" target="_blank">Skanska</a></td>
+        <td>🇸🇪 Švédsko</td><td><span class="badge badge-purple">MEDZINÁRODNÁ</span></td>
+        <td class="dev-cities"><span class="city-pill">Kodaň</span><span class="city-pill">Stockholm</span><span class="city-pill">Helsinki</span><span class="city-pill">Praha</span></td>
+        <td><span class="parking-low">🚗↓ Recycled concrete std.</span></td>
+        <td>D.O.K. Radlice Praha: najväčšia drevená obyt. budova v ČR; DK Best Dev. 2025</td>
+        <td class="cert-col">BREEAM · SBTi</td>
+      </tr>
+      <tr data-name="bpd europe" data-country="Holandsko" data-type="national" data-parking="low">
+        <td>20</td><td class="dev-name-col"><a href="https://www.bpdeurope.com" target="_blank">BPD Europe (Rabobank)</a></td>
+        <td>🇳🇱 Holandsko</td><td><span class="badge badge-blue">NÁRODNÝ #1 NL</span></td>
+        <td class="dev-cities"><span class="city-pill">Amsterdam</span><span class="city-pill">Utrecht</span></td>
+        <td><span class="parking-low">🚗↓ Low parking</span></td>
+        <td>Sluisbuurt Amsterdam; Merwede Utrecht; 395 000+ bytov od 1946</td>
+        <td class="cert-col">GPR · EPC A</td>
+      </tr>
+      <tr data-name="triple living" data-country="Belgicko" data-type="national" data-parking="low">
+        <td>21</td><td class="dev-name-col"><a href="https://triple-living.be" target="_blank">Triple Living</a></td>
+        <td>🇧🇪 Belgicko</td><td><span class="badge badge-blue">NÁRODNÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Antverpy</span></td>
+        <td><span class="parking-low">🚗↓ Underground only</span></td>
+        <td>Nieuw Zuid: 2 000+ bytov, Shigeru Ban + Stefano Boeri, pasívny štandard</td>
+        <td class="cert-col">BREEAM · Passiefhuis</td>
+      </tr>
+      <tr data-name="buwog vonovia" data-country="Nemecko" data-type="international" data-parking="low">
+        <td>22</td><td class="dev-name-col"><a href="https://www.buwog.de" target="_blank">BUWOG / Vonovia</a></td>
+        <td>🇩🇪 Nemecko</td><td><span class="badge badge-purple">MEDZINÁRODNÁ DAX</span></td>
+        <td class="dev-cities"><span class="city-pill">Berlín</span><span class="city-pill">Hamburg</span><span class="city-pill">Viedeň</span><span class="city-pill">Salzburg</span><span class="city-pill">Mníchov</span><span class="city-pill">Kodaň</span><span class="city-pill">Amsterdam</span><span class="city-pill">Utrecht</span></td>
+        <td><span class="parking-low">🚗↓ Pergolenviertel model</span></td>
+        <td>Pergolenviertel Hamburg: 1 700 bytov, autoarmes Viertel; 1.8 cyklomiest/byt</td>
+        <td class="cert-col">DGNB · EH55</td>
+      </tr>
+      <tr data-name="saga hamburg" data-country="Nemecko" data-type="municipal" data-parking="low">
+        <td>23</td><td class="dev-name-col"><a href="https://www.saga.hamburg" target="_blank">SAGA Hamburg</a></td>
+        <td>🇩🇪 Nemecko</td><td><span class="badge badge-amber">MESTSKÝ 100%</span></td>
+        <td class="dev-cities"><span class="city-pill">Hamburg</span></td>
+        <td><span class="parking-low">🚗↓ More bikes than cars</span></td>
+        <td>Moosrosenquartier: 540 bytov, 1 128 cyklomiest vs 325 autom.; modulárne drevo</td>
+        <td class="cert-col">EH55 · Modular timber</td>
+      </tr>
+      <tr data-name="degewo" data-country="Nemecko" data-type="municipal" data-parking="low">
+        <td>24</td><td class="dev-name-col"><a href="https://www.degewo.de" target="_blank">degewo</a></td>
+        <td>🇩🇪 Nemecko</td><td><span class="badge badge-amber">MESTSKÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Berlín</span></td>
+        <td><span class="parking-low">🚗↓ 0.33 spaces/unit</span></td>
+        <td>Klimahaus Treptow-Köpenick: 112 bytov, drevo-hybrid, 37 miest pre 112 bytov</td>
+        <td class="cert-col">DGNB · EH55</td>
+      </tr>
+      <tr data-name="bayerische hausbau" data-country="Nemecko" data-type="national" data-parking="low">
+        <td>25</td><td class="dev-name-col"><a href="https://www.hausbau.de" target="_blank">Bayerische Hausbau</a></td>
+        <td>🇩🇪 Nemecko</td><td><span class="badge badge-blue">NÁRODNÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Mníchov</span></td>
+        <td><span class="parking-low">🚗↓ Mobility Forward certified</span></td>
+        <td>Freisinger Landstraße: 600 bytov, DGNB Gold, prakticky bez áut; MCube člen</td>
+        <td class="cert-col">DGNB Gold · Mobility Forward</td>
+      </tr>
+
+      <tr data-name="nexity" data-country="Francúzsko" data-type="national" data-parking="low">
+        <td>26</td><td class="dev-name-col"><a href="https://www.nexity.fr" target="_blank">Nexity</a></td>
+        <td>🇫🇷 Francúzsko</td><td><span class="badge badge-blue">NÁRODNÝ #1 FR</span></td>
+        <td class="dev-cities"><span class="city-pill">Paríž</span><span class="city-pill">Lyon</span><span class="city-pill">Grenoble</span><span class="city-pill">Bordeaux</span></td>
+        <td><span class="parking-low">🚗↓ Zero-minimum compliance</span></td>
+        <td>Olympic Village Paríž: 525 bytov, drevo-betón hybrid, −75% CO₂ vs London 2012</td>
+        <td class="cert-col">NF HQE · RE2020</td>
+      </tr>
+      <tr data-name="bouygues immobilier" data-country="Francúzsko" data-type="national" data-parking="low">
+        <td>27</td><td class="dev-name-col"><a href="https://www.bouygues-immobilier.com" target="_blank">Bouygues Immobilier</a></td>
+        <td>🇫🇷 Francúzsko</td><td><span class="badge badge-blue">NÁRODNÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Paríž</span><span class="city-pill">Lyon</span><span class="city-pill">Bordeaux</span></td>
+        <td><span class="parking-low">🚗↓ Zero-minimum compliance</span></td>
+        <td>Côté Parc Lyon 7e; MURMURES Lyon 8e; My Campus student residence</td>
+        <td class="cert-col">NF HQE · RE2020</td>
+      </tr>
+      <tr data-name="vinci immobilier" data-country="Francúzsko" data-type="national" data-parking="low">
+        <td>28</td><td class="dev-name-col"><a href="https://www.vinci-immobilier.com" target="_blank">Vinci Immobilier</a></td>
+        <td>🇫🇷 Francúzsko</td><td><span class="badge badge-blue">NÁRODNÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Paríž</span></td>
+        <td><span class="parking-low">🚗↓ Zero-minimum compliance</span></td>
+        <td>Universeine Olympic Village: reverzibilné budovy adaptabilné 30–40 rokov</td>
+        <td class="cert-col">NF HQE · E+C−</td>
+      </tr>
+      <tr data-name="barratt london" data-country="Veľká Británia" data-type="national" data-parking="low">
+        <td>29</td><td class="dev-name-col"><a href="https://www.barrattlondon.com" target="_blank">Barratt London</a></td>
+        <td>🇬🇧 UK</td><td><span class="badge badge-blue">NÁRODNÝ FTSE100</span></td>
+        <td class="dev-cities"><span class="city-pill">Londýn</span></td>
+        <td><span class="parking-low">🚗↓ Passivhaus Lo-E Homes</span></td>
+        <td>Lo-E Homes: −80% náklady kúrenia, −90% CO₂; UK najväčší Passivhaus záväzok 2025</td>
+        <td class="cert-col">Passivhaus · EPC A</td>
+      </tr>
+      <tr data-name="oesw" data-country="Rakúsko" data-type="nonprofit" data-parking="low">
+        <td>30</td><td class="dev-name-col"><a href="https://www.oesw.at" target="_blank">ÖSW Group</a></td>
+        <td>🇦🇹 Rakúsko</td><td><span class="badge badge-teal">NEZISKOVÁ</span></td>
+        <td class="dev-cities"><span class="city-pill">Viedeň</span><span class="city-pill">Graz</span></td>
+        <td><span class="parking-low">🚗↓ Reduced norms</span></td>
+        <td>Quartier Belvedere Viedeň; 70 000+ bytov cez 30 dcérskych spoločností</td>
+        <td class="cert-col">klimaaktiv</td>
+      </tr>
+      <tr data-name="oewg wohnbau" data-country="Rakúsko" data-type="nonprofit" data-parking="low">
+        <td>31</td><td class="dev-name-col"><a href="https://oewg.at" target="_blank">ÖWG Wohnbau</a></td>
+        <td>🇦🇹 Rakúsko</td><td><span class="badge badge-teal">NEZISKOVÁ</span></td>
+        <td class="dev-cities"><span class="city-pill">Graz</span></td>
+        <td><span class="parking-low">🚗↓ 0.47 spaces/unit</span></td>
+        <td>Reininghaus Q6: 842 bytov, MHD pas zadarmo 1. rok; 33 000 spravovaných bytov</td>
+        <td class="cert-col">klimaaktiv</td>
+      </tr>
+      <tr data-name="gwg linz" data-country="Rakúsko" data-type="municipal" data-parking="low">
+        <td>32</td><td class="dev-name-col"><a href="https://www.gwg-linz.at" target="_blank">GWG Linz</a></td>
+        <td>🇦🇹 Rakúsko</td><td><span class="badge badge-amber">MESTSKÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Linz</span></td>
+        <td><span class="parking-low">🚗↓ 0.47 spaces/unit</span></td>
+        <td>Wimhölzel: 91 bytov, 43 miest; Weidingerbach: drevo nad existujúcim retailom</td>
+        <td class="cert-col">klimaaktiv · EPC A</td>
+      </tr>
+      <tr data-name="habitat inmobiliaria" data-country="Španielsko" data-type="sustainable" data-parking="low">
+        <td>33</td><td class="dev-name-col"><a href="https://www.habitatinmobiliaria.com" target="_blank">Habitat Inmobiliaria</a></td>
+        <td>🇪🇸 Španielsko</td><td><span class="badge badge-green">ESG LEADER</span></td>
+        <td class="dev-cities"><span class="city-pill">Vigo</span><span class="city-pill">Madrid</span></td>
+        <td><span class="parking-low">🚗↓ Unbundled parking</span></td>
+        <td>Habitat Areal Vigo: parkovanie odpojené od ceny bytu; #1 Sustainalytics global 2024</td>
+        <td class="cert-col">Sustainalytics Global #1</td>
+      </tr>
+      <tr data-name="neinor homes" data-country="Španielsko" data-type="national" data-parking="standard">
+        <td>34</td><td class="dev-name-col"><a href="https://www.neinorhomes.com" target="_blank">Neinor Homes</a></td>
+        <td>🇪🇸 Španielsko</td><td><span class="badge badge-blue">NÁRODNÝ LIST.</span></td>
+        <td class="dev-cities"><span class="city-pill">Barcelona</span><span class="city-pill">Madrid</span></td>
+        <td><span class="parking-std">🚗 Standard (BREEAM leader ES)</span></td>
+        <td>ES BREEAM leader; prvý green bond v španielskych rezidenčných (€300M, 2021)</td>
+        <td class="cert-col">BREEAM (ES #1) · SBTi</td>
+      </tr>
+      <tr data-name="heimstaden bostad" data-country="Švédsko" data-type="international" data-parking="low">
+        <td>35</td><td class="dev-name-col"><a href="https://www.heimstaden.com" target="_blank">Heimstaden Bostad</a></td>
+        <td>🇸🇪 Švédsko</td><td><span class="badge badge-purple">MEDZINÁRODNÁ 10 MIEST</span></td>
+        <td class="dev-cities"><span class="city-pill">Oslo</span><span class="city-pill">Berlín</span><span class="city-pill">Hamburg</span><span class="city-pill">Kodaň</span><span class="city-pill">Helsinki</span><span class="city-pill">Stockholm</span><span class="city-pill">Göteborg</span><span class="city-pill">Amsterdam</span><span class="city-pill">Praha</span><span class="city-pill">Bratislava</span></td>
+        <td><span class="parking-low">🚗↓ ~0.1/unit in Berlin</span></td>
+        <td>150 000 bytov, SEK 290B; de facto low-parking: mestské centrum = core stratégia</td>
+        <td class="cert-col">GRESB · EPC A</td>
+      </tr>
+      <tr data-name="patrizia" data-country="Nemecko" data-type="international" data-parking="low">
+        <td>36</td><td class="dev-name-col"><a href="https://www.patrizia.ag" target="_blank">PATRIZIA AG</a></td>
+        <td>🇩🇪 Nemecko</td><td><span class="badge badge-purple">€48B AUM</span></td>
+        <td class="dev-cities"><span class="city-pill">Berlín</span><span class="city-pill">Mníchov</span><span class="city-pill">Londýn</span><span class="city-pill">Paríž</span><span class="city-pill">Amsterdam</span><span class="city-pill">Viedeň</span><span class="city-pill">Hamburg</span><span class="city-pill">Stockholm</span><span class="city-pill">Göteborg</span><span class="city-pill">Kodaň</span></td>
+        <td><span class="parking-low">🚗↓ Transit-oriented focus</span></td>
+        <td>Living Cities Fund (SFDR Art.8); blízkosť MHD = primárne kritérium výberu lokality</td>
+        <td class="cert-col">SFDR Art.8 · GRESB</td>
+      </tr>
+      <tr data-name="greystar" data-country="Veľká Británia" data-type="international" data-parking="low">
+        <td>37</td><td class="dev-name-col"><a href="https://www.greystar.com" target="_blank">Greystar (BTR)</a></td>
+        <td>🇬🇧/USA</td><td><span class="badge badge-purple">BTR LEADER EU</span></td>
+        <td class="dev-cities"><span class="city-pill">Londýn</span><span class="city-pill">Amsterdam</span><span class="city-pill">Paríž</span><span class="city-pill">Viedeň</span><span class="city-pill">Berlín</span><span class="city-pill">Madrid</span><span class="city-pill">Barcelona</span><span class="city-pill">Dublin</span><span class="city-pill">Utrecht</span><span class="city-pill">Brusel</span></td>
+        <td><span class="parking-low">🚗↓ Car-light BTR model</span></td>
+        <td>44 789 európskych bytov; BTR pre mladých profesionálov = najnižšie auto-vlastníctvo</td>
+        <td class="cert-col">BREEAM · EPC A</td>
+      </tr>
+      <tr data-name="strabag real estate" data-country="Rakúsko" data-type="international" data-parking="standard">
+        <td>38</td><td class="dev-name-col"><a href="https://www.strabag-real-estate.com" target="_blank">STRABAG Real Estate</a></td>
+        <td>🇦🇹 Rakúsko</td><td><span class="badge badge-purple">MEDZINÁRODNÁ 8 MIEST</span></td>
+        <td class="dev-cities"><span class="city-pill">Viedeň</span><span class="city-pill">Berlín</span><span class="city-pill">Hamburg</span><span class="city-pill">Bratislava</span><span class="city-pill">Praha</span><span class="city-pill">Varšava</span><span class="city-pill">Mníchov</span><span class="city-pill">Graz</span></td>
+        <td><span class="parking-std">🚗 Standard (traffic-reduction focus)</span></td>
+        <td>DC Towers Viedeň; Panta Rhei Bratislava; DGNB Gold; explicitná redukcia dopravy</td>
+        <td class="cert-col">DGNB Gold · LEED</td>
+      </tr>
+      <tr data-name="penta real estate" data-country="Česká republika" data-type="international" data-parking="low">
+        <td>39</td><td class="dev-name-col"><a href="https://www.pentarealestate.com" target="_blank">Penta Real Estate</a></td>
+        <td>🇨🇿/🇸🇰 CEE</td><td><span class="badge badge-purple">MEDZINÁRODNÁ CEE</span></td>
+        <td class="dev-cities"><span class="city-pill">Praha</span><span class="city-pill">Bratislava</span></td>
+        <td><span class="parking-low">🚗↓ Car-free courtyards</span></td>
+        <td>Waltrovka Praha: car-free dvory, podzemné garážovanie; rekord 682 bytov v 2024</td>
+        <td class="cert-col">LEED · BREEAM</td>
+      </tr>
+      <tr data-name="archicom echo" data-country="Poľsko" data-type="national" data-parking="standard">
+        <td>40</td><td class="dev-name-col"><a href="https://www.archicom.pl" target="_blank">Archicom (Echo Investment)</a></td>
+        <td>🇵🇱 Poľsko</td><td><span class="badge badge-blue">NÁRODNÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Wrocław</span></td>
+        <td><span class="parking-std">🚗 Standard</span></td>
+        <td>Browary Wrocławskie: revitalizácia historického pivovaru; 20 000+ klientov</td>
+        <td class="cert-col">BREEAM · Smart Home</td>
+      </tr>
+      <tr data-name="robyg tag" data-country="Poľsko" data-type="international" data-parking="standard">
+        <td>41</td><td class="dev-name-col"><a href="https://robyg.pl" target="_blank">ROBYG (TAG Immobilien)</a></td>
+        <td>🇵🇱/🇩🇪</td><td><span class="badge badge-purple">MEDZINÁRODNÁ</span></td>
+        <td class="dev-cities"><span class="city-pill">Wrocław</span><span class="city-pill">Gdańsk</span></td>
+        <td><span class="parking-std">🚗 Standard + Smart House</span></td>
+        <td>Smart House systém: správa energie, −30% náklady; 90 000 obyvateľov v projektoch</td>
+        <td class="cert-col">Smart House system</td>
+      </tr>
+      <tr data-name="euro styl" data-country="Poľsko" data-type="national" data-parking="standard">
+        <td>42</td><td class="dev-name-col"><a href="https://www.eurostyl.com.pl" target="_blank">Euro Styl (Dom Dev.)</a></td>
+        <td>🇵🇱 Poľsko</td><td><span class="badge badge-blue">NÁRODNÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Gdańsk</span></td>
+        <td><span class="parking-std">🚗 Standard + EV charging</span></td>
+        <td>Osiedle Synteza: PV panely, dažďové záhrady, LED; 10 000+ bytov v Gdańsku</td>
+        <td class="cert-col">EPC B</td>
+      </tr>
+      <tr data-name="jtre" data-country="Slovensko" data-type="national" data-parking="standard">
+        <td>43</td><td class="dev-name-col"><a href="https://www.jtre.sk" target="_blank">JTRE (J&amp;T Real Estate)</a></td>
+        <td>🇸🇰 Slovensko</td><td><span class="badge badge-blue">NÁRODNÝ SK #1</span></td>
+        <td class="dev-cities"><span class="city-pill">Bratislava</span></td>
+        <td><span class="parking-std">🚗 Standard (reform-ready)</span></td>
+        <td>Eurovea 2 (mixed-use, Dunaj); River Park; 9 krajín, aktíva &gt;€1,7B</td>
+        <td class="cert-col">LEED · BREEAM</td>
+      </tr>
+      <tr data-name="corwin" data-country="Slovensko" data-type="sustainable" data-parking="low">
+        <td>44</td><td class="dev-name-col"><a href="https://www.corwin.sk" target="_blank">Corwin</a></td>
+        <td>🇸🇰 Slovensko</td><td><span class="badge badge-green">ZELENÝ BROWNFIELD</span></td>
+        <td class="dev-cities"><span class="city-pill">Bratislava</span><span class="city-pill">Praha</span></td>
+        <td><span class="parking-low">🚗↓ Rainwater champion</span></td>
+        <td>Guthaus BA: 8,5 mil. litrov dažď. vody/rok; prvý LEED Zero Carbon v CEE</td>
+        <td class="cert-col">LEED Zero Carbon (1st CEE)</td>
+      </tr>
+      <tr data-name="yit slovakia" data-country="Slovensko" data-type="international" data-parking="low">
+        <td>45</td><td class="dev-name-col"><a href="https://www.yit.sk" target="_blank">YIT Slovakia</a></td>
+        <td>🇸🇰 Slovensko</td><td><span class="badge badge-purple">MEDZINÁRODNÁ</span></td>
+        <td class="dev-cities"><span class="city-pill">Bratislava</span><span class="city-pill">Helsinki</span><span class="city-pill">Praha</span></td>
+        <td><span class="parking-low">🚗↓ Energy A standard</span></td>
+        <td>Pradiareň 1900 (BREEAM Outstanding); PALMA s Corwin (LEED Platinum pre-cert.)</td>
+        <td class="cert-col">BREEAM Outstanding · LEED Platinum</td>
+      </tr>
+      <tr data-name="immocap" data-country="Slovensko" data-type="national" data-parking="standard">
+        <td>46</td><td class="dev-name-col"><a href="https://immocap.sk" target="_blank">Immocap</a></td>
+        <td>🇸🇰 Slovensko</td><td><span class="badge badge-blue">NÁRODNÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Bratislava</span></td>
+        <td><span class="parking-std">🚗 Standard</span></td>
+        <td>Rosum Bratislava; plán 1 500 bytov; BREEAM štandard</td>
+        <td class="cert-col">BREEAM</td>
+      </tr>
+      <tr data-name="stena fastigheter" data-country="Švédsko" data-type="national" data-parking="low">
+        <td>47</td><td class="dev-name-col"><a href="https://www.stenafastigheter.se" target="_blank">Stena Fastigheter</a></td>
+        <td>🇸🇪 Švédsko</td><td><span class="badge badge-blue">NÁRODNÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Göteborg</span><span class="city-pill">Malmö</span></td>
+        <td><span class="parking-low">🚗↓ Low parking</span></td>
+        <td>Masthuggskajen Göteborg (300 bytov); Citylab Project of the Year 2020</td>
+        <td class="cert-col">Nordic Swan · Citylab</td>
+      </tr>
+      <tr data-name="gewobag" data-country="Nemecko" data-type="municipal" data-parking="low">
+        <td>48</td><td class="dev-name-col"><a href="https://www.gewobag.de" target="_blank">Gewobag Berlin</a></td>
+        <td>🇩🇪 Nemecko</td><td><span class="badge badge-amber">MESTSKÝ</span></td>
+        <td class="dev-cities"><span class="city-pill">Berlín</span></td>
+        <td><span class="parking-low">🚗↓ Garages → green spaces</span></td>
+        <td>Konverzia zastaraných garáží na zelené komunitné priestory; 70 000 bytov, EH40</td>
+        <td class="cert-col">EH40</td>
+      </tr>
+      </tbody>
+    </table>
+      </div>
+
+  </section>
+
+
+  <!-- ══ PAN-EUROPEAN SECTION ══ -->
+  <section style="max-width:1100px;margin:5rem auto 0;padding-bottom:2rem" id="section-paneu" class="reveal">
+
+    <div class="dev-section-title">
+      <h2 class="sk-only">Pan-európski hráči — Jedna dohoda, viacero trhov</h2>
+      <h2 class="en-only">Pan-European Players — One Deal, Multiple Markets</h2>
+      <div class="title-line"></div>
+    </div>
+    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:2rem;font-weight:300;max-width:720px" class="sk-only">
+      Developeri aktívni vo viacerých mestách z nášho zoznamu. Pre GOSPACE LABS predstavujú najvyššiu obchodnú hodnotu — jedna partnerská zmluva môže otvoriť nasadenie v celej Európe.
+    </p>
+    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:2rem;font-weight:300;max-width:720px" class="en-only">
+      Developers active across multiple cities from our list. For GOSPACE LABS these represent the highest business value — one partnership agreement can enable deployment across all of Europe.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5px;background:var(--divider);border:1px solid var(--divider)">
+
+      <div style="background:var(--card-bg);padding:1.6rem;transition:background 0.2s" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.7rem">
+          <div>
+            <a href="https://www.buwog.de" target="_blank" style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none">BUWOG / Vonovia ↗</a>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.15rem">🇩🇪 Bochum, Nemecko · DAX-listed · ~540 000 bytov</div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:rgba(200,69,26,0.1);border:1px solid rgba(200,69,26,0.2);padding:0.28em 0.6em;border-radius:2px;white-space:nowrap;flex-shrink:0">10 <span class="sk-only">miest</span><span class="en-only">cities</span></span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic" class="sk-only">Najväčší bytový developer v Európe</div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic" class="en-only">Europe's largest residential developer</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.65rem">
+          <span class="city-pill">Berlín</span><span class="city-pill">Hamburg</span><span class="city-pill">Mníchov</span><span class="city-pill">Viedeň</span><span class="city-pill">Salzburg</span><span class="city-pill">Linz</span><span class="city-pill">Graz</span><span class="city-pill">Stockholm</span><span class="city-pill">Malmö</span><span class="city-pill">Göteborg</span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="sk-only">Pergolenviertel Hamburg = vlajkový „autoarmes Viertel" (1 700 bytov). Štandard: 1,8 cyklomiest/byt. Jedna zmluva pokrýva 540 000 bytov.</div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="en-only">Pergolenviertel Hamburg = flagship "autoarmes Viertel" (1,700 units). Standard: 1.8 bike spaces/unit. One contract covers 540,000 homes.</div>
+      </div>
+
+      <div style="background:var(--card-bg);padding:1.6rem;transition:background 0.2s" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.7rem">
+          <div>
+            <a href="https://www.heimstaden.com" target="_blank" style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none">Heimstaden Bostad ↗</a>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.15rem">🇸🇪 Malmö, Švédsko · ~150 000 bytov</div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:rgba(200,69,26,0.1);border:1px solid rgba(200,69,26,0.2);padding:0.28em 0.6em;border-radius:2px;white-space:nowrap;flex-shrink:0">10 <span class="sk-only">miest</span><span class="en-only">cities</span></span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic">SEK 290B · Nordic residential leader</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.65rem">
+          <span class="city-pill">Oslo</span><span class="city-pill">Amsterdam</span><span class="city-pill">Berlín</span><span class="city-pill">Hamburg</span><span class="city-pill">Kodaň</span><span class="city-pill">Stockholm</span><span class="city-pill">Malmö</span><span class="city-pill">Helsinki</span><span class="city-pill">Wrocław</span><span class="city-pill">Gdańsk</span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="sk-only">Berlínske portfólio: ~0,1 miest/byt de facto. Rastúca prítomnosť v CEE. Mestské centrum = core investičná stratégia.</div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="en-only">Berlin portfolio: ~0.1 spaces/unit de facto. Growing CEE presence. Urban core = core investment strategy.</div>
+      </div>
+
+      <div style="background:var(--card-bg);padding:1.6rem;transition:background 0.2s" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.7rem">
+          <div>
+            <a href="https://www.patrizia.ag" target="_blank" style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none">PATRIZIA AG ↗</a>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.15rem">🇩🇪 Augsburg, Nemecko · €48B AUM</div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:rgba(200,69,26,0.1);border:1px solid rgba(200,69,26,0.2);padding:0.28em 0.6em;border-radius:2px;white-space:nowrap;flex-shrink:0">10+ <span class="sk-only">miest</span><span class="en-only">cities</span></span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic">SFDR Article 8 · Living Cities Fund</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.65rem">
+          <span class="city-pill">Berlín</span><span class="city-pill">Mníchov</span><span class="city-pill">Hamburg</span><span class="city-pill">Stockholm</span><span class="city-pill">Barcelona</span><span class="city-pill">Helsinki</span><span class="city-pill">Kodaň</span><span class="city-pill">Londýn</span><span class="city-pill">Paríž</span><span class="city-pill">Viedeň</span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="sk-only">Blízkosť MHD = primárne investičné kritérium. Dátovo-riadený prístup — IoT dáta sú pre nich priama hodnota.</div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="en-only">Transit proximity = primary investment criterion. Data-driven approach — IoT data is direct value for them.</div>
+      </div>
+
+      <div style="background:var(--card-bg);padding:1.6rem;transition:background 0.2s" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.7rem">
+          <div>
+            <a href="https://www.greystar.com" target="_blank" style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none">Greystar (BTR) ↗</a>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.15rem">🇬🇧/USA · 44 789 EU bytov</div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:rgba(200,69,26,0.1);border:1px solid rgba(200,69,26,0.2);padding:0.28em 0.6em;border-radius:2px;white-space:nowrap;flex-shrink:0">9 <span class="sk-only">miest</span><span class="en-only">cities</span></span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic" class="sk-only">Build-to-Rent líder v Európe</div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic" class="en-only">Build-to-Rent leader in Europe</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.65rem">
+          <span class="city-pill">Londýn</span><span class="city-pill">Amsterdam</span><span class="city-pill">Utrecht</span><span class="city-pill">Paríž</span><span class="city-pill">Viedeň</span><span class="city-pill">Barcelona</span><span class="city-pill">Madrid</span><span class="city-pill">Hamburg</span><span class="city-pill">Mníchov</span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="sk-only">BTR cieli na mladých profesionálov — demografiu s najnižším auto-vlastníctvom. Car-light nie je kompromis, je komerčná výhoda.</div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="en-only">BTR targets young professionals — the demographic with the lowest car ownership. Car-light is not a compromise, it is a commercial advantage.</div>
+      </div>
+
+      <div style="background:var(--card-bg);padding:1.6rem;transition:background 0.2s" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.7rem">
+          <div>
+            <a href="https://www.strabag-real-estate.com" target="_blank" style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none">STRABAG Real Estate ↗</a>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.15rem">🇦🇹 Viedeň · 650+ projektov · 60 rokov</div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:rgba(200,69,26,0.1);border:1px solid rgba(200,69,26,0.2);padding:0.28em 0.6em;border-radius:2px;white-space:nowrap;flex-shrink:0">8 <span class="sk-only">miest</span><span class="en-only">cities</span></span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic">DGNB Gold · aktívny v Bratislave</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.65rem">
+          <span class="city-pill">Viedeň</span><span class="city-pill">Berlín</span><span class="city-pill">Hamburg</span><span class="city-pill">Antverpy</span><span class="city-pill">Salzburg</span><span class="city-pill">Linz</span><span class="city-pill">Graz</span><span class="city-pill">Bratislava</span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="sk-only">Priamy hráč pre GOSPACE v SK a AT. Panta Rhei Bratislava. Explicitne adresuje redukciu dopravy v urban design.</div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="en-only">Direct player for GOSPACE in SK and AT. Panta Rhei Bratislava. Explicitly addresses traffic reduction in urban design.</div>
+      </div>
+
+      <div style="background:var(--card-bg);padding:1.6rem;transition:background 0.2s" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.7rem">
+          <div>
+            <a href="https://www.skanska.com" target="_blank" style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none">Skanska ↗</a>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.15rem">🇸🇪 Stockholm · SEK 170B group</div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:rgba(200,69,26,0.1);border:1px solid rgba(200,69,26,0.2);padding:0.28em 0.6em;border-radius:2px;white-space:nowrap;flex-shrink:0">7+ <span class="sk-only">miest</span><span class="en-only">cities</span></span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic">Denmark's Best RE Developer 2025 (Euromoney)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.65rem">
+          <span class="city-pill">Stockholm</span><span class="city-pill">Oslo</span><span class="city-pill">Helsinki</span><span class="city-pill">Praha</span><span class="city-pill">Malmö</span><span class="city-pill">Kodaň</span><span class="city-pill">Göteborg</span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="sk-only">D.O.K. Radlice Praha: najväčšia drevená obytná budova v ČR. Silný nordický + CEE footprint.</div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="en-only">D.O.K. Radlice Prague: largest timber residential building in Czech Republic. Strong Nordic + CEE footprint.</div>
+      </div>
+
+      <div style="background:var(--card-bg);padding:1.6rem;transition:background 0.2s" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.7rem">
+          <div>
+            <a href="https://www.jm.se" target="_blank" style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none">JM AB ↗</a>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.15rem">🇸🇪 Stockholm · SEK 12B · listed</div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:rgba(200,69,26,0.1);border:1px solid rgba(200,69,26,0.2);padding:0.28em 0.6em;border-radius:2px;white-space:nowrap;flex-shrink:0">7 <span class="sk-only">miest</span><span class="en-only">cities</span></span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic" class="sk-only">Najlepšia zákaznícka spokojnosť medzi nordickými developermi</div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic" class="en-only">Best customer satisfaction among Nordic developers</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.65rem">
+          <span class="city-pill">Stockholm</span><span class="city-pill">Göteborg</span><span class="city-pill">Malmö</span><span class="city-pill">Oslo</span><span class="city-pill">Helsinki</span><span class="city-pill">Kodaň</span><span class="city-pill">Brusel</span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="sk-only">Transit-oriented ako core dizajnový princíp vo všetkých trhoch. Nordics leading developer.</div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="en-only">Transit-oriented as core design principle across all markets. Nordics leading developer.</div>
+      </div>
+
+      <div style="background:var(--card-bg);padding:1.6rem;transition:background 0.2s" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.7rem">
+          <div>
+            <a href="https://www.bonava.com" target="_blank" style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none">Bonava ↗</a>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.15rem">🇸🇪 Stockholm · SBTi 1.5°C approved · listed</div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:rgba(200,69,26,0.1);border:1px solid rgba(200,69,26,0.2);padding:0.28em 0.6em;border-radius:2px;white-space:nowrap;flex-shrink:0">4 <span class="sk-only">mestá</span><span class="en-only">cities</span></span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic" class="sk-only">Prvý európsky developer schválený SBTi · net-zero 2045</div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic" class="en-only">First European developer approved by SBTi · net-zero 2045</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.65rem">
+          <span class="city-pill">Berlín</span><span class="city-pill">Hamburg</span><span class="city-pill">Stockholm</span><span class="city-pill">Helsinki</span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="sk-only">Transit-oriented dizajn vo všetkých 4 trhoch. Záväzok net-zero do 2045. ESG ako základná stratégia.</div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="en-only">Transit-oriented design across all 4 markets. Net-zero commitment by 2045. ESG as core strategy.</div>
+      </div>
+
+      <div style="background:var(--card-bg);padding:1.6rem;transition:background 0.2s" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.7rem">
+          <div>
+            <a href="https://www.yitgroup.com" target="_blank" style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none">YIT Corporation ↗</a>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.15rem">🇫🇮 Helsinki · EUR 2,2B · 110+ rokov</div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:rgba(200,69,26,0.1);border:1px solid rgba(200,69,26,0.2);padding:0.28em 0.6em;border-radius:2px;white-space:nowrap;flex-shrink:0">3 <span class="sk-only">mestá</span><span class="en-only">cities</span></span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic">BREEAM Outstanding · LEED Platinum · CEE presence</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.65rem">
+          <span class="city-pill">Helsinki</span><span class="city-pill">Praha</span><span class="city-pill">Bratislava</span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="sk-only">Kiela FI: explicitne car-free dedina. Pradiareň 1900 BA (BREEAM Outstanding) + PALMA s Corwin. <strong>Strategicky najdôležitejší hráč pre GOSPACE v CEE.</strong></div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="en-only">Kiela FI: explicitly car-free village. Pradiareň 1900 BA (BREEAM Outstanding) + PALMA with Corwin. <strong>Strategically the most important player for GOSPACE in CEE.</strong></div>
+      </div>
+
+      <div style="background:var(--card-bg);padding:1.6rem;transition:background 0.2s" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.7rem">
+          <div>
+            <a href="https://www.pentarealestate.com" target="_blank" style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none">Penta Real Estate ↗</a>
+            <div style="font-size:0.73rem;color:var(--muted);margin-top:0.15rem">🇸🇰/🇨🇿 CEE · aktíva &gt;€1,7B</div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);background:rgba(200,69,26,0.1);border:1px solid rgba(200,69,26,0.2);padding:0.28em 0.6em;border-radius:2px;white-space:nowrap;flex-shrink:0">2 <span class="sk-only">mestá</span><span class="en-only">cities</span></span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic" class="sk-only">Rekordný rok 2024: 682 bytov</div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic" class="en-only">Record year 2024: 682 units delivered</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.65rem">
+          <span class="city-pill">Praha</span><span class="city-pill">Bratislava</span>
+        </div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="sk-only">Waltrovka Praha: car-free dvory, podzemné garážovanie. Žižkov 3.0 Praha. Rastúci ESG záujem. Silný domáci CEE player.</div>
+        <div style="font-size:0.76rem;color:var(--muted);font-weight:300;line-height:1.5;padding-top:0.6rem;border-top:1px solid var(--divider)" class="en-only">Waltrovka Prague: car-free courtyards, underground parking. Žižkov 3.0 Prague. Growing ESG interest. Strong domestic CEE player.</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══ STRATEGY SECTION ══ -->
+  <section style="max-width:1100px;margin:5rem auto 0;padding-bottom:4rem" id="section-strategy" class="reveal">
+
+    <div class="dev-section-title">
+      <h2 class="sk-only">Strategické odporúčania — GOSPACE LABS</h2>
+      <h2 class="en-only">Strategic Recommendations — GOSPACE LABS</h2>
+      <div class="title-line"></div>
+    </div>
+    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:2rem;font-weight:300;max-width:720px" class="sk-only">
+      Tri kategórie developerov predstavujú odlišné obchodné modely pre nasadenie smart parking IoT riešení Fleximodo / ParkingAround. Kombinácia Tier A + Tier C predstavuje najrýchlejšiu cestu k škálovateľným tržbám.
+    </p>
+    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:2rem;font-weight:300;max-width:720px" class="en-only">
+      Three developer categories represent distinct business models for Fleximodo / ParkingAround smart parking IoT deployment. Combining Tier A + Tier C represents the fastest path to scalable revenues.
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:4rem">
+
+      <!-- TIER A -->
+      <div style="padding:1.8rem;border-radius:2px;background:rgba(42,96,73,0.07);border:1px solid rgba(42,96,73,0.25)">
+        <div style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.15em;text-transform:uppercase;color:#2a6049;margin-bottom:0.4rem" class="sk-only">TIER A · PRIORITA 1</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.15em;text-transform:uppercase;color:#2a6049;margin-bottom:0.4rem" class="en-only">TIER A · PRIORITY 1</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.5rem" class="sk-only">Car-free &amp; low-parking pionieri</h4>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.5rem" class="en-only">Car-free &amp; low-parking pioneers</h4>
+        <p style="font-size:0.78rem;color:var(--muted);line-height:1.5;font-weight:300;margin-bottom:0.8rem" class="sk-only">Stavajú minimum miest — každé jedno musí byť maximálne využité. Zdieľané garáže sú priamy use-case pre Fleximodo senzory.</p>
+        <p style="font-size:0.78rem;color:var(--muted);line-height:1.5;font-weight:300;margin-bottom:0.8rem" class="en-only">Build minimum spaces — every single one must be maximally utilised. Shared garages are a direct use-case for Fleximodo sensors.</p>
+        <ul style="list-style:none;margin:0;padding:0">
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#2a6049;font-size:0.62rem">→</span>Riksbyggen (SE) — Brf Viva 0 miest</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#2a6049;font-size:0.62rem">→</span>Kalkbreite + Mehr als Wohnen (CH)</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#2a6049;font-size:0.62rem">→</span>HOWOGE (DE) — 2 miesta / 169 bytov</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#2a6049;font-size:0.62rem">→</span>Revive (BE) — 84% car-free plochy</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#2a6049;font-size:0.62rem">→</span>Synchroon (NL) — Merwede 0.3</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#2a6049;font-size:0.62rem">→</span>Kojamo (FI) — car-sharing advocate</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#2a6049;font-size:0.62rem">→</span>Corwin (SK) — LEED Zero Carbon CEE #1</li>
+        </ul>
+      </div>
+
+      <!-- TIER B -->
+      <div style="padding:1.8rem;border-radius:2px;background:rgba(26,74,122,0.07);border:1px solid rgba(26,74,122,0.25)">
+        <div style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.15em;text-transform:uppercase;color:#1a4a7a;margin-bottom:0.4rem" class="sk-only">TIER B · PRIORITA 2</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.15em;text-transform:uppercase;color:#1a4a7a;margin-bottom:0.4rem" class="en-only">TIER B · PRIORITY 2</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.5rem" class="sk-only">Veľkí developeri v mestách bez minima</h4>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.5rem" class="en-only">Large developers in minimum-free cities</h4>
+        <p style="font-size:0.78rem;color:var(--muted);line-height:1.5;font-weight:300;margin-bottom:0.8rem" class="sk-only">Aktívne rozhodujú koľko parkovacích miest stavať. Potrebujú dáta na optimalizáciu a zdôvodnenie rozhodnutia pred investormi.</p>
+        <p style="font-size:0.78rem;color:var(--muted);line-height:1.5;font-weight:300;margin-bottom:0.8rem" class="en-only">Actively decide how much parking to build. Need data to optimise and justify decisions in front of investors.</p>
+        <ul style="list-style:none;margin:0;padding:0">
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#1a4a7a;font-size:0.62rem">→</span>BUWOG / Vonovia (DE/AT) — 10 miest</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#1a4a7a;font-size:0.62rem">→</span>degewo / Gewobag (DE) — Berlin</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#1a4a7a;font-size:0.62rem">→</span>SAGA Hamburg (DE)</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#1a4a7a;font-size:0.62rem">→</span>AM / BPD (NL) — Amsterdam + Utrecht</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#1a4a7a;font-size:0.62rem">→</span>Berkeley / Barratt (UK) — London</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#1a4a7a;font-size:0.62rem">→</span>Nexity / Bouygues / Vinci (FR) — Paris</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:#1a4a7a;font-size:0.62rem">→</span>JTRE (SK) — Bratislava reform-ready</li>
+        </ul>
+      </div>
+
+      <!-- TIER C -->
+      <div style="padding:1.8rem;border-radius:2px;background:rgba(200,69,26,0.07);border:1px solid rgba(200,69,26,0.25)">
+        <div style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem" class="sk-only">TIER C · ŠKÁLOVATEĽNOSŤ</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem" class="en-only">TIER C · SCALABILITY</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.5rem" class="sk-only">Pan-európske platformy</h4>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.5rem" class="en-only">Pan-European platforms</h4>
+        <p style="font-size:0.78rem;color:var(--muted);line-height:1.5;font-weight:300;margin-bottom:0.8rem" class="sk-only">Jedna dohoda = nasadenie v mnohých mestách naraz. Najvyššia hodnota pri nízkych akvizičných nákladoch — ideálne pre produktový deal.</p>
+        <p style="font-size:0.78rem;color:var(--muted);line-height:1.5;font-weight:300;margin-bottom:0.8rem" class="en-only">One agreement = deployment across many cities at once. Highest value at low acquisition cost — ideal for a product-level deal.</p>
+        <ul style="list-style:none;margin:0;padding:0">
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:var(--accent);font-size:0.62rem">→</span>Vonovia / BUWOG — 540k bytov, 10 miest</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:var(--accent);font-size:0.62rem">→</span>Heimstaden — 150k bytov, 10 miest</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:var(--accent);font-size:0.62rem">→</span>PATRIZIA — €48B AUM, 10+ miest</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:var(--accent);font-size:0.62rem">→</span>Greystar BTR — 45k EU bytov, 9 miest</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:var(--accent);font-size:0.62rem">→</span>STRABAG RE — 8 miest vr. Bratislava</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:var(--accent);font-size:0.62rem">→</span>YIT Corp — Helsinki + Praha + Bratislava</li>
+          <li style="font-size:0.76rem;color:var(--muted);padding:0.2rem 0;display:flex;gap:0.4rem;align-items:baseline"><span style="color:var(--accent);font-size:0.62rem">→</span>Bonava — SBTi 1.5°C, 4 mestá</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div>
+    <div class="footer-brand">GOSPACE LABS</div>
+    <div>Urban Mobility Research · Bratislava 2026<br>
+    Smart Parking · Fleximodo · ParkingAround</div>
+  </div>
+  <div class="footer-sources">
+    <div style="color:rgba(255,255,255,0.4); margin-bottom:0.4rem; font-size:0.62rem; letter-spacing:0.08em;"><span class="sk-only">ZDROJE</span><span class="en-only">SOURCES</span></div>
+    <a href="https://parkingreform.org">parkingreform.org</a> ·
+    <a href="https://parkingreformatlas.org">parkingreformatlas.org</a><br>
+    <a href="https://reinventingparking.org">reinventingparking.org</a> ·
+    <a href="https://hel.fi">hel.fi</a> ·
+    <a href="https://iprpraha.cz">iprpraha.cz</a><br>
+    <a href="https://civitas.eu">civitas.eu</a> ·
+    <a href="https://mdpi.com">MDPI (2021)</a> ·
+    <a href="https://springeropen.com">SpringerOpen (2024)</a><br>
+    European Transport Research Review ·
+    <a href="https://itdp.org">itdp.org</a>
+  </div>
+</footer>
+
+<script>
+  // ════ LANGUAGE SWITCHER ════
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.getElementById('btn-sk').classList.toggle('active', lang === 'sk');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    try { localStorage.setItem('parkingLang', lang); } catch(e) {}
+  }
+  try { const s = localStorage.getItem('parkingLang'); if (s) setLang(s); } catch(e) {}
+  // Make dev-section visible immediately (too large for IntersectionObserver threshold)
+  document.addEventListener('DOMContentLoaded', function() {
+    var devSec = document.getElementById('section-developeri');
+    if (devSec) devSec.style.opacity = '1';
+  });
+
+  // ════ SCROLL REVEAL ════
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ════ STICKY NAV ACTIVE STATE ════
+  const navSections = ['section-cities','section-developeri','section-paneu','section-strategy']
+    .map(id => document.getElementById(id)).filter(Boolean);
+  const navLinks = document.querySelectorAll('.section-nav a');
+  window.addEventListener('scroll', () => {
+    let cur = 0;
+    navSections.forEach((s, i) => { if (window.scrollY >= s.offsetTop - 120) cur = i; });
+    navLinks.forEach(a => a.classList.remove('active'));
+    if (navLinks[cur]) navLinks[cur].classList.add('active');
+  }, { passive: true });
+
+  // ════ CITY TABLE FILTERS ════
+  function applyFilters() {
+    const mesto   = document.getElementById('f-mesto').value.toLowerCase().trim();
+    const krajina = document.getElementById('f-krajina').value;
+    const typ     = document.getElementById('f-typ').value;
+    const min     = document.getElementById('f-min').value;
+    const max     = document.getElementById('f-max').value;
+    const rok     = document.getElementById('f-rok').value;
+    const meter   = document.getElementById('f-meter').value;
+    let vis = 0;
+    document.querySelectorAll('#table-body tr').forEach(row => {
+      let show = true;
+      if (mesto   && !row.dataset.mesto.includes(mesto) && !row.cells[1].textContent.toLowerCase().includes(mesto)) show = false;
+      if (krajina && !row.dataset.krajina.includes(krajina)) show = false;
+      if (typ     && !row.dataset.typ.includes(typ)) show = false;
+      if (min) {
+        const rMin = row.dataset.min;
+        if (min === '0'    && rMin !== '0')                    show = false;
+        if (min === 'low'  && rMin !== '0' && rMin !== 'low')  show = false;
+        if (min === 'mid'  && rMin !== 'mid')                  show = false;
+        if (min === 'high' && rMin !== 'high')                 show = false;
+      }
+      if (max) {
+        if (max === 'has'  && row.dataset.max !== 'has')  show = false;
+        if (max === 'none' && row.dataset.max !== 'none') show = false;
+      }
+      if (rok) {
+        const rRok = parseInt(row.dataset.rok) || 0;
+        if (rok === 'pre2010'   && (rRok === 0 || rRok >= 2010))       show = false;
+        if (rok === '2010-2019' && (rRok < 2010 || rRok >= 2020))      show = false;
+        if (rok === '2020+'     && rRok < 2020)                        show = false;
+        if (rok === 'ongoing'   && row.dataset.rok !== 'ongoing')      show = false;
+      }
+      if (meter) {
+        const m = parseFloat(row.dataset.meter);
+        if (meter === '9+'    && m < 9.0) show = false;
+        if (meter === '7+'    && m < 7.0) show = false;
+        if (meter === '5+'    && m < 5.0) show = false;
+        if (meter === 'under5' && m >= 5.0) show = false;
+      }
+      row.classList.toggle('row-hidden', !show);
+      if (show) vis++;
+    });
+    document.getElementById('f-visible').textContent = vis;
+  }
+  function resetFilters() {
+    ['f-mesto','f-krajina','f-typ','f-min','f-max','f-rok','f-meter']
+      .forEach(id => { document.getElementById(id).value = ''; });
+    applyFilters();
+  }
+  document.getElementById('f-mesto').addEventListener('input', applyFilters);
+  ['f-krajina','f-typ','f-min','f-max','f-rok','f-meter']
+    .forEach(id => document.getElementById(id).addEventListener('change', applyFilters));
+
+  // ════ CITY TABLE SORT ════
+  let sortCol = null, sortDir = 1;
+  document.querySelectorAll('.data-table th.sortable').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = parseInt(th.dataset.col);
+      if (sortCol === col) sortDir *= -1; else { sortCol = col; sortDir = 1; }
+      document.querySelectorAll('.data-table th').forEach(h => h.classList.remove('sort-asc','sort-desc'));
+      th.classList.add(sortDir === 1 ? 'sort-asc' : 'sort-desc');
+      const tbody = document.getElementById('table-body');
+      [...tbody.querySelectorAll('tr')].sort((a, b) => {
+        let av = a.cells[col]?.textContent.trim() || '';
+        let bv = b.cells[col]?.textContent.trim() || '';
+        const an = parseFloat(av.replace(/[^\d.\-]/g, ''));
+        const bn = parseFloat(bv.replace(/[^\d.\-]/g, ''));
+        if (!isNaN(an) && !isNaN(bn)) return (an - bn) * sortDir;
+        return av.localeCompare(bv, 'sk') * sortDir;
+      }).forEach(r => tbody.appendChild(r));
+    });
+  });
+
+  // ════ DEVELOPER TABLE FILTERS ════
+  function applyDevFilters() {
+    const name    = document.getElementById('d-name').value.toLowerCase().trim();
+    const country = document.getElementById('d-country').value;
+    const type    = document.getElementById('d-type').value;
+    const parking = document.getElementById('d-parking').value;
+    let vis = 0;
+    document.querySelectorAll('#dev-body tr').forEach(row => {
+      let show = true;
+      if (name    && !row.dataset.name.includes(name) && !row.cells[1].textContent.toLowerCase().includes(name)) show = false;
+      if (country && !row.dataset.country.includes(country)) show = false;
+      if (type    && row.dataset.type !== type)               show = false;
+      if (parking && row.dataset.parking !== parking)         show = false;
+      row.classList.toggle('dev-hidden', !show);
+      if (show) vis++;
+    });
+    document.getElementById('d-visible').textContent = vis;
+  }
+  function resetDevFilters() {
+    ['d-name','d-country','d-type','d-parking']
+      .forEach(id => { document.getElementById(id).value = ''; });
+    applyDevFilters();
+  }
+  document.getElementById('d-name').addEventListener('input', applyDevFilters);
+  ['d-country','d-type','d-parking']
+    .forEach(id => document.getElementById(id).addEventListener('change', applyDevFilters));
+
+  // ════ DEVELOPER TABLE SORT ════
+  let devSortCol = null, devSortDir = 1;
+  document.querySelectorAll('.dev-table th.sortable').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = parseInt(th.dataset.dcol);
+      if (devSortCol === col) devSortDir *= -1; else { devSortCol = col; devSortDir = 1; }
+      document.querySelectorAll('.dev-table th').forEach(h => h.classList.remove('sort-asc','sort-desc'));
+      th.classList.add(devSortDir === 1 ? 'sort-asc' : 'sort-desc');
+      const tbody = document.getElementById('dev-body');
+      [...tbody.querySelectorAll('tr')].sort((a, b) => {
+        let av = a.cells[col]?.textContent.trim() || '';
+        let bv = b.cells[col]?.textContent.trim() || '';
+        const an = parseFloat(av.replace(/[^\d.\-]/g, ''));
+        const bn = parseFloat(bv.replace(/[^\d.\-]/g, ''));
+        if (!isNaN(an) && !isNaN(bn)) return (an - bn) * devSortDir;
+        return av.localeCompare(bv, 'sk') * devSortDir;
+      }).forEach(r => tbody.appendChild(r));
+    });
+  });
+</script>
+</body>
+</html>
