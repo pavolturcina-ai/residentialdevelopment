@@ -6,6 +6,28 @@
 <title>Európske mestá s najnižšími parkovacími normami</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* ── PASSWORD SCREEN ── */
+  .pw-screen{position:fixed;inset:0;z-index:9999;background:#0f1114;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,transform .6s ease;}
+  .pw-screen.hide{opacity:0;transform:scale(1.05);pointer-events:none;}
+  .pw-box{text-align:center;max-width:420px;padding:2.5rem;width:90%;}
+  .pw-icon{width:80px;height:80px;margin:0 auto 1.5rem;border-radius:50%;background:rgba(200,69,26,.12);display:flex;align-items:center;justify-content:center;}
+  .pw-icon svg{width:36px;height:36px;stroke:#c8451a;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .pw-box h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;margin-bottom:.5rem;color:#f5f2eb;}
+  .pw-box p{color:#6b6b6b;font-size:.92rem;margin-bottom:1.8rem;line-height:1.5;}
+  .pw-input-wrap{position:relative;margin-bottom:1rem;}
+  .pw-input-wrap input{width:100%;padding:.9rem 1.2rem;border-radius:2px;border:1.5px solid rgba(245,242,235,.12);background:rgba(245,242,235,.05);color:#f5f2eb;font-family:inherit;font-size:1rem;outline:none;transition:border-color .3s;}
+  .pw-input-wrap input::placeholder{color:#6b6b6b}
+  .pw-input-wrap input:focus{border-color:#c8451a}
+  .pw-input-wrap.error input{border-color:#e04040;animation:shake .4s ease}
+  .pw-error-msg{color:#e04040;font-size:.82rem;margin-top:.4rem;opacity:0;transition:opacity .3s;}
+  .pw-input-wrap.error + .pw-error-msg{opacity:1}
+  .pw-btn{width:100%;padding:.85rem;margin-top:.5rem;border:none;border-radius:2px;background:#c8451a;color:#fff;font-family:inherit;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .25s,transform .15s;}
+  .pw-btn:hover{background:#b33d16;transform:translateY(-1px)}
+  .pw-btn:active{transform:translateY(0)}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}}
+  .page-content{display:none;}
+  .page-content.show{display:block;}
+
   :root {
     --ink: #0f1114;
     --paper: #f5f2eb;
@@ -829,14 +851,32 @@
 </head>
 <body>
 
+<div class="pw-screen" id="pwScreen">
+  <div class="pw-box">
+    <div class="pw-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16.5" r="1.5"/></svg></div>
+    <h2>Prístup k výskumu</h2>
+    <p>Táto stránka je chránená heslom.<br>Zadajte prístupový kód pre pokračovanie.</p>
+    <form id="pwForm" onsubmit="return checkPw(event)">
+      <div class="pw-input-wrap" id="pwWrap">
+        <input type="password" id="pwInput" placeholder="Zadajte heslo" autocomplete="off" autofocus>
+      </div>
+      <p class="pw-error-msg" id="pwError">Nesprávne heslo. Skúste znova.</p>
+      <button type="submit" class="pw-btn">Odomknúť</button>
+    </form>
+  </div>
+</div>
+
+<div class="page-content" id="pageContent">
 <!-- ══ HERO ══ -->
 <header class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
 
   <div class="hero-top-bar">
-    <a href="index.html" style="display:inline-flex;align-items:center;gap:.45rem;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;padding:.35em .8em;border:1px solid rgba(255,255,255,.12);border-radius:4px;transition:all .25s;margin-right:1rem;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,.35)'" onmouseout="this.style.color='rgba(255,255,255,.5)';this.style.borderColor='rgba(255,255,255,.12)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>Späť</a>
-    <span class="hero-logo">GOSPACE LABS · Urban Mobility Research</span>
+    <div style="display:flex;align-items:center;gap:.8rem;">
+      <a href="index.html" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid rgba(255,255,255,.12);border-radius:4px;color:rgba(255,255,255,.5);text-decoration:none;transition:all .25s;flex-shrink:0;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,.35)'" onmouseout="this.style.color='rgba(255,255,255,.5)';this.style.borderColor='rgba(255,255,255,.12)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg></a>
+      <span class="hero-logo">GOSPACE LABS · Urban Mobility Research</span>
+    </div>
     <div style="display:flex;align-items:center;gap:1rem;">
       <div class="lang-switcher">
         <button class="lang-btn active" id="btn-sk" onclick="setLang('sk')">SK</button>
@@ -2628,6 +2668,33 @@
       }).forEach(r => tbody.appendChild(r));
     });
   });
+</script>
+</div><!-- /page-content -->
+
+<script>
+function checkPw(e){
+  e.preventDefault();
+  var inp=document.getElementById('pwInput');
+  var wrap=document.getElementById('pwWrap');
+  if(inp.value==='parkingminimus'){
+    sessionStorage.setItem('pp_auth','1');
+    document.getElementById('pwScreen').classList.add('hide');
+    setTimeout(function(){
+      document.getElementById('pwScreen').style.display='none';
+      document.getElementById('pageContent').classList.add('show');
+    },600);
+  } else {
+    wrap.classList.add('error');
+    inp.value='';
+    inp.focus();
+    setTimeout(function(){wrap.classList.remove('error')},1500);
+  }
+  return false;
+}
+if(sessionStorage.getItem('pp_auth')==='1'){
+  document.getElementById('pwScreen').style.display='none';
+  document.getElementById('pageContent').classList.add('show');
+}
 </script>
 </body>
 </html>
