@@ -711,7 +711,7 @@
   .section-nav a.active { color: #fff; border-bottom-color: var(--accent); }
 
   /* ════ DEVELOPER SECTION ════ */
-  .dev-section { margin: 6rem auto 0; padding: 0 0 4rem; }
+  .dev-section { margin: 6rem auto 0; padding: 0 0 4rem; max-width: 1100px; }
 
   .dev-section-title { margin-left: 2rem; margin-right: 2rem;
     display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;
@@ -782,17 +782,19 @@
   /* ── Developer table ── */
   .dev-table { border-collapse: collapse; font-size: 0.79rem; background: #fff; white-space: nowrap; }
   .dev-table thead tr { background: var(--ink); color: #fff; }
-  .dev-table th { padding: 0.7rem 1rem; text-align: left; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; white-space: nowrap; }
+  .dev-table th { padding: 0.7rem 1rem; text-align: left; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); }
+  .dev-table th:last-child { border-right: none; }
   .dev-table th.sortable { cursor: pointer; user-select: none; }
   .dev-table th.sortable::after  { content: ' ↕'; opacity: 0.35; font-size: 0.58rem; }
   .dev-table th.sort-asc::after  { content: ' ↑'; opacity: 1; color: var(--accent); }
   .dev-table th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--accent); }
-  .dev-table td { padding: 0.45rem 1rem; border-bottom: 1px solid var(--divider); vertical-align: middle; white-space: nowrap; }
+  .dev-table td { padding: 0.45rem 1rem; border-bottom: 1px solid var(--divider); border-right: 1px solid var(--divider); vertical-align: middle; white-space: nowrap; }
+  .dev-table td:last-child { border-right: none; }
   .dev-table tr:hover td { background: var(--paper); }
   .dev-table .dev-name-col a { color: var(--ink); text-decoration: none; font-weight: 600; }
   .dev-table .dev-name-col a:hover { color: var(--accent); }
   .dev-table .dev-name-col a::after { content: ' ↗'; font-size: 0.6rem; opacity: 0.35; }
-  .dev-cities { display: inline-flex; gap: 0.2rem; align-items: center; }
+  .dev-cities { display: flex; flex-wrap: wrap; gap: 0.2rem; align-items: center; max-width: 220px; }
   .city-pill { font-family: 'DM Mono', monospace; font-size: 0.57rem; padding: 0.12em 0.45em; background: var(--paper); border: 1px solid var(--divider); border-radius: 2px; color: var(--muted); white-space: nowrap; }
   .parking-free  { color: #2a6049; font-weight: 600; font-size: 0.78rem; }
   .parking-low   { color: #1a4a7a; font-weight: 500; font-size: 0.78rem; }
@@ -1775,7 +1777,7 @@
     </div>
 
     <!-- table injected in step 6 -->
-    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;border-top:1px solid var(--divider)">
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;border-top:1px solid var(--divider);margin:0 2rem;max-width:calc(100% - 4rem)">
       <table class="dev-table" id="dev-table">
       <thead>
         <tr>
